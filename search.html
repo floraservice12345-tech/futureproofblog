@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Articles – FutureProof Blog</title>
+<meta name="description" content="Search all articles on FutureProof Blog about AI tools, career growth, investing, and technology for Indian professionals.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Segoe UI, system-ui, sans-serif; background: #f8f9fa; color: #333; }
+nav { background: #1a1a2e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+nav a { color: #fff; text-decoration: none; font-size: 0.95rem; }
+.nav-brand { font-size: 1.3rem; font-weight: 700; color: #e94560; }
+.nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 60px 20px 40px; text-align: center; }
+.hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+.hero p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 30px; }
+.search-box { max-width: 600px; margin: 0 auto; display: flex; gap: 10px; }
+.search-box input { flex: 1; padding: 14px 20px; border-radius: 8px; border: none; font-size: 1rem; outline: none; }
+.search-box button { padding: 14px 24px; background: #e94560; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+.search-box button:hover { background: #c73652; }
+.container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+.results-count { color: #666; margin-bottom: 20px; font-size: 0.95rem; }
+.result-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e94560; transition: transform 0.2s; }
+.result-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.result-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.result-card h3 a { color: #1a1a2e; text-decoration: none; }
+.result-card h3 a:hover { color: #e94560; }
+.result-card .excerpt { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; }
+.result-card .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.result-card .tag { background: #f0f4ff; color: #0f3460; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.result-card .hl { background: #fff3cd; padding: 1px 2px; border-radius: 2px; }
+.no-results { text-align: center; padding: 60px 20px; color: #666; }
+.all-articles h2 { font-size: 1.4rem; color: #1a1a2e; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e94560; }
+footer { background: #1a1a2e; color: #aaa; padding: 30px; text-align: center; margin-top: 60px; font-size: 0.9rem; }
+footer a { color: #e94560; text-decoration: none; }
+#progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg,#e94560,#ff6b9d); width: 0; z-index: 9999; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; background: #e94560; color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; display: none; box-shadow: 0 4px 12px rgba(233,69,96,0.4); align-items: center; justify-content: center; }
+.back-to-top.visible { display: flex; }
+@media (max-width: 600px) { .hero h1 { font-size: 1.6rem; } .search-box { flex-direction: column; } }
+</style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8999111703320899" crossorigin="anonymous"></script>
+<meta property="og:title" content="Search Articles">
+<meta property="og:description" content="Search all articles on FutureProof Blog about AI tools, career growth, investing, and technology for Indian professionals.">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+<a href="/" class="nav-brand">&#9889; FutureProof Blog</a>
+<div class="nav-links">
+<a href="/">Home</a><a href="/about">About</a><a href="/subscribe">Subscribe</a><a href="/search">&#128269; Search</a>
+</div></nav>
+<div class="hero">
+<h1>&#128269; Search Articles</h1>
+<p>Find insights on AI tools, careers, investing, and technology for Indian professionals</p>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search articles... e.g. AI tools, SIP, coding" autofocus>
+<button onclick="doSearch()">Search</button>
+</div></div>
+<div class="container">
+<div id="resultsCount" class="results-count"></div>
+<div id="searchResults"></div>
+<div class="all-articles" id="allArticles"><h2>All Articles</h2><div id="articleList"></div></div>
+</div>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<footer><p>&copy; 2026 FutureProof Blog | <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> | <a href="/disclaimer">Disclaimer</a> | <a href="/affiliate-disclosure">Affiliate Disclosure</a></p></footer>
+<script>
+const articles = [
+{title:'The 10 AI Tools Every Indian Professional Needs in 2026',url:'/article-ai-tools-professionals',excerpt:'Discover the top AI tools transforming careers for Indian professionals in 2026. From productivity boosters to skill development platforms, these tools can give you a competitive edge.',tags:['AI Tools','Career','Productivity','India'],keywords:'ai tools indian professional 2026 chatgpt productivity career growth automation'},
+{title:'Best Free AI Tools for Indians in 2026',url:'/article-free-ai-tools',excerpt:'A curated list of the best completely free AI tools available to Indian users in 2026. No credit card, no international payment issues — just powerful AI at zero cost.',tags:['Free Tools','AI','India','Budget'],keywords:'free ai tools india 2026 no cost zero rupees chatgpt gemini copilot'},
+{title:'The Wealth Framework: How to Build Lasting Financial Security in India',url:'/article-wealth-framework',excerpt:'A practical framework for building wealth in India — covering savings, investments, insurance, and passive income strategies suited to the Indian financial ecosystem.',tags:['Finance','Wealth','Investing','India'],keywords:'wealth framework financial security india savings investment mutual fund sip insurance'},
+{title:'Biggest AI Launches of 2026 That Will Impact Every Indian',url:'/article-ai-launches-2026',excerpt:'2026 has been a landmark year for AI. From GPT-5 to India-specific AI models, here are the biggest AI launches and what they mean for Indian professionals, students, and businesses.',tags:['AI News','2026','Technology','India'],keywords:'ai launches 2026 gpt5 gemini india technology news artificial intelligence'},
+{title:'AI Coding Tools: How Indian Developers Can 10x Their Productivity',url:'/article-ai-coding-tools',excerpt:'Indian developers can now code faster than ever with AI-powered coding assistants. This guide covers the best AI coding tools, how to use them effectively, and real productivity gains.',tags:['Coding','AI','Developers','Productivity'],keywords:'ai coding tools developers india github copilot cursor codeium productivity programming'},
+{title:'AI for Indian Students: Study Smarter, Score Higher',url:'/article-ai-for-students',excerpt:'Students across India are using AI tools to study smarter, prepare for competitive exams, and build career-ready skills. Here is a practical guide for Indian students in 2026.',tags:['Students','Education','AI','India'],keywords:'ai for students india study exam preparation jee upsc competitive exam school college'},
+{title:'AI Tools for Content Creators: Grow Your Indian Audience Faster',url:'/article-ai-for-content-creators',excerpt:'Content creators in India are using AI to produce more content, grow their audience, and monetize their work. Discover AI tools that top Indian YouTubers and bloggers are using.',tags:['Content Creation','YouTube','Social Media','AI'],keywords:'ai content creators india youtube instagram blog monetize audience growth video'},
+{title:'SIP vs Real Estate: Which Is Better for Indian Investors in 2026?',url:'/article-sip-vs-realestate',excerpt:'The age-old debate for Indian investors — SIP in mutual funds vs real estate investment. A data-driven comparison to help you make an informed decision in 2026.',tags:['Investing','SIP','Real Estate','Finance'],keywords:'sip vs real estate india mutual fund investment property 2026 returns comparison'}
+];
+function hl(text,q){if(!q)return text;var words=q.trim().split(/\s+/).filter(function(w){return w.length>2});var r=text;words.forEach(function(w){var re=new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");r=r.replace(re,"<span class='hl'>$1</span>")});return r}
+function renderCard(a,q){return "<div class='result-card'><h3><a href='"+a.url+"'>"+hl(a.title,q)+"</a></h3><p class='excerpt'>"+hl(a.excerpt,q)+"</p><div class='tags'>"+a.tags.map(function(t){return "<span class='tag'>"+t+"</span>"}).join("")+"</div></div>"}
+function doSearch(){var q=document.getElementById("searchInput").value.trim().toLowerCase();var rd=document.getElementById("searchResults");var cd=document.getElementById("resultsCount");var aad=document.getElementById("allArticles");if(!q){rd.innerHTML="";cd.innerHTML="";aad.style.display="block";renderAll();return}aad.style.display="none";var words=q.split(/\s+/).filter(function(w){return w.length>1});var scored=articles.map(function(a){var sc=0;var st=(a.title+" "+a.excerpt+" "+a.keywords+" "+a.tags.join(" ")).toLowerCase();words.forEach(function(w){if(a.title.toLowerCase().indexOf(w)>-1)sc+=10;if(a.tags.some(function(t){return t.toLowerCase().indexOf(w)>-1}))sc+=5;if(a.keywords.indexOf(w)>-1)sc+=3;if(a.excerpt.toLowerCase().indexOf(w)>-1)sc+=2});return Object.assign({},a,{score:sc})}).filter(function(a){return a.score>0}).sort(function(a,b){return b.score-a.score});if(scored.length===0){cd.innerHTML="";rd.innerHTML="<div class='no-results'><h3>No articles found for <em>"+q+"</em></h3><p>Try: AI tools, SIP, coding, students, content creators, wealth</p></div>";return}cd.innerHTML="Found <strong>"+scored.length+"</strong> article"+(scored.length!==1?"s":"")+" for <em>"+q+"</em>";rd.innerHTML=scored.map(function(a){return renderCard(a,q)}).join("")}
+function renderAll(){document.getElementById("articleList").innerHTML=articles.map(function(a){return renderCard(a,"")}).join("")}
+document.getElementById("searchInput").addEventListener("keyup",function(e){if(e.key==="Enter")doSearch();if(this.value.length>2||this.value.length===0)doSearch()});
+var urlP=new URLSearchParams(window.location.search);var qP=urlP.get("q");if(qP){document.getElementById("searchInput").value=qP;doSearch()}else{renderAll()}
+window.addEventListener("scroll",function(){var b=document.getElementById("backToTop");if(window.scrollY>300)b.classList.add("visible");else b.classList.remove("visible");var p=document.getElementById("progress-bar");p.style.width=((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100)+"%"});
+if(!localStorage.getItem("cookieConsent")){var ban=document.createElement("div");ban.style.cssText="position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;z-index:10000;flex-wrap:wrap;gap:10px;font-size:0.9rem;";ban.innerHTML='<span>We use cookies to improve your experience. <a href="/privacy-policy" style="color:#e94560">Learn more</a></span><div style="display:flex;gap:10px"><button onclick="localStorage.setItem(\'cookieConsent\',\'accepted\');this.parentElement.parentElement.remove()" style="background:#e94560;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Accept</button><button onclick="localStorage.setItem(\'cookieConsent\',\'declined\');this.parentElement.parentElement.remove()" style="background:#444;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Decline</button></div>';document.body.appendChild(ban)}
+</script>
+</body></html>
