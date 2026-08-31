@@ -1,12 +1,13 @@
 /* ============================================================
    FutureProof Blog — analytics loader
    ------------------------------------------------------------
-   TO ACTIVATE: replace G-XXXXXXXXXX below with your real GA4
-   Measurement ID, then re-upload THIS FILE ONLY to GitHub.
-   Nothing else needs to change — all 51 pages read from here.
+   ACTIVE. GA4 Measurement ID is set below (property
+   "FutureProof Blog" / futureproofblog.in).
+   To change it later, edit the one line and re-upload
+   THIS FILE ONLY — all 51 pages read from here.
    ============================================================ */
 
-var GA4_MEASUREMENT_ID = "G-XXXXXXXXXX";   // <-- change this one line
+var GA4_MEASUREMENT_ID = "G-BXCSZN56NT";   // <-- the only line to ever change
 
 (function () {
   if (!GA4_MEASUREMENT_ID || GA4_MEASUREMENT_ID.indexOf("XXXX") !== -1) {
