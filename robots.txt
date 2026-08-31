@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /thank-you
+Disallow: /thank-you-contact
+Disallow: /thank-you-brief
+Disallow: /search
+
 Sitemap: https://futureproofblog.in/sitemap.xml

@@ -1,0 +1,11 @@
+# 301 redirects — duplicate articles consolidated into one canonical URL each
+
+/article-ai-job-safe   /article-ai-proof-job   301!
+/article-ai-job-safe.html   /article-ai-proof-job   301!
+/article-salary-negotiation   /article-salary-negotiate   301!
+/article-salary-negotiation.html   /article-salary-negotiate   301!
+/article-chatgpt-claude-gemini   /article-ai-tools-best   301!
+/article-chatgpt-claude-gemini.html   /article-ai-tools-best   301!
+
+# common typo / legacy paths
+/index.html   /   301!
