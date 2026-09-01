@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog</title>
+<meta name="description" content="Free India income tax calculator for FY 2026-27. Compare new vs old regime side by side with the 87A rebate, marginal relief and 4% cess, and see the exact deduction figure at which the old regime starts to win.">
+<meta name="keywords" content="income tax calculator FY 2026-27, new vs old regime calculator, 87A rebate calculator, marginal relief, income tax India calculator 2026">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#f6f8fb;line-height:1.7}
+header{background:#1a1a2e;color:#fff;padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.4rem;font-weight:700;color:#e94560;text-decoration:none}
+nav a{color:#ddd;text-decoration:none;margin-left:18px;font-size:.92rem}
+nav a:hover,nav a.active{color:#e94560}
+.ph{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;padding:44px 24px 36px;text-align:center}
+.ph .kick{display:inline-block;background:#e94560;padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.08em;margin-bottom:12px}
+.ph h1{font-size:1.95rem;font-weight:800;margin-bottom:10px;max-width:760px;margin-left:auto;margin-right:auto}
+.ph p{opacity:.86;max-width:620px;margin:0 auto;font-size:1rem}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 20px 60px}
+.calc{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:22px;align-items:start}
+.card{background:#fff;border:1px solid #e3e6ee;border-radius:12px;padding:22px 22px 24px;box-shadow:0 3px 14px rgba(20,23,42,.05)}
+.card h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:4px}
+.card .hint{font-size:.83rem;color:#7a8194;margin-bottom:16px}
+label{display:block;font-size:.86rem;font-weight:600;color:#3d4358;margin:14px 0 5px}
+label .sub{display:block;font-weight:400;color:#8a91a4;font-size:.78rem;margin-top:2px}
+input[type=number],select{width:100%;padding:11px 12px;border:1px solid #d5dae6;border-radius:7px;font-size:1rem;font-family:inherit;background:#fff;color:#222}
+input[type=number]:focus,select:focus{outline:2px solid #e94560;outline-offset:1px;border-color:#e94560}
+.ded{border-top:1px solid #eceff5;margin-top:18px;padding-top:6px}
+.ded h3{font-size:.92rem;color:#1a1a2e;margin-top:10px}
+.ded p.note{font-size:.79rem;color:#8a91a4;margin-top:4px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.reg{border:1px solid #e3e6ee;border-radius:12px;padding:20px;background:#fff;box-shadow:0 3px 14px rgba(20,23,42,.05);position:relative}
+.reg.win{border:2px solid #1c6349;background:#f2fbf7}
+.reg .tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a91a4}
+.reg.win .tag{color:#1c6349}
+.reg .nm{font-size:1.05rem;font-weight:800;color:#1a1a2e;margin:4px 0 10px}
+.reg .amt{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.reg.win .amt{color:#1c6349}
+.reg .amtl{font-size:.8rem;color:#7a8194;margin-top:2px}
+.badge{position:absolute;top:-11px;right:14px;background:#1c6349;color:#fff;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:12px;letter-spacing:.05em}
+.verdict{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;border-radius:12px;padding:22px 24px;margin-bottom:18px}
+.verdict h2{color:#fff;font-size:1.2rem;margin-bottom:8px}
+.verdict p{color:#c6cfe2;font-size:.95rem;margin-bottom:8px}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{color:#fff}
+.verdict .big{font-size:1.7rem;font-weight:800;color:#fff;display:block;margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:6px}
+th{text-align:left;background:#f2f4f9;color:#5a6072;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;font-weight:700}
+td{padding:9px 12px;border-bottom:1px solid #eceff5;vertical-align:top}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:800;color:#1a1a2e;border-top:2px solid #d5dae6;border-bottom:0}
+.tw{overflow-x:auto}
+.warn{background:#fff8e1;border:1px solid #ffe082;border-radius:9px;padding:14px 18px;font-size:.88rem;color:#5c4400;margin-top:16px}
+.disc{background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:18px 20px;font-size:.85rem;color:#5a6072;margin-top:22px}
+.disc strong{color:#1a1a2e}
+.rel{margin-top:30px}
+.rel h2{font-size:1.2rem;color:#1a1a2e;margin-bottom:12px}
+.relg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.relg a{display:block;background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:16px 18px;text-decoration:none}
+.relg a strong{display:block;color:#1a1a2e;margin-bottom:4px;font-size:.96rem}
+.relg a span{color:#666;font-size:.85rem}
+.cta{background:#fff;border:1px solid #e3e6ee;border-top:4px solid #e94560;border-radius:12px;padding:24px 26px;margin-top:26px}
+.cta h2{font-size:1.15rem;color:#1a1a2e;margin-bottom:8px}
+.cta p{color:#555;font-size:.94rem;margin-bottom:14px}
+.cta a.btn{display:inline-block;background:#e94560;color:#fff;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:700;font-size:.93rem}
+footer{background:#1a1a2e;color:#ccc;text-align:center;padding:20px 24px;font-size:.85rem}
+footer a{color:#e94560;text-decoration:none}
+@media(max-width:860px){.calc{grid-template-columns:1fr}.res{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-inner{height:auto;flex-wrap:wrap;padding:10px 0;row-gap:4px}header nav{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:2px}header nav a{margin-left:0}}
+</style>
+<script src="/analytics.js"></script><script src="/ads.js" defer></script>
+<link rel="canonical" href="https://futureproofblog.in/tax-regime-calculator"><meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:url" content="https://futureproofblog.in/tax-regime-calculator"><meta property="og:type" content="website"><meta property="og:title" content="Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog"><meta property="og:description" content="Free India income tax calculator for FY 2026-27. Compare new vs old regime side by side with the 87A rebate, marginal relief and 4% cess, and see the exact deduction figure at which the old regime starts to win."><meta property="og:image" content="https://futureproofblog.in/images/og/tax-regime-calculator.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://futureproofblog.in/images/og/tax-regime-calculator.jpg"><meta name="twitter:title" content="Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog"><meta name="twitter:description" content="Free India income tax calculator for FY 2026-27. Compare new vs old regime side by side with the 87A rebate, marginal relief and 4% cess, and see the exact deduction figure at which the old regime starts to win."><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><link rel="alternate" type="application/rss+xml" title="FutureProof Blog" href="/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Income Tax Calculator FY 2026-27", "url": "https://futureproofblog.in/tax-regime-calculator", "description": "Compares income tax under India's new and old regimes for FY 2026-27, including the Section 87A rebate, marginal relief above Rs 12 lakh and the 4% cess, and derives the deduction level at which the old regime becomes cheaper.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any modern web browser", "browserRequirements": "Requires JavaScript", "inLanguage": "en-IN", "image": "https://futureproofblog.in/images/og/tax-regime-calculator.jpg", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "author": {"@type": "Person", "@id": "https://futureproofblog.in/#person", "name": "Geeta Yadav", "jobTitle": "Founder & Lead Writer", "url": "https://futureproofblog.in/about", "worksFor": {"@id": "https://futureproofblog.in/#organization"}}, "publisher": {"@type": "Organization", "@id": "https://futureproofblog.in/#organization", "name": "FutureProof Blog", "url": "https://futureproofblog.in", "logo": {"@type": "ImageObject", "url": "https://futureproofblog.in/images/icon-512.png", "width": 512, "height": 512}, "email": "contact@futureproofblog.in", "areaServed": "IN"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://futureproofblog.in/"}, {"@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://futureproofblog.in/tools"}, {"@type": "ListItem", "position": 3, "name": "Income Tax Calculator FY 2026-27: New vs Old Regime (India)", "item": "https://futureproofblog.in/tax-regime-calculator"}]}</script></head><body>
+<header><div class="nav-inner"><a href="/" class="logo">FutureProof Blog</a><nav><a href="/">Home</a><a href="/ai-work">AI &amp; Work</a><a href="/ai-tools">AI Tools</a><a href="/money-property">Money &amp; Property</a><a href="/tools" class="active">Free Tools</a><a href="/hire-me">Hire Me</a><a href="/about">About</a><a href="/subscribe">Subscribe</a></nav></div></header>
+
+<div class="ph">
+  <span class="kick">FREE CALCULATOR · FY 2026-27</span>
+  <h1>New vs Old Tax Regime Calculator</h1>
+  <p>Enter your income once. Get both regimes side by side — with the 87A rebate, marginal relief and 4% cess applied properly — plus the exact deduction figure at which the old regime starts winning.</p>
+</div>
+
+<div class="wrap">
+<div class="calc">
+
+  <form class="card" id="f" autocomplete="off">
+    <h2>Your numbers</h2>
+    <p class="hint">Nothing is sent anywhere. The maths runs in your browser.</p>
+
+    <label for="gross">Gross annual income (₹)
+      <span class="sub">Total salary or income before any deduction</span></label>
+    <input type="number" id="gross" value="1500000" min="0" step="10000">
+
+    <label for="type">Income type</label>
+    <select id="type">
+      <option value="salaried" selected>Salaried / pensioner</option>
+      <option value="other">Business, professional or other</option>
+    </select>
+
+    <label for="age">Age band <span class="sub">Changes the old-regime basic exemption only</span></label>
+    <select id="age">
+      <option value="0" selected>Below 60</option>
+      <option value="1">60 to 79 (senior citizen)</option>
+      <option value="2">80 and above (super senior)</option>
+    </select>
+
+    <div class="ded">
+      <h3>Old-regime deductions you can actually claim</h3>
+      <p class="note">Leave a box at 0 if it does not apply. The new regime allows almost none of these, which is the whole trade-off.</p>
+
+      <label for="d80c">Section 80C (₹)<span class="sub">EPF, PPF, ELSS, life insurance, tuition fees, home loan principal. Capped at ₹1,50,000</span></label>
+      <input type="number" id="d80c" value="150000" min="0" step="5000">
+
+      <label for="d80d">Section 80D — health insurance (₹)<span class="sub">Your family's premium, plus parents'</span></label>
+      <input type="number" id="d80d" value="25000" min="0" step="1000">
+
+      <label for="hra">HRA exemption (₹)<span class="sub">Usually the largest one. Only if you rent and have the receipts</span></label>
+      <input type="number" id="hra" value="0" min="0" step="10000">
+
+      <label for="hl">Home loan interest — Section 24(b) (₹)<span class="sub">Capped at ₹2,00,000 for a self-occupied property</span></label>
+      <input type="number" id="hl" value="0" min="0" step="10000">
+
+      <label for="nps">NPS — Section 80CCD(1B) (₹)<span class="sub">Capped at ₹50,000, over and above 80C</span></label>
+      <input type="number" id="nps" value="0" min="0" step="5000">
+
+      <label for="oth">Any other old-regime deductions (₹)<span class="sub">80E, 80G, 80TTA, LTA and so on</span></label>
+      <input type="number" id="oth" value="0" min="0" step="1000">
+    </div>
+  </form>
+
+  <div>
+    <div class="res">
+      <div class="reg" id="rNew">
+        <div class="tag">Default</div>
+        <div class="nm">New regime</div>
+        <div class="amt" id="taxNew">—</div>
+        <div class="amtl">total tax including 4% cess</div>
+      </div>
+      <div class="reg" id="rOld">
+        <div class="tag">Must be opted for</div>
+        <div class="nm">Old regime</div>
+        <div class="amt" id="taxOld">—</div>
+        <div class="amtl">total tax including 4% cess</div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <h2 id="vTitle">—</h2>
+      <p id="vBody">—</p>
+      <p id="vBreak"></p>
+    </div>
+
+    <div class="card">
+      <h2>How each number was reached</h2>
+      <p class="hint">Every line is shown so you can check it against your Form 16 or your CA's working.</p>
+      <div class="tw"><table id="bd"><tbody></tbody></table></div>
+      <div class="warn" id="surWarn" style="display:none"><strong>Above ₹50 lakh:</strong> a surcharge of 10% to 25% applies on top of the tax shown, with its own marginal relief. This calculator does not compute surcharge, so treat the figures above as the pre-surcharge tax and check with a chartered accountant.</div>
+      <div class="warn" id="mrNote" style="display:none"></div>
+    </div>
+
+    <div class="disc">
+      <strong>What this calculator does and does not do.</strong> It applies the FY 2026-27 (AY 2027-28) slabs for both regimes, the standard deduction (₹75,000 new, ₹50,000 old, salaried only), the Section 87A rebate under both regimes, marginal relief just above the ₹12 lakh new-regime threshold, and the 4% health and education cess. It does <em>not</em> compute surcharge above ₹50 lakh, capital gains taxed at special rates, relief under Section 89, or business-income specifics such as presumptive taxation. It is an estimate to help you choose a regime — not a filing document, and not tax advice. Verify on the <a href="https://www.incometax.gov.in" target="_blank" rel="noopener nofollow" style="color:#e94560">Income Tax Department portal</a> and consult a chartered accountant before you file.
+    </div>
+
+    <div class="rel">
+      <h2>The detail behind the numbers</h2>
+      <div class="relg">
+        <a href="/article-tax-regime-2026"><strong>New vs old regime, explained</strong><span>Four worked examples and where the break-even figure comes from.</span></a>
+        <a href="/article-freelancer-tax-india"><strong>Freelancer tax in India</strong><span>GST, TDS, 44ADA and ITR — the five obligations that actually apply.</span></a>
+        <a href="/article-itr-deadline-august-2026"><strong>ITR filing guide</strong><span>Which deadline applies to your form, and what a belated return costs.</span></a>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Need this kind of calculation built into your own spreadsheet?</h2>
+      <p>I build tax, payroll and reporting models in Excel — formula-driven, documented, and tested against real cases. Also SEO articles, technical explainers and business reports. Fixed prices from ₹2,000, three-day delivery, and a full refund if the finished work is not what you asked for.</p>
+      <a class="btn" href="/hire-me">See services &amp; pricing →</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer><p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/terms-of-service">Terms of Service</a></p></footer>
+
+<script>
+(function(){
+  var NEW_SLABS=[[400000,0],[800000,.05],[1200000,.10],[1600000,.15],[2000000,.20],[2400000,.25],[Infinity,.30]];
+  function oldSlabs(age){
+    var base=age===1?300000:age===2?500000:250000;
+    return [[base,0],[500000,.05],[1000000,.20],[Infinity,.30]];
+  }
+  function slabTax(inc,slabs){
+    var t=0,prev=0;
+    for(var i=0;i<slabs.length;i++){
+      var cap=slabs[i][0],rate=slabs[i][1];
+      if(inc>prev){ t+=(Math.min(inc,cap)-prev)*rate; prev=cap; } else break;
+    }
+    return t;
+  }
+  function inr(n){
+    n=Math.round(n);
+    var s=String(Math.abs(n)),r='';
+    if(s.length>3){var last3=s.slice(-3),rest=s.slice(0,-3);
+      rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,",");r=rest+","+last3;}else{r=s;}
+    return (n<0?'-':'')+'₹'+r;
+  }
+  var E=function(id){return document.getElementById(id);};
+
+  function compute(){
+    var gross=Math.max(0,+E('gross').value||0);
+    var salaried=E('type').value==='salaried';
+    var age=+E('age').value;
+
+    // ---- NEW REGIME ----
+    var sdNew=salaried?75000:0;
+    var tiNew=Math.max(0,gross-sdNew);
+    var rawNew=slabTax(tiNew,NEW_SLABS);
+    var rebNew=0, mrApplied=0;
+    if(tiNew<=1200000){ rebNew=Math.min(rawNew,60000); }
+    var afterRebNew=rawNew-rebNew;
+    // marginal relief: tax cannot exceed the amount by which income exceeds 12,00,000
+    if(tiNew>1200000){
+      var excess=tiNew-1200000;
+      if(afterRebNew>excess){ mrApplied=afterRebNew-excess; afterRebNew=excess; }
+    }
+    var cessNew=afterRebNew*.04, totNew=afterRebNew+cessNew;
+
+    // ---- OLD REGIME ----
+    var sdOld=salaried?50000:0;
+    var d80c=Math.min(150000,Math.max(0,+E('d80c').value||0));
+    var d80d=Math.max(0,+E('d80d').value||0);
+    var hra=Math.max(0,+E('hra').value||0);
+    var hl=Math.min(200000,Math.max(0,+E('hl').value||0));
+    var nps=Math.min(50000,Math.max(0,+E('nps').value||0));
+    var oth=Math.max(0,+E('oth').value||0);
+    var dedOld=d80c+d80d+hra+hl+nps+oth;
+    var tiOld=Math.max(0,gross-sdOld-dedOld);
+    var slabsOld=oldSlabs(age);
+    var rawOld=slabTax(tiOld,slabsOld);
+    var rebOld=(tiOld<=500000)?Math.min(rawOld,12500):0;
+    var afterRebOld=rawOld-rebOld;
+    var cessOld=afterRebOld*.04, totOld=afterRebOld+cessOld;
+
+    E('taxNew').textContent=inr(totNew);
+    E('taxOld').textContent=inr(totOld);
+
+    var nw=E('rNew'), ow=E('rOld');
+    nw.className='reg'; ow.className='reg';
+    var oldBadge=ow.querySelector('.badge'), newBadge=nw.querySelector('.badge');
+    if(oldBadge)oldBadge.remove(); if(newBadge)newBadge.remove();
+    var diff=Math.abs(totNew-totOld);
+    var vt=E('vTitle'), vb=E('vBody'), vbr=E('vBreak');
+
+    if(totNew<totOld){
+      nw.className='reg win';
+      nw.insertAdjacentHTML('beforeend','<div class="badge">SAVES YOU MORE</div>');
+      vt.innerHTML='The new regime is cheaper for you.<span class="big">You save '+inr(diff)+' a year</span>';
+      vb.innerHTML='And you save it without locking money into tax-saving products, collecting rent receipts or submitting investment proofs. The new regime is the default — if you do nothing, this is what applies.';
+    } else if(totOld<totNew){
+      ow.className='reg win';
+      ow.insertAdjacentHTML('beforeend','<div class="badge">SAVES YOU MORE</div>');
+      vt.innerHTML='The old regime is cheaper for you.<span class="big">You save '+inr(diff)+' a year</span>';
+      vb.innerHTML='Your deductions of <strong>'+inr(dedOld)+'</strong> are large enough to beat the new regime’s lower rates. Remember you must <strong>actively opt in</strong> — the new regime applies by default — and you will need the proofs.';
+    } else {
+      vt.textContent='Both regimes cost you exactly the same.';
+      vb.innerHTML='At '+inr(dedOld)+' of deductions you are sitting on the break-even line. Anything more and the old regime pulls ahead; anything less and the new one does.';
+    }
+
+    // break-even deduction figure
+    if(gross>0){
+      var target=afterRebNew; // pre-cess new-regime tax to match
+      var lo=0, hi=Math.max(0,gross-sdOld), be=null;
+      for(var i=0;i<60;i++){
+        var mid=(lo+hi)/2;
+        var ti=Math.max(0,gross-sdOld-mid);
+        var rt=slabTax(ti,slabsOld);
+        var rb=(ti<=500000)?Math.min(rt,12500):0;
+        var t=rt-rb;
+        if(t>target){ lo=mid; } else { hi=mid; be=mid; }
+      }
+      if(be===null||be>=gross-sdOld-1){
+        vbr.innerHTML='<strong>Break-even:</strong> at this income the old regime cannot catch up — even zero taxable income under the old regime would not beat the new regime here.';
+      } else if(be<=0){
+        vbr.innerHTML='<strong>Break-even:</strong> the old regime wins here even with no deductions at all.';
+      } else {
+        vbr.innerHTML='<strong>Break-even:</strong> the old regime only beats the new one once your total deductions and exemptions exceed about <strong>'+inr(be)+'</strong>. You have entered '+inr(dedOld)+'.'+(be>dedOld?' You are '+inr(be-dedOld)+' short.':' You are '+inr(dedOld-be)+' past it.');
+      }
+    }
+
+    E('surWarn').style.display=(gross>5000000)?'block':'none';
+    var mr=E('mrNote');
+    if(mrApplied>0){
+      mr.style.display='block';
+      mr.innerHTML='<strong>Marginal relief applied:</strong> your taxable income is just above ₹12,00,000, so the law caps your tax at the amount by which you cross that line. That saved you '+inr(mrApplied)+' compared with the raw slab calculation. This is why you should not panic-invest simply to get under ₹12 lakh.';
+    } else { mr.style.display='none'; }
+
+    var rows=[
+      ['<th>Step</th>','<th style="text-align:right">New regime</th>','<th style="text-align:right">Old regime</th>'],
+      ['Gross income',inr(gross),inr(gross)],
+      ['Less: standard deduction','-'+inr(sdNew),'-'+inr(sdOld)],
+      ['Less: other deductions','-'+inr(0),'-'+inr(dedOld)],
+      ['<strong>Taxable income</strong>','<strong>'+inr(tiNew)+'</strong>','<strong>'+inr(tiOld)+'</strong>'],
+      ['Tax as per slabs',inr(rawNew),inr(rawOld)],
+      ['Less: Section 87A rebate','-'+inr(rebNew),'-'+inr(rebOld)]
+    ];
+    if(mrApplied>0) rows.push(['Less: marginal relief','-'+inr(mrApplied),'—']);
+    rows.push(['Add: health &amp; education cess (4%)',inr(cessNew),inr(cessOld)]);
+    var html='';
+    rows.forEach(function(r,i){
+      if(i===0){ html+='<tr>'+r[0]+r[1]+r[2]+'</tr>'; }
+      else { html+='<tr><td>'+r[0]+'</td><td class="n">'+r[1]+'</td><td class="n">'+r[2]+'</td></tr>'; }
+    });
+    html+='<tr class="tot"><td>Total tax payable</td><td class="n">'+inr(totNew)+'</td><td class="n">'+inr(totOld)+'</td></tr>';
+    E('bd').getElementsByTagName('tbody')[0].innerHTML=html;
+
+    if(window.gtag){ gtag('event','calculator_use',{calculator:'tax_regime'}); }
+  }
+
+  var f=E('f');
+  f.addEventListener('input',compute);
+  f.addEventListener('change',compute);
+  f.addEventListener('submit',function(e){e.preventDefault();});
+  compute();
+})();
+</script>
+</body></html>

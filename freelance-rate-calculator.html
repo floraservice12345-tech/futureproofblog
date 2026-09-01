@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Freelance Rate Calculator India 2026: What You Should Actually Charge | FutureProof Blog</title>
+<meta name="description" content="Free freelance rate calculator for India. Work backwards from the income you need to the hourly, day, per-project and per-1,000-word rate that gets you there — after unpaid hours, expenses, leave and tax.">
+<meta name="keywords" content="freelance rate calculator India, what should I charge freelance India, hourly rate calculator freelancer, content writing rates India 2026, freelance pricing calculator">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#f6f8fb;line-height:1.7}
+header{background:#1a1a2e;color:#fff;padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.4rem;font-weight:700;color:#e94560;text-decoration:none}
+nav a{color:#ddd;text-decoration:none;margin-left:18px;font-size:.92rem}
+nav a:hover,nav a.active{color:#e94560}
+.ph{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;padding:44px 24px 36px;text-align:center}
+.ph .kick{display:inline-block;background:#e94560;padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.08em;margin-bottom:12px}
+.ph h1{font-size:1.95rem;font-weight:800;margin-bottom:10px;max-width:760px;margin-left:auto;margin-right:auto}
+.ph p{opacity:.86;max-width:640px;margin:0 auto;font-size:1rem}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 20px 60px}
+.calc{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:22px;align-items:start}
+.card{background:#fff;border:1px solid #e3e6ee;border-radius:12px;padding:22px;box-shadow:0 3px 14px rgba(20,23,42,.05);margin-bottom:18px}
+.card h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:4px}
+.card .hint{font-size:.83rem;color:#7a8194;margin-bottom:16px}
+label{display:block;font-size:.86rem;font-weight:600;color:#3d4358;margin:14px 0 5px}
+label .sub{display:block;font-weight:400;color:#8a91a4;font-size:.78rem;margin-top:2px}
+input[type=number],select{width:100%;padding:11px 12px;border:1px solid #d5dae6;border-radius:7px;font-size:1rem;font-family:inherit;background:#fff;color:#222}
+input:focus,select:focus{outline:2px solid #e94560;outline-offset:1px;border-color:#e94560}
+.hero-out{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;border-radius:12px;padding:26px 26px 24px;margin-bottom:18px}
+.hero-out .lab{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#ff9db0;font-weight:700}
+.hero-out .big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.hero-out .sub{color:#c6cfe2;font-size:.92rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:20px}
+.g3{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:9px;padding:13px 15px}
+.g3 .l{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#9fabc6;font-weight:700}
+.g3 .v{font-size:1.32rem;font-weight:800;margin-top:3px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;background:#f2f4f9;color:#5a6072;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;font-weight:700}
+td{padding:9px 12px;border-bottom:1px solid #eceff5}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:800;color:#1a1a2e;border-top:2px solid #d5dae6;border-bottom:0}
+.tw{overflow-x:auto}
+.band{border:1px solid #e3e6ee;border-radius:9px;padding:13px 16px;margin-bottom:9px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.band.you{border:2px solid #e94560;background:#fdf2f4}
+.band .bn{font-weight:800;color:#1a1a2e;font-size:.96rem;flex:0 0 auto}
+.band .br{font-variant-numeric:tabular-nums;color:#e94560;font-weight:700;font-size:.9rem}
+.band .bw{color:#666;font-size:.85rem;flex:1 1 200px}
+.band .here{background:#e94560;color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:10px}
+.warn{background:#fff8e1;border:1px solid #ffe082;border-radius:9px;padding:14px 18px;font-size:.88rem;color:#5c4400;margin-top:14px}
+.good{background:#e8f5ef;border:1px solid #a9d9c4;border-radius:9px;padding:14px 18px;font-size:.88rem;color:#14503a;margin-top:14px}
+.disc{background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:18px 20px;font-size:.85rem;color:#5a6072;margin-top:20px}
+.disc strong{color:#1a1a2e}
+.rel{margin-top:28px}.rel h2{font-size:1.2rem;color:#1a1a2e;margin-bottom:12px}
+.relg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.relg a{display:block;background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:16px 18px;text-decoration:none}
+.relg a strong{display:block;color:#1a1a2e;margin-bottom:4px;font-size:.96rem}
+.relg a span{color:#666;font-size:.85rem}
+.cta{background:#fff;border:1px solid #e3e6ee;border-top:4px solid #e94560;border-radius:12px;padding:24px 26px;margin-top:24px}
+.cta h2{font-size:1.15rem;color:#1a1a2e;margin-bottom:8px}
+.cta p{color:#555;font-size:.94rem;margin-bottom:14px}
+.cta a.btn{display:inline-block;background:#e94560;color:#fff;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:700;font-size:.93rem}
+footer{background:#1a1a2e;color:#ccc;text-align:center;padding:20px 24px;font-size:.85rem}
+footer a{color:#e94560;text-decoration:none}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-inner{height:auto;flex-wrap:wrap;padding:10px 0;row-gap:4px}header nav{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:2px}header nav a{margin-left:0}}
+</style>
+<script src="/analytics.js"></script><script src="/ads.js" defer></script>
+<link rel="canonical" href="https://futureproofblog.in/freelance-rate-calculator"><meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:url" content="https://futureproofblog.in/freelance-rate-calculator"><meta property="og:type" content="website"><meta property="og:title" content="Freelance Rate Calculator India 2026: What You Should Actually Charge | FutureProof Blog"><meta property="og:description" content="Free freelance rate calculator for India. Work backwards from the income you need to the hourly, day, per-project and per-1,000-word rate that gets you there — after unpaid hours, expenses, leave and tax."><meta property="og:image" content="https://futureproofblog.in/images/og/freelance-rate-calculator.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Freelance Rate Calculator India 2026: What You Should Actually Charge | FutureProof Blog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://futureproofblog.in/images/og/freelance-rate-calculator.jpg"><meta name="twitter:title" content="Freelance Rate Calculator India 2026: What You Should Actually Charge | FutureProof Blog"><meta name="twitter:description" content="Free freelance rate calculator for India. Work backwards from the income you need to the hourly, day, per-project and per-1,000-word rate that gets you there — after unpaid hours, expenses, leave and tax."><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><link rel="alternate" type="application/rss+xml" title="FutureProof Blog" href="/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Freelance Rate Calculator India 2026", "url": "https://futureproofblog.in/freelance-rate-calculator", "description": "Converts a target annual take-home income into the hourly, day, per-project and per-1,000-word rate an Indian freelancer must charge, after unpaid hours, leave, business costs and tax.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any modern web browser", "browserRequirements": "Requires JavaScript", "inLanguage": "en-IN", "image": "https://futureproofblog.in/images/og/freelance-rate-calculator.jpg", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "author": {"@type": "Person", "@id": "https://futureproofblog.in/#person", "name": "Geeta Yadav", "jobTitle": "Founder & Lead Writer", "url": "https://futureproofblog.in/about", "worksFor": {"@id": "https://futureproofblog.in/#organization"}}, "publisher": {"@type": "Organization", "@id": "https://futureproofblog.in/#organization", "name": "FutureProof Blog", "url": "https://futureproofblog.in", "logo": {"@type": "ImageObject", "url": "https://futureproofblog.in/images/icon-512.png", "width": 512, "height": 512}, "email": "contact@futureproofblog.in", "areaServed": "IN"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://futureproofblog.in/"}, {"@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://futureproofblog.in/tools"}, {"@type": "ListItem", "position": 3, "name": "Freelance Rate Calculator India 2026: What You Should Actually Charge", "item": "https://futureproofblog.in/freelance-rate-calculator"}]}</script></head><body>
+<header><div class="nav-inner"><a href="/" class="logo">FutureProof Blog</a><nav><a href="/">Home</a><a href="/ai-work">AI &amp; Work</a><a href="/ai-tools">AI Tools</a><a href="/money-property">Money &amp; Property</a><a href="/tools" class="active">Free Tools</a><a href="/hire-me">Hire Me</a><a href="/about">About</a><a href="/subscribe">Subscribe</a></nav></div></header>
+
+<div class="ph">
+  <span class="kick">FREE CALCULATOR · INDIA · 2026</span>
+  <h1>Freelance Rate Calculator</h1>
+  <p>Most Indian freelancers price by guessing what sounds reasonable. This works backwards instead: from the income you actually need, through the hours you can actually bill, to the rate that gets you there.</p>
+</div>
+
+<div class="wrap">
+<div class="calc">
+
+  <form class="card" id="f" autocomplete="off" style="margin-bottom:0">
+    <h2>Your situation</h2>
+    <p class="hint">Everything runs in your browser. Nothing is stored or sent.</p>
+
+    <label for="income">Take-home income you need each year (₹)
+      <span class="sub">What you want left after tax and business costs</span></label>
+    <input type="number" id="income" value="900000" min="0" step="50000">
+
+    <label for="expenses">Business costs per year (₹)
+      <span class="sub">Software, internet, laptop amortised, co-working, accountant, courses</span></label>
+    <input type="number" id="expenses" value="60000" min="0" step="5000">
+
+    <label for="tax">Effective tax and compliance rate (%)
+      <span class="sub">Income tax plus any GST you cannot pass on. 44ADA presumptive filers often land near 10–15%</span></label>
+    <input type="number" id="tax" value="12" min="0" max="60" step="1">
+
+    <label for="weeks">Weeks you will actually work
+      <span class="sub">52 minus leave, illness and festivals. Be honest — this is where most rates go wrong</span></label>
+    <input type="number" id="weeks" value="46" min="1" max="52" step="1">
+
+    <label for="hours">Hours per week you can bill
+      <span class="sub">Not hours worked. Pitching, invoicing, admin and email are unpaid</span></label>
+    <input type="number" id="hours" value="25" min="1" max="80" step="1">
+
+    <label for="util">Realistic booking rate (%)
+      <span class="sub">Share of those billable hours you actually sell. New freelancers: 50–60%. Established: 75–85%</span></label>
+    <input type="number" id="util" value="70" min="10" max="100" step="5">
+
+    <label for="speed">Your researched output (words per billable hour)
+      <span class="sub">Including research, fact-checking and editing — not typing speed. Realistically 250–500</span></label>
+    <input type="number" id="speed" value="350" min="50" max="2000" step="25">
+  </form>
+
+  <div>
+    <div class="hero-out">
+      <div class="lab">Your minimum viable hourly rate</div>
+      <div class="big" id="hr">—</div>
+      <div class="sub" id="hrsub">Charge less than this and you are subsidising your clients out of your own savings.</div>
+      <div class="grid3">
+        <div class="g3"><div class="l">Day rate (8 hrs)</div><div class="v" id="dr">—</div></div>
+        <div class="g3"><div class="l">Per 1,000 words</div><div class="v" id="pw">—</div></div>
+        <div class="g3"><div class="l">Per word</div><div class="v" id="ppw">—</div></div>
+        <div class="g3"><div class="l">Monthly revenue needed</div><div class="v" id="mr">—</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Where that number comes from</h2>
+      <p class="hint">The arithmetic, so you can argue with it rather than take it on faith.</p>
+      <div class="tw"><table id="bd"><tbody></tbody></table></div>
+      <div class="warn" id="lowWarn" style="display:none"></div>
+    </div>
+
+    <div class="card">
+      <h2>How your rate compares to the Indian market</h2>
+      <p class="hint">Bands for content writing in 2026. Your niche and client type move you up faster than years of experience do.</p>
+      <div id="bands"></div>
+      <div class="good" id="bandNote"></div>
+    </div>
+
+    <div class="card">
+      <h2>The reality check most calculators skip</h2>
+      <p style="font-size:.94rem;color:#444;margin-bottom:10px">A rate is only real if someone pays it. Two things decide whether yours holds:</p>
+      <p style="font-size:.94rem;color:#444;margin-bottom:10px"><strong>1. Price the project, not the hour.</strong> Per-word and per-hour pricing pay you for typing. They quietly penalise the interview you did, the dataset you cleaned and the three paragraphs you deleted because they were filler. Use the hourly figure above to <em>sanity-check</em> a project quote — never to quote by.</p>
+      <p style="font-size:.94rem;color:#444;margin-bottom:10px"><strong>2. Two retainers beat eight one-off clients</strong> on the same revenue: less pitching, less onboarding, less chasing invoices — and far more context, which makes the work itself better.</p>
+      <p style="font-size:.94rem;color:#444;margin:0">If the number above looks impossible at your current band, the answer is not to work more hours. It is to change what you sell — a niche, a research promise, or a measurable outcome.</p>
+    </div>
+
+    <div class="disc">
+      <strong>How to read this.</strong> This calculator turns a target income into the rate that supports it, after unpaid hours, leave, business costs and tax. It is a floor, not a market price — what you <em>need</em>, not what a client will <em>pay</em>. The market bands shown are approximate 2026 ranges for Indian content writing and move with niche, portfolio and client type. Tax treatment varies with your income, whether you use presumptive taxation under Section 44ADA, and your GST registration status; the single percentage here is a planning assumption, not a computation. This is general information, not tax or financial advice — check your own position with a chartered accountant.
+    </div>
+
+    <div class="rel">
+      <h2>Go deeper</h2>
+      <div class="relg">
+        <a href="/article-freelance-rates-india"><strong>Freelance writing rates in India 2026</strong><span>The full rate bands, why per-word pricing caps you, and the ₹1 lakh month arithmetic.</span></a>
+        <a href="/article-first-freelance-client"><strong>Get your first client in 30 days</strong><span>A week-by-week plan: niche, samples, outreach scripts, proposal structure.</span></a>
+        <a href="/article-freelancer-tax-india"><strong>Freelancer tax in India</strong><span>GST, TDS, 44ADA and ITR — the five obligations that actually apply to you.</span></a>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>On the other side of this calculation?</h2>
+      <p>If you are the one hiring rather than pricing — I write SEO articles, technical and AI explainers, business reports and Excel automation. Fixed prices from ₹2,000, three-day delivery, unlimited revisions, and a full refund if the finished draft is not what you asked for.</p>
+      <a class="btn" href="/hire-me">See services &amp; pricing →</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer><p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/terms-of-service">Terms of Service</a></p></footer>
+
+<script>
+(function(){
+  var BANDS=[
+    {n:'Entry',lo:400,hi:1000,w:'Content mills and bulk marketplace buyers. Clean grammar, delivered on time.'},
+    {n:'Working professional',lo:1500,hi:3000,w:'Agencies and SMB marketing teams. SEO structure, real research, few revisions needed.'},
+    {n:'Specialist',lo:3000,hi:8000,w:'SaaS, fintech, health, B2B tech. Domain knowledge, sourced claims, interviews.'},
+    {n:'Consultant / strategist',lo:8000,hi:null,w:'Funded startups, enterprises and founders. Strategy, editorial ownership, measurable results.'}
+  ];
+  function inr(n,dp){
+    if(!isFinite(n))return '—';
+    var neg=n<0; n=Math.abs(n);
+    var s=(dp?n.toFixed(dp):String(Math.round(n)));
+    var parts=s.split('.'),ip=parts[0],r;
+    if(ip.length>3){var l3=ip.slice(-3),rest=ip.slice(0,-3);rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,",");r=rest+","+l3;}else r=ip;
+    return (neg?'-':'')+'₹'+r+(parts[1]?'.'+parts[1]:'');
+  }
+  var E=function(i){return document.getElementById(i);};
+
+  function compute(){
+    var income=Math.max(0,+E('income').value||0);
+    var exp=Math.max(0,+E('expenses').value||0);
+    var taxPc=Math.min(60,Math.max(0,+E('tax').value||0))/100;
+    var weeks=Math.min(52,Math.max(1,+E('weeks').value||1));
+    var hours=Math.min(80,Math.max(1,+E('hours').value||1));
+    var util=Math.min(100,Math.max(10,+E('util').value||10))/100;
+    var speed=Math.min(2000,Math.max(50,+E('speed').value||50));
+
+    // gross revenue needed: (take-home + expenses) grossed up for tax
+    var preTax=income/(1-taxPc);
+    var revenue=preTax+exp;
+    var billable=weeks*hours*util;
+    var hourly=revenue/billable;
+    var day=hourly*8;
+    var per1000=hourly*(1000/speed);
+    var perWord=per1000/1000;
+    var monthly=revenue/12;
+
+    E('hr').textContent=inr(hourly);
+    E('dr').textContent=inr(day);
+    E('pw').textContent=inr(per1000);
+    E('ppw').textContent=inr(perWord,2);
+    E('mr').textContent=inr(monthly);
+    E('hrsub').innerHTML='Based on <strong>'+Math.round(billable).toLocaleString('en-IN')+' billable hours a year</strong> — that is '+weeks+' weeks × '+hours+' hours × '+Math.round(util*100)+'% actually booked.';
+
+    var rows=[
+      ['Take-home income you want',inr(income)],
+      ['Grossed up for '+Math.round(taxPc*100)+'% tax and compliance',inr(preTax)],
+      ['Add: business costs','+'+inr(exp)],
+      ['<strong>Revenue you must invoice</strong>','<strong>'+inr(revenue)+'</strong>'],
+      ['Weeks worked × hours billable',weeks+' × '+hours+' = '+(weeks*hours).toLocaleString('en-IN')+' hrs'],
+      ['Less: hours you will not sell ('+(100-Math.round(util*100))+'%)','−'+Math.round(weeks*hours*(1-util)).toLocaleString('en-IN')+' hrs'],
+      ['<strong>Hours you can actually bill</strong>','<strong>'+Math.round(billable).toLocaleString('en-IN')+' hrs</strong>']
+    ];
+    var html='<tr><th>Step</th><th style="text-align:right">Amount</th></tr>';
+    rows.forEach(function(r){html+='<tr><td>'+r[0]+'</td><td class="n">'+r[1]+'</td></tr>';});
+    html+='<tr class="tot"><td>Minimum hourly rate</td><td class="n">'+inr(hourly)+'</td></tr>';
+    E('bd').getElementsByTagName('tbody')[0].innerHTML=html;
+
+    var lw=E('lowWarn');
+    if(util>0.85){
+      lw.style.display='block';
+      lw.innerHTML='<strong>A booking rate above 85% is very hard to sustain.</strong> Every freelancer has gaps between projects, and the weeks you spend pitching are the weeks you are not billing. If you plan on 90%+ you will almost certainly under-price. Try 70–80% and see what the rate becomes.';
+    } else if(hours>45){
+      lw.style.display='block';
+      lw.innerHTML='<strong>Over 45 billable hours a week is not a schedule, it is a countdown.</strong> Billable hours exclude pitching, invoicing, admin and email — so 45 billable usually means 60+ worked. A higher rate on fewer hours is the only version of this that lasts.';
+    } else { lw.style.display='none'; }
+
+    var bh='';
+    BANDS.forEach(function(b){
+      var inIt = b.hi===null ? per1000>=b.lo : (per1000>=b.lo && per1000<b.hi);
+      bh+='<div class="band'+(inIt?' you':'')+'"><span class="bn">'+b.n+'</span>'
+        +'<span class="br">'+inr(b.lo)+(b.hi?' – '+inr(b.hi):'+')+' / 1,000 words</span>'
+        +(inIt?'<span class="here">YOUR RATE</span>':'')
+        +'<span class="bw">'+b.w+'</span></div>';
+    });
+    E('bands').innerHTML=bh;
+
+    var note=E('bandNote');
+    if(per1000<400){
+      note.innerHTML='<strong>Your required rate sits below even the entry band.</strong> That is good news, not bad — it means your income target is comfortably achievable. You have room to charge the market rate rather than your minimum, and the difference is profit.';
+    } else if(per1000<1500){
+      note.innerHTML='<strong>You need entry-band rates to survive.</strong> That works, but it leaves no margin for a slow month. The exit is not more hours — it is a niche, a research promise or a measurable outcome that moves you into the next band.';
+    } else if(per1000<3000){
+      note.innerHTML='<strong>You need working-professional rates.</strong> That is a realistic, well-populated band in India — agencies and SMB marketing teams pay it routinely for SEO structure, real research and clean delivery.';
+    } else if(per1000<8000){
+      note.innerHTML='<strong>You need specialist rates.</strong> Achievable, but only with domain depth — SaaS, fintech, health or B2B tech — plus sourced claims and, ideally, original interviews. Generalist positioning will not sustain this.';
+    } else {
+      note.innerHTML='<strong>You need consultant-level rates.</strong> At this level clients are buying strategy and outcomes, not words. Expect to sell editorial ownership and results, and expect a longer sales cycle. Consider whether retainers get you there with less risk than project work.';
+    }
+
+    if(window.gtag){ gtag('event','calculator_use',{calculator:'freelance_rate'}); }
+  }
+
+  var f=E('f');
+  f.addEventListener('input',compute);
+  f.addEventListener('change',compute);
+  f.addEventListener('submit',function(e){e.preventDefault();});
+  compute();
+})();
+</script>
+</body></html>

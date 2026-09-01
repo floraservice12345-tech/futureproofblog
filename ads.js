@@ -2,29 +2,28 @@
    FutureProof Blog — AdSense loader
    ------------------------------------------------------------
    WHY THIS FILE EXISTS
-   Previously every ad box on the site was written as a bare
-   <ins class="adsbygoogle"> with NO data-ad-slot value. Google
-   will not fill an ad unit that has no slot ID, so none of the
-   93 ad boxes on the site could ever have earned a rupee.
+   Previously every ad box was a bare <ins class="adsbygoogle">
+   with NO data-ad-slot, under a publisher ID that did not even
+   belong to this account. Neither could ever have served an ad.
 
-   HOW TO TURN ADS ON (once AdSense approves the site)
-   1. adsense.google.com -> Ads -> By ad unit -> Display ads
-   2. Create THREE units named exactly: "In-article top",
-      "In-article middle", "In-article end"
-   3. Each one gives you a 10-digit number (data-ad-slot).
-   4. Paste those three numbers below. Nothing else to change.
+   STATUS: configured. The three display ad units below were
+   created in the AdSense account (publisher pub-6232264636981210)
+   on 1 Sept 2026 and their slot IDs are filled in. Ads begin
+   serving as soon as Google finishes reviewing futureproofblog.in.
 
-   Until real numbers are pasted in, every ad box is REMOVED
-   from the page — so readers never see empty grey gaps, and
-   Google's reviewer never sees a broken ad implementation.
+   To change a slot later: adsense.google.com -> Ads -> By ad unit,
+   open the unit, copy its data-ad-slot number, paste it below.
+   This is the only file to edit — every page reads from it.
+   Blank a slot and that ad box is removed from the page entirely,
+   so readers never see an empty grey gap.
    ============================================================ */
 
 var FP_ADS = {
-  client: "ca-pub-8999111703320899",
+  client: "ca-pub-6232264636981210",
   slots: {
-    top:    "",   // <-- paste the "In-article top" slot number here
-    middle: "",   // <-- paste the "In-article middle" slot number here
-    end:    ""    // <-- paste the "In-article end" slot number here
+    top:    "9353433726",   // "In-article top"
+    middle: "4939545996",   // "In-article middle"
+    end:    "2093890806"    // "In-article end"
   }
 };
 

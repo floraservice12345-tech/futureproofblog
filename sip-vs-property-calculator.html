@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Buy a Flat or Rent and Invest? SIP vs Property Calculator (India 2026) | FutureProof Blog</title>
+<meta name="description" content="Free India calculator comparing buying a flat on a home loan against renting and investing the difference in a SIP. Includes stamp duty, maintenance, rent inflation, EMI amortisation and the real net worth of each path.">
+<meta name="keywords" content="SIP vs property calculator India, rent vs buy calculator India, home loan vs SIP, should I buy a flat India 2026, rent or buy calculator">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#f6f8fb;line-height:1.7}
+header{background:#1a1a2e;color:#fff;padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.4rem;font-weight:700;color:#e94560;text-decoration:none}
+nav a{color:#ddd;text-decoration:none;margin-left:18px;font-size:.92rem}
+nav a:hover,nav a.active{color:#e94560}
+.ph{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;padding:44px 24px 36px;text-align:center}
+.ph .kick{display:inline-block;background:#e94560;padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.08em;margin-bottom:12px}
+.ph h1{font-size:1.95rem;font-weight:800;margin-bottom:10px;max-width:780px;margin-left:auto;margin-right:auto}
+.ph p{opacity:.86;max-width:660px;margin:0 auto;font-size:1rem}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 20px 60px}
+.calc{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:22px;align-items:start}
+.card{background:#fff;border:1px solid #e3e6ee;border-radius:12px;padding:22px;box-shadow:0 3px 14px rgba(20,23,42,.05);margin-bottom:18px}
+.card h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:4px}
+.card .hint{font-size:.83rem;color:#7a8194;margin-bottom:16px}
+label{display:block;font-size:.86rem;font-weight:600;color:#3d4358;margin:14px 0 5px}
+label .sub{display:block;font-weight:400;color:#8a91a4;font-size:.78rem;margin-top:2px}
+input[type=number]{width:100%;padding:11px 12px;border:1px solid #d5dae6;border-radius:7px;font-size:1rem;font-family:inherit;background:#fff;color:#222}
+input:focus{outline:2px solid #e94560;outline-offset:1px;border-color:#e94560}
+.sec{border-top:1px solid #eceff5;margin-top:18px;padding-top:8px}
+.sec h3{font-size:.92rem;color:#1a1a2e;margin-top:8px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.opt{border:1px solid #e3e6ee;border-radius:12px;padding:20px;background:#fff;box-shadow:0 3px 14px rgba(20,23,42,.05);position:relative}
+.opt.win{border:2px solid #1c6349;background:#f2fbf7}
+.opt .tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a91a4}
+.opt.win .tag{color:#1c6349}
+.opt .nm{font-size:1.05rem;font-weight:800;color:#1a1a2e;margin:4px 0 10px}
+.opt .amt{font-size:1.85rem;font-weight:800;color:#1a1a2e;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.opt.win .amt{color:#1c6349}
+.opt .amtl{font-size:.8rem;color:#7a8194;margin-top:2px}
+.badge{position:absolute;top:-11px;right:14px;background:#1c6349;color:#fff;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:12px;letter-spacing:.05em}
+.verdict{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;border-radius:12px;padding:22px 24px;margin-bottom:18px}
+.verdict h2{color:#fff;font-size:1.2rem;margin-bottom:8px}
+.verdict p{color:#c6cfe2;font-size:.95rem;margin-bottom:8px}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{color:#fff}
+.verdict .big{font-size:1.7rem;font-weight:800;color:#fff;display:block;margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;background:#f2f4f9;color:#5a6072;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;font-weight:700}
+td{padding:9px 12px;border-bottom:1px solid #eceff5}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:800;color:#1a1a2e;border-top:2px solid #d5dae6;border-bottom:0}
+.tw{overflow-x:auto}
+.warn{background:#fff8e1;border:1px solid #ffe082;border-radius:9px;padding:14px 18px;font-size:.88rem;color:#5c4400;margin-top:14px}
+.disc{background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:18px 20px;font-size:.85rem;color:#5a6072;margin-top:20px}
+.disc strong{color:#1a1a2e}
+.rel{margin-top:28px}.rel h2{font-size:1.2rem;color:#1a1a2e;margin-bottom:12px}
+.relg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.relg a{display:block;background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:16px 18px;text-decoration:none}
+.relg a strong{display:block;color:#1a1a2e;margin-bottom:4px;font-size:.96rem}
+.relg a span{color:#666;font-size:.85rem}
+.cta{background:#fff;border:1px solid #e3e6ee;border-top:4px solid #e94560;border-radius:12px;padding:24px 26px;margin-top:24px}
+.cta h2{font-size:1.15rem;color:#1a1a2e;margin-bottom:8px}
+.cta p{color:#555;font-size:.94rem;margin-bottom:14px}
+.cta a.btn{display:inline-block;background:#e94560;color:#fff;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:700;font-size:.93rem}
+footer{background:#1a1a2e;color:#ccc;text-align:center;padding:20px 24px;font-size:.85rem}
+footer a{color:#e94560;text-decoration:none}
+@media(max-width:860px){.calc{grid-template-columns:1fr}.res{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-inner{height:auto;flex-wrap:wrap;padding:10px 0;row-gap:4px}header nav{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:2px}header nav a{margin-left:0}}
+</style>
+<script src="/analytics.js"></script><script src="/ads.js" defer></script>
+<link rel="canonical" href="https://futureproofblog.in/sip-vs-property-calculator"><meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:url" content="https://futureproofblog.in/sip-vs-property-calculator"><meta property="og:type" content="website"><meta property="og:title" content="Buy a Flat or Rent and Invest? SIP vs Property Calculator (India 2026) | FutureProof Blog"><meta property="og:description" content="Free India calculator comparing buying a flat on a home loan against renting and investing the difference in a SIP. Includes stamp duty, maintenance, rent inflation, EMI amortisation and the real net worth of each path."><meta property="og:image" content="https://futureproofblog.in/images/og/sip-vs-property-calculator.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Buy a Flat or Rent and Invest? SIP vs Property Calculator (India 2026) | FutureProof Blog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://futureproofblog.in/images/og/sip-vs-property-calculator.jpg"><meta name="twitter:title" content="Buy a Flat or Rent and Invest? SIP vs Property Calculator (India 2026) | FutureProof Blog"><meta name="twitter:description" content="Free India calculator comparing buying a flat on a home loan against renting and investing the difference in a SIP. Includes stamp duty, maintenance, rent inflation, EMI amortisation and the real net worth of each path."><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><link rel="alternate" type="application/rss+xml" title="FutureProof Blog" href="/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Buy a Flat or Rent and Invest? SIP vs Property Calculator (India 2026)", "url": "https://futureproofblog.in/sip-vs-property-calculator", "description": "Compares buying a home on a loan against renting and investing the difference in a SIP, with monthly loan amortisation, rent inflation, maintenance, stamp duty and the crossover year.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any modern web browser", "browserRequirements": "Requires JavaScript", "inLanguage": "en-IN", "image": "https://futureproofblog.in/images/og/sip-vs-property-calculator.jpg", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "author": {"@type": "Person", "@id": "https://futureproofblog.in/#person", "name": "Geeta Yadav", "jobTitle": "Founder & Lead Writer", "url": "https://futureproofblog.in/about", "worksFor": {"@id": "https://futureproofblog.in/#organization"}}, "publisher": {"@type": "Organization", "@id": "https://futureproofblog.in/#organization", "name": "FutureProof Blog", "url": "https://futureproofblog.in", "logo": {"@type": "ImageObject", "url": "https://futureproofblog.in/images/icon-512.png", "width": 512, "height": 512}, "email": "contact@futureproofblog.in", "areaServed": "IN"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://futureproofblog.in/"}, {"@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://futureproofblog.in/tools"}, {"@type": "ListItem", "position": 3, "name": "Buy a Flat or Rent and Invest? SIP vs Property Calculator (India 2026)", "item": "https://futureproofblog.in/sip-vs-property-calculator"}]}</script></head><body>
+<header><div class="nav-inner"><a href="/" class="logo">FutureProof Blog</a><nav><a href="/">Home</a><a href="/ai-work">AI &amp; Work</a><a href="/ai-tools">AI Tools</a><a href="/money-property">Money &amp; Property</a><a href="/tools" class="active">Free Tools</a><a href="/hire-me">Hire Me</a><a href="/about">About</a><a href="/subscribe">Subscribe</a></nav></div></header>
+
+<div class="ph">
+  <span class="kick">FREE CALCULATOR · INDIA · 2026</span>
+  <h1>Buy the flat, or rent and invest the difference?</h1>
+  <p>The honest version of the comparison: stamp duty and registration, maintenance and property tax, rent that rises every year, the EMI split between interest and principal, and what the money would have become in a SIP instead.</p>
+</div>
+
+<div class="wrap">
+<div class="calc">
+
+  <form class="card" id="f" autocomplete="off" style="margin-bottom:0">
+    <h2>Your numbers</h2>
+    <p class="hint">Runs entirely in your browser. Nothing is stored or sent.</p>
+
+    <h3 style="font-size:.92rem;color:#1a1a2e;margin-top:8px">If you buy</h3>
+    <label for="price">Property price (₹)</label>
+    <input type="number" id="price" value="8000000" min="0" step="100000">
+
+    <label for="dpc">Down payment (%)<span class="sub">Banks typically require at least 20%</span></label>
+    <input type="number" id="dpc" value="20" min="0" max="100" step="5">
+
+    <label for="stamp">Stamp duty, registration and legal (%)<span class="sub">Varies by state — commonly 5% to 8% of the price</span></label>
+    <input type="number" id="stamp" value="7" min="0" max="20" step="0.5">
+
+    <label for="rate">Home loan interest rate (% p.a.)</label>
+    <input type="number" id="rate" value="8.5" min="1" max="20" step="0.1">
+
+    <label for="tenure">Loan tenure (years)</label>
+    <input type="number" id="tenure" value="20" min="1" max="35" step="1">
+
+    <label for="maint">Maintenance, property tax and insurance (% of price, per year)<span class="sub">Society charges, repairs, municipal tax. Usually 0.8% to 1.5%</span></label>
+    <input type="number" id="maint" value="1" min="0" max="5" step="0.1">
+
+    <label for="appr">Expected property appreciation (% p.a.)<span class="sub">Indian residential has been low single digits in many cities since 2015. Be sceptical of 10%</span></label>
+    <input type="number" id="appr" value="5" min="-5" max="20" step="0.5">
+
+    <div class="sec">
+      <h3>If you rent instead</h3>
+      <label for="rent">Rent for an equivalent home (₹ per month)</label>
+      <input type="number" id="rent" value="25000" min="0" step="1000">
+
+      <label for="rentg">Rent increase (% per year)<span class="sub">Typically 5% to 10% in Indian metros</span></label>
+      <input type="number" id="rentg" value="7" min="0" max="20" step="0.5">
+
+      <label for="sip">Expected SIP return (% p.a.)<span class="sub">Long-run Indian equity has been around 11–13% nominal, with big swings. Returns are not guaranteed</span></label>
+      <input type="number" id="sip" value="11" min="0" max="25" step="0.5">
+    </div>
+
+    <div class="sec">
+      <h3>Both paths</h3>
+      <label for="years">Compare over how many years?<span class="sub">Anything under 7 years usually favours renting once you count stamp duty</span></label>
+      <input type="number" id="years" value="20" min="1" max="35" step="1">
+    </div>
+  </form>
+
+  <div>
+    <div class="res">
+      <div class="opt" id="oBuy">
+        <div class="tag">Path A</div>
+        <div class="nm">Buy the flat</div>
+        <div class="amt" id="wBuy">—</div>
+        <div class="amtl">net worth after <span class="yl">20</span> years</div>
+      </div>
+      <div class="opt" id="oRent">
+        <div class="tag">Path B</div>
+        <div class="nm">Rent and invest the difference</div>
+        <div class="amt" id="wRent">—</div>
+        <div class="amtl">net worth after <span class="yl">20</span> years</div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <h2 id="vTitle">—</h2>
+      <p id="vBody">—</p>
+      <p id="vBreak"></p>
+    </div>
+
+    <div class="card">
+      <h2>The full working</h2>
+      <p class="hint">Every figure, so you can check it or change an assumption and watch what moves.</p>
+      <div class="tw"><table id="bd"><tbody></tbody></table></div>
+      <div class="warn" id="note"></div>
+    </div>
+
+    <div class="card">
+      <h2>What this calculator deliberately does not price</h2>
+      <p style="font-size:.94rem;color:#444;margin-bottom:10px"><strong>The value of not being asked to move.</strong> A landlord can end your tenancy. Nobody can end your ownership. For a family with school-age children that is worth real money and this model gives it none.</p>
+      <p style="font-size:.94rem;color:#444;margin-bottom:10px"><strong>Forced saving.</strong> An EMI arrives whether or not you feel like investing this month. A SIP can be paused, and in practice often is. The rent-and-invest path only wins if you <em>actually invest the difference, every month, for the whole period</em> — most people do not.</p>
+      <p style="font-size:.94rem;color:#444;margin-bottom:10px"><strong>Liquidity and concentration.</strong> A flat is one undiversified asset in one city that can take months to sell at a price you like. A SIP portfolio can be sold on a Tuesday.</p>
+      <p style="font-size:.94rem;color:#444;margin:0"><strong>Tax.</strong> Home loan interest and principal carry deductions under the old regime, and capital gains rules differ between property and equity. Both effects are excluded here — see the tax calculator if you are weighing regimes.</p>
+    </div>
+
+    <div class="disc">
+      <strong>How this model works and where it stops.</strong> It amortises the loan monthly, grows rent at your stated rate, compounds the invested surplus monthly, and grows the property value at your stated appreciation rate. In the buying path, net worth is the property value minus the loan balance outstanding. In the renting path, it is the down payment and transaction costs invested from day one, plus every month's surplus invested when the cost of owning exceeds the rent. It excludes income tax deductions on home loans, capital gains tax on either path, brokerage, GST on under-construction property, prepayment, and rental yield if you let the flat out. Investment returns are assumptions, not forecasts — equity returns are volatile and past performance does not predict future results. This is general information for comparison, not investment advice; consult a SEBI-registered adviser before acting.
+    </div>
+
+    <div class="rel">
+      <h2>The thinking behind it</h2>
+      <div class="relg">
+        <a href="/article-sip-vs-realestate"><strong>SIP vs real estate, in full</strong><span>The long-form comparison with Indian data and the cases where property still wins.</span></a>
+        <a href="/article-wealth-framework"><strong>The wealth framework</strong><span>How to sequence emergency fund, debt, SIP and property without guessing.</span></a>
+        <a href="/tax-regime-calculator"><strong>Tax regime calculator</strong><span>Home loan interest only counts under the old regime — check which one you should be on.</span></a>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Want a model like this built for your own numbers?</h2>
+      <p>I build financial and reporting models in Excel — amortisation schedules, scenario tables, dashboards — formula-driven and documented so you can change an assumption without breaking anything. From ₹2,500, three to five days, full refund if it is not what you asked for.</p>
+      <a class="btn" href="/hire-me">See services &amp; pricing →</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer><p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/terms-of-service">Terms of Service</a></p></footer>
+
+<script>
+(function(){
+  function inr(n){
+    if(!isFinite(n))return '—';
+    var neg=n<0;n=Math.abs(Math.round(n));
+    if(n>=10000000) return (neg?'-':'')+'₹'+(n/10000000).toFixed(2)+' cr';
+    if(n>=100000)   return (neg?'-':'')+'₹'+(n/100000).toFixed(2)+' L';
+    var s=String(n),r;
+    if(s.length>3){var l3=s.slice(-3),rest=s.slice(0,-3);rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,",");r=rest+","+l3;}else r=s;
+    return (neg?'-':'')+'₹'+r;
+  }
+  var E=function(i){return document.getElementById(i);};
+
+  function run(years){
+    var price=Math.max(0,+E('price').value||0);
+    var dpc=Math.min(100,Math.max(0,+E('dpc').value||0))/100;
+    var stampPc=Math.max(0,+E('stamp').value||0)/100;
+    var rate=Math.max(0,+E('rate').value||0)/100;
+    var tenure=Math.max(1,+E('tenure').value||1);
+    var maintPc=Math.max(0,+E('maint').value||0)/100;
+    var appr=(+E('appr').value||0)/100;
+    var rent0=Math.max(0,+E('rent').value||0);
+    var rentg=Math.max(0,+E('rentg').value||0)/100;
+    var sipR=Math.max(0,+E('sip').value||0)/100;
+
+    var down=price*dpc, stamp=price*stampPc, loan=price-down;
+    var i=rate/12, n=tenure*12;
+    var emi = (i===0) ? (n>0?loan/n:0) : loan*i*Math.pow(1+i,n)/(Math.pow(1+i,n)-1);
+    var sipM=Math.pow(1+sipR,1/12)-1;
+
+    var bal=loan, invested=down+stamp, corpus=down+stamp;
+    var totInterest=0, totMaint=0, totRent=0, totEmi=0;
+    var months=Math.round(years*12);
+
+    for(var m=1;m<=months;m++){
+      // BUY path
+      var pay=0, interest=0;
+      if(bal>0.01 && m<=n){
+        interest=bal*i;
+        var principal=emi-interest;
+        if(principal>bal){principal=bal; pay=bal+interest;} else {pay=emi;}
+        bal-=principal; totInterest+=interest; totEmi+=pay;
+      }
+      var maintM=price*Math.pow(1+appr,(m-1)/12)*maintPc/12;
+      totMaint+=maintM;
+      var ownCost=pay+maintM;
+
+      // RENT path
+      var rentM=rent0*Math.pow(1+rentg,Math.floor((m-1)/12));
+      totRent+=rentM;
+
+      // invest the monthly difference when owning costs more
+      var surplus=ownCost-rentM;
+      corpus*=(1+sipM);
+      if(surplus>0){ corpus+=surplus; invested+=surplus; }
+    }
+
+    var propVal=price*Math.pow(1+appr,years);
+    var buyWorth=propVal-Math.max(0,bal);
+    return {emi:emi,down:down,stamp:stamp,loan:loan,bal:Math.max(0,bal),propVal:propVal,
+            buyWorth:buyWorth,rentWorth:corpus,invested:invested,
+            totInterest:totInterest,totMaint:totMaint,totRent:totRent,totEmi:totEmi,years:years};
+  }
+
+  function compute(){
+    var years=Math.max(1,Math.min(35,+E('years').value||1));
+    var r=run(years);
+    var ls=document.getElementsByClassName('yl');
+    for(var k=0;k<ls.length;k++) ls[k].textContent=years;
+
+    E('wBuy').textContent=inr(r.buyWorth);
+    E('wRent').textContent=inr(r.rentWorth);
+
+    var ob=E('oBuy'), or_=E('oRent');
+    ob.className='opt'; or_.className='opt';
+    var b1=ob.querySelector('.badge'); if(b1)b1.remove();
+    var b2=or_.querySelector('.badge'); if(b2)b2.remove();
+    var diff=Math.abs(r.buyWorth-r.rentWorth);
+    var vt=E('vTitle'), vb=E('vBody');
+
+    if(r.buyWorth>r.rentWorth){
+      ob.className='opt win';
+      ob.insertAdjacentHTML('beforeend','<div class="badge">AHEAD</div>');
+      vt.innerHTML='On these assumptions, buying comes out ahead.<span class="big">by '+inr(diff)+' after '+years+' years</span>';
+      vb.innerHTML='The flat is worth <strong>'+inr(r.propVal)+'</strong> and you owe <strong>'+inr(r.bal)+'</strong> on it. Note how sensitive this is to the appreciation rate — drop it by two percentage points and see what happens.';
+    } else {
+      or_.className='opt win';
+      or_.insertAdjacentHTML('beforeend','<div class="badge">AHEAD</div>');
+      vt.innerHTML='On these assumptions, renting and investing comes out ahead.<span class="big">by '+inr(diff)+' after '+years+' years</span>';
+      vb.innerHTML='You would have invested <strong>'+inr(r.invested)+'</strong> of your own money and it would have grown to <strong>'+inr(r.rentWorth)+'</strong>. This only holds if you genuinely invest the surplus every single month — which is the assumption most people break.';
+    }
+
+    // find the crossover year
+    var cross=null;
+    for(var y=1;y<=35;y++){ var t=run(y); if(t.buyWorth>=t.rentWorth){ cross=y; break; } }
+    var vbr=E('vBreak');
+    if(cross===null){ vbr.innerHTML='<strong>Crossover:</strong> within 35 years, buying never overtakes renting-and-investing on these assumptions.'; }
+    else if(cross===1){ vbr.innerHTML='<strong>Crossover:</strong> buying is ahead from year one on these assumptions — usually a sign that the rent you entered is high relative to the property price.'; }
+    else { vbr.innerHTML='<strong>Crossover:</strong> buying overtakes renting-and-investing in <strong>year '+cross+'</strong>. Sell or move before then and the transaction costs mean you lose.'; }
+
+    var rows=[
+      ['Down payment',inr(r.down)],
+      ['Stamp duty, registration and legal',inr(r.stamp)],
+      ['Loan amount',inr(r.loan)],
+      ['<strong>Monthly EMI</strong>','<strong>'+inr(r.emi)+'</strong>'],
+      ['Interest paid over '+years+' years',inr(r.totInterest)],
+      ['Maintenance, tax and insurance paid',inr(r.totMaint)],
+      ['Loan still outstanding at year '+years,inr(r.bal)],
+      ['Property value at year '+years,inr(r.propVal)],
+      ['<strong>Net worth — buying</strong>','<strong>'+inr(r.buyWorth)+'</strong>'],
+      ['Rent paid over '+years+' years',inr(r.totRent)],
+      ['Your own money invested (down payment, costs and monthly surplus)',inr(r.invested)],
+      ['<strong>Net worth — renting and investing</strong>','<strong>'+inr(r.rentWorth)+'</strong>']
+    ];
+    var html='<tr><th>Item</th><th style="text-align:right">Amount</th></tr>';
+    rows.forEach(function(x){html+='<tr><td>'+x[0]+'</td><td class="n">'+x[1]+'</td></tr>';});
+    html+='<tr class="tot"><td>Difference</td><td class="n">'+inr(Math.abs(r.buyWorth-r.rentWorth))+'</td></tr>';
+    E('bd').getElementsByTagName('tbody')[0].innerHTML=html;
+
+    var note=E('note'), msgs=[];
+    var yieldPc=(r.down+r.loan)>0 ? (+E('rent').value*12)/(+E('price').value)*100 : 0;
+    if(yieldPc<2.5 && yieldPc>0) msgs.push('At '+yieldPc.toFixed(1)+'%, the rental yield you have entered is typical of Indian metros — and it is the single biggest reason renting often wins these comparisons. Rent is cheap here relative to price.');
+    if((+E('appr').value||0)>=8) msgs.push('You have assumed '+(+E('appr').value)+'% annual property appreciation. Residential prices in many Indian cities grew in low single digits between 2015 and the early 2020s. Try 4–5% and see whether your conclusion survives.');
+    if(years<7) msgs.push('Over '+years+' years, stamp duty and registration have barely been recovered. Buying rarely makes financial sense on a horizon this short — though it may still make personal sense.');
+    note.style.display=msgs.length?'block':'none';
+    note.innerHTML=msgs.join('<br><br>');
+
+    if(window.gtag){ gtag('event','calculator_use',{calculator:'sip_vs_property'}); }
+  }
+
+  var f=E('f');
+  f.addEventListener('input',compute);
+  f.addEventListener('change',compute);
+  f.addEventListener('submit',function(e){e.preventDefault();});
+  compute();
+})();
+</script>
+</body></html>
