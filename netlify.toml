@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# The site is static HTML; there is no build step to run.
+[build.environment]
+  NODE_VERSION = "20"

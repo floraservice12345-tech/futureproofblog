@@ -104,3 +104,74 @@ var FP_NEWSLETTER = {
     run();
   }
 })();
+
+/* ------------------------------------------------------------
+   Already-subscribed state
+   ------------------------------------------------------------
+   Brevo dedupes on its side — an address that is already a
+   confirmed contact is updated, never added twice. But it will
+   still send that person another confirmation email if they hit
+   the form again, and being asked to subscribe to something you
+   already subscribed to is the most irritating thing a site does.
+
+   So once someone subscribes from this browser we remember it and
+   replace every sign-up box with a short acknowledgement plus a
+   link to the guide. There is a "not me" link for shared devices.
+   ------------------------------------------------------------ */
+(function () {
+  var KEY = "fp_subscribed";
+  function stored() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function remember() {
+    try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+  }
+  function forget() {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  }
+  window.fpForgetSubscription = forget;
+
+  var NAMES = ["newsletter", "nl-sidebar", "newsletter-article", "newsletter-home"];
+
+  function replaceForms() {
+    NAMES.forEach(function (n) {
+      var list = document.querySelectorAll('form[name="' + n + '"]');
+      for (var i = 0; i < list.length; i++) {
+        var f = list[i];
+        if (f.getAttribute("data-fp-done")) continue;
+        f.setAttribute("data-fp-done", "1");
+        var box = document.createElement("div");
+        box.style.cssText =
+          "border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);" +
+          "border-radius:8px;padding:14px 16px;font-size:.92rem;line-height:1.6";
+        box.innerHTML =
+          '<strong>You are already on the list.</strong> ' +
+          '<a href="/guides/10-ai-tools-india-2026.pdf" style="color:inherit;text-decoration:underline">' +
+          'Download the free guide again</a>' +
+          ' &middot; <a href="#" style="color:inherit;text-decoration:underline;opacity:.75" ' +
+          'onclick="fpForgetSubscription();return false;">not me</a>';
+        if (f.parentNode) f.parentNode.replaceChild(box, f);
+      }
+    });
+  }
+
+  function markOnSubmit() {
+    NAMES.forEach(function (n) {
+      var list = document.querySelectorAll('form[name="' + n + '"]');
+      for (var i = 0; i < list.length; i++) {
+        list[i].addEventListener("submit", remember);
+      }
+    });
+  }
+
+  function run() {
+    // Landing on the confirmation page means the address is confirmed.
+    if (location.pathname.indexOf("/thank-you") === 0) { remember(); return; }
+    if (stored()) replaceForms(); else markOnSubmit();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else { run(); }
+})();
