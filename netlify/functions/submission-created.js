@@ -73,7 +73,8 @@ function classify(formName, data) {
              why: "Someone is asking you to quote for paid work." };
   }
   if (subject.includes("hire") || subject.includes("project brief") ||
-      /\b(quote|budget|hire you|work with you|retainer|invoice)\b/.test(msg)) {
+      /\b(quote|quotation|budget|hire you|work with you|retainer|invoice|proposal|pricing|cost)\b/.test(msg) ||
+      /\b(build|develop|website|web app|webapp|landing page|calculator|dashboard|automate|automation|script|scrape|clean up|cleanup|migrate|integrat)\w*\b/.test(msg)) {
     return { level: "ACTION", label: "Enquiry about paid work", sla: "one working day",
              why: "This reads like a paying enquiry, not a general question." };
   }
