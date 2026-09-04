@@ -194,7 +194,7 @@ var FP_NEWSLETTER = {
    stops doing anything rather than duplicating it.
    ============================================================ */
 (function () {
-  var WHATSAPP_NUMBER = "";   /* digits only, e.g. "919876543210" — blank renders nothing */
+  var WHATSAPP_NUMBER = "919540528064";   /* digits only, e.g. "919876543210" — blank renders nothing */
 
   function ready(fn) {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn);
@@ -316,5 +316,19 @@ var FP_NEWSLETTER = {
     });
   }
 
-  ready(function () { nav(); offer(); whatsapp(); });
+
+  /* Adds the reviews link to the footer of every page that loads this file. */
+  function reviews() {
+    var f = document.querySelector("footer p");
+    if (!f || f.innerHTML.indexOf('href="/reviews"') > -1) return;
+    if (location.pathname.indexOf("/reviews") === 0) return;
+    var sep = document.createTextNode(" \u00b7 ");
+    var a = document.createElement("a");
+    a.href = "/reviews";
+    a.textContent = "Reviews";
+    f.appendChild(sep);
+    f.appendChild(a);
+  }
+
+  ready(function () { nav(); offer(); whatsapp(); reviews(); });
 })();

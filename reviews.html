@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reviews &mdash; What Readers Actually Said | FutureProof Blog</title>
+<meta name="description" content="Leave a review of any article, free tool, or paid service on FutureProof Blog. Every review is read before publishing, critical reviews are published too, and nothing is invented or paid for.">
+<link rel="canonical" href="https://futureproofblog.in/reviews">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#fff;line-height:1.7}
+header{background:#1a1a2e;color:#fff;padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.4rem;font-weight:700;color:#e94560;text-decoration:none}
+nav a{color:#ddd;text-decoration:none;margin-left:18px;font-size:.92rem;transition:color .2s}
+nav a:hover,nav a.active{color:#e94560}
+.page-hero{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;padding:52px 24px 40px;text-align:center}
+.page-hero h1{font-size:2rem;font-weight:800;margin-bottom:10px}
+.page-hero p{font-size:1rem;opacity:.85;max-width:560px;margin:0 auto}
+.page-content{max-width:680px;margin:0 auto;padding:40px 24px 56px}
+.page-content h2{font-size:1.45rem;font-weight:700;margin:0 0 12px;color:#1a1a2e}
+.page-content p{margin-bottom:16px}
+.contact-email{display:inline-block;background:#f0f7ff;border:1px solid #cce0ff;border-radius:8px;padding:12px 18px;margin-bottom:28px;font-size:.95rem}
+.contact-email a{color:#0f3460;font-weight:700;text-decoration:none}
+.contact-email a:hover{color:#e94560}
+.contact-form{display:flex;flex-direction:column;gap:16px;background:#f7f8fa;border:1px solid #e8e8e8;border-radius:12px;padding:28px 24px}
+.contact-form label{font-size:.9rem;font-weight:600;color:#1a1a2e;margin-bottom:6px;display:block}
+.contact-form input,.contact-form textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:.95rem;font-family:inherit}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:#e94560}
+.contact-form textarea{resize:vertical;min-height:140px}
+.contact-form button{align-self:flex-start;background:#e94560;color:#fff;border:none;padding:13px 32px;border-radius:6px;font-weight:700;font-size:.95rem;cursor:pointer;transition:background .2s}
+.contact-form button:hover{background:#c73652}
+.contact-form button:disabled{opacity:.6;cursor:not-allowed}
+.form-msg{border-radius:8px;padding:14px 18px;font-weight:600;font-size:.92rem;display:none}
+.form-msg.success{background:#e8f5e9;border:1px solid #4caf50;color:#2e7d32;display:block}
+.form-msg.error{background:#fdecea;border:1px solid #e57373;color:#c62828;display:block}
+.hp{position:absolute;left:-9999px}
+footer{background:#111;color:#aaa;text-align:center;padding:24px;font-size:.85rem}
+footer a{color:#e94560;text-decoration:none}
+@media(max-width:600px){nav a{margin-left:12px;font-size:.85rem}}
+ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.article-wrap,.article-body,.sidebar,main,aside{min-width:0}@media(max-width:768px){.nav-inner{height:auto;flex-wrap:wrap;padding:10px 0;row-gap:4px}header nav{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:2px}header nav a{margin-left:0}.toc,.toc ol,.toc ul{max-width:100%;overflow-wrap:break-word}}@media(max-width:768px){.article-wrap{padding:1.15rem}.page-content,.pc{padding-left:16px;padding-right:16px}table,.comparison-table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}img,figure,pre{max-width:100%}}@media(max-width:768px){header nav a{display:inline-block;padding:9px 4px;line-height:1.25}footer a{display:inline-block;padding:7px 3px;line-height:1.3}footer p{line-height:2.1}}
+/* --- resume landing --- */
+.rz-hero{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;padding:56px 24px 48px}
+.rz-in{max-width:960px;margin:0 auto}
+.rz-hero h1{font-size:clamp(1.85rem,4.6vw,2.6rem);font-weight:800;line-height:1.16;margin:0 0 14px;max-width:16ch}
+.rz-hero .sub{font-size:1.08rem;opacity:.9;max-width:60ch;line-height:1.7;margin:0 0 22px}
+.rz-badges{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
+.rz-badge{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.24);border-radius:20px;padding:6px 14px;font-size:.83rem}
+.rz-cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.rz-btn{display:inline-block;background:#e94560;color:#fff;padding:14px 28px;border-radius:7px;text-decoration:none;font-weight:800;font-size:1rem}
+.rz-btn.ghost{background:transparent;border:2px solid rgba(255,255,255,.5)}
+.rz-btn.wa{background:#1faa54}
+.rz-sec{max-width:960px;margin:0 auto;padding:48px 24px}
+.rz-sec h2{font-size:1.6rem;color:#1a1a2e;margin:0 0 10px;font-weight:800}
+.rz-sec .lede{color:#5a5f6e;max-width:66ch;line-height:1.75;margin:0 0 26px}
+.rz-free{background:#fff6ee;border:2px solid #f0c9a3;border-radius:12px;padding:26px 28px;margin:0 auto;max-width:960px}
+.rz-free h2{margin:0 0 8px;font-size:1.35rem;color:#8a4b12}
+.rz-free p{margin:0 0 14px;color:#5a4a3a;line-height:1.75}
+.rz-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.rz-tier{background:#fff;border:1px solid #e3e6ee;border-radius:12px;padding:24px;display:flex;flex-direction:column;box-shadow:0 3px 14px rgba(0,0,0,.05)}
+.rz-tier.hot{border:2px solid #e94560;box-shadow:0 6px 22px rgba(233,69,96,.14)}
+.rz-tier .nm{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:#e94560;margin-bottom:8px}
+.rz-tier .pr{font-size:2rem;font-weight:800;color:#1a1a2e;line-height:1}
+.rz-tier .un{font-size:.86rem;color:#7a8090;margin:6px 0 16px}
+.rz-tier ul{margin:0 0 20px;padding-left:20px;flex:1}
+.rz-tier li{font-size:.9rem;color:#4a5060;margin-bottom:7px;line-height:1.55}
+.rz-tier a{display:block;text-align:center;background:#1a1a2e;color:#fff;padding:12px;border-radius:7px;text-decoration:none;font-weight:700;font-size:.93rem}
+.rz-tier.hot a{background:#e94560}
+.rz-fix{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rz-fixcard{background:#fff;border:1px solid #e3e6ee;border-left:4px solid #e94560;border-radius:8px;padding:18px 20px}
+.rz-fixcard h3{font-size:.98rem;color:#1a1a2e;margin:0 0 6px}
+.rz-fixcard p{font-size:.9rem;color:#5a5f6e;margin:0;line-height:1.6}
+.rz-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.rz-step{background:#fff;border:1px solid #e3e6ee;border-radius:10px;padding:20px}
+.rz-step span{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;background:#e94560;color:#fff;border-radius:50%;font-weight:800;font-size:.85rem;margin-bottom:10px}
+.rz-step h3{font-size:1rem;margin:0 0 6px;color:#1a1a2e}
+.rz-step p{font-size:.89rem;color:#5a5f6e;margin:0;line-height:1.6}
+.rz-faq{max-width:820px}
+.rz-faq details{border-bottom:1px solid #e3e6ee;padding:15px 0}
+.rz-faq summary{font-weight:700;color:#1a1a2e;cursor:pointer;font-size:1rem}
+.rz-faq p{margin:10px 0 0;color:#5a5f6e;font-size:.94rem;line-height:1.72}
+.rz-band{background:#f6f7fb;border-top:1px solid #e9ecf4;border-bottom:1px solid #e9ecf4}
+.rz-final{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;text-align:center;padding:54px 24px}
+.rz-final h2{color:#fff;font-size:1.7rem;margin:0 0 10px;font-weight:800}
+.rz-final p{opacity:.86;max-width:52ch;margin:0 auto 24px;line-height:1.7}
+@media(max-width:560px){.rz-hero h1{max-width:none}}
+
+.logo{white-space:nowrap;flex:none}
+.nav-inner{gap:14px}
+.nav-inner nav{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;row-gap:2px}
+@media(max-width:1180px){nav a{margin-left:13px;font-size:.87rem}}
+@media(max-width:980px){.nav-inner{height:auto;padding:10px 0}nav a{margin-left:11px;font-size:.85rem}}
+
+/* --- reviews --- */
+.rv-stars{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px;margin:6px 0 4px}
+.rv-stars input{position:absolute;opacity:0;width:0;height:0}
+.rv-stars label{font-size:1.9rem;line-height:1;color:#d7dae3;cursor:pointer;transition:color .12s}
+.rv-stars input:checked ~ label,.rv-stars label:hover,.rv-stars label:hover ~ label{color:#f5a623}
+.rv-stars input:focus-visible + label{outline:2px solid #e94560;outline-offset:2px;border-radius:3px}
+.rv-field{margin-bottom:16px}
+.rv-field label.lb{display:block;font-weight:700;color:#1a1a2e;font-size:.92rem;margin-bottom:5px}
+.rv-field .hint{display:block;font-size:.81rem;color:#7a8090;margin-bottom:6px;font-weight:400}
+.rv-field input[type=text],.rv-field input[type=email],.rv-field select,.rv-field textarea{width:100%;padding:11px 13px;border:1px solid #cfd4e0;border-radius:7px;font-family:inherit;font-size:.95rem;color:#222;background:#fff}
+.rv-field textarea{min-height:150px;resize:vertical;line-height:1.6}
+.rv-check{display:flex;gap:10px;align-items:flex-start;font-size:.89rem;color:#4a5060;line-height:1.55;margin-bottom:14px}
+.rv-check input{margin-top:3px;flex:none}
+.rv-submit{background:#e94560;color:#fff;border:none;padding:14px 32px;border-radius:7px;font-weight:800;font-size:1rem;cursor:pointer;font-family:inherit}
+.rv-submit:hover{background:#c73652}
+.rv-empty{background:#f6f7fb;border:1px dashed #c9cfdd;border-radius:12px;padding:34px 28px;text-align:center;color:#5a5f6e}
+.rv-empty strong{display:block;color:#1a1a2e;font-size:1.1rem;margin-bottom:8px}
+.rv-list{display:grid;gap:16px}
+.rv-card{background:#fff;border:1px solid #e3e6ee;border-radius:12px;padding:22px 24px;box-shadow:0 3px 14px rgba(0,0,0,.05)}
+.rv-card .rt{color:#f5a623;letter-spacing:2px;font-size:1rem}
+.rv-card h3{font-size:1.03rem;color:#1a1a2e;margin:8px 0 8px}
+.rv-card p{font-size:.94rem;color:#4a5060;line-height:1.7;margin:0 0 12px}
+.rv-card .who{font-size:.85rem;color:#7a8090}
+.rv-rule{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.rv-rule .n{flex:none;width:26px;height:26px;border-radius:50%;background:#1a1a2e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800}
+.rv-rule p{margin:0;color:#5a5f6e;font-size:.93rem;line-height:1.65}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav-inner">
+    <a class="logo" href="/">FutureProof Blog</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/ai-work">AI &amp; Work</a>
+      <a href="/ai-tools">AI Tools</a>
+      <a href="/money-property">Money &amp; Property</a><a href="/best-tools">Best Tools</a><a href="/tools">Free Tools</a><a href="/hire-me">Hire Me</a><a href="/resume">Resume Fix</a>
+      <a href="/about">About</a>
+      <a href="/subscribe">Subscribe</a><a href="/search">&#128269; Search</a>
+    </nav>
+  </div>
+</header>
+<div class="rz-hero">
+  <div class="rz-in">
+    <h1>Tell other readers the truth.</h1>
+    <p class="sub">If something here saved you time, made you money, or was a waste of your afternoon &mdash; say so. Reviews are read before anything is published, and nothing is edited to sound better than it was.</p>
+    <div class="rz-badges">
+      <span class="rz-badge">Takes about two minutes</span>
+      <span class="rz-badge">Your email is never published</span>
+      <span class="rz-badge">Critical reviews get published too</span>
+    </div>
+    <div class="rz-cta-row">
+      <a class="rz-btn" href="#write">Write a review</a>
+      <a class="rz-btn ghost" href="#published">Read reviews</a>
+    </div>
+  </div>
+</div>
+
+<section class="rz-sec" id="write">
+  <h2>Write a review</h2>
+  <p class="lede">Anything on this site is fair game &mdash; an article, one of the free calculators, the newsletter, or paid work I did for you. Be specific: &ldquo;the tax regime calculator showed me I was on the wrong regime&rdquo; helps another reader far more than &ldquo;good site&rdquo;.</p>
+
+  <form name="site-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you-review" style="background:#fff;border:1px solid #e3e6ee;border-radius:14px;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,.05);max-width:760px">
+    <input type="hidden" name="form-name" value="site-review">
+    <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-what">What are you reviewing?</label>
+      <select id="rv-what" name="what" required>
+        <option value="">Choose one</option>
+        <option>An article I read</option>
+        <option>One of the free calculators or tools</option>
+        <option>The newsletter</option>
+        <option>Paid work &mdash; resume or LinkedIn rewrite</option>
+        <option>Paid work &mdash; writing or content</option>
+        <option>Paid work &mdash; data, research or documents</option>
+        <option>The site overall</option>
+      </select>
+    </div>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-which">Which one, exactly?</label>
+      <span class="hint">Paste the page link or type the title. Skip it if you are reviewing the site as a whole.</span>
+      <input type="text" id="rv-which" name="which" placeholder="e.g. the tax regime calculator, or /article-itr-missed-deadline-2026">
+    </div>
+
+    <div class="rv-field">
+      <label class="lb">Your rating</label>
+      <span class="hint">Five is best. One is honest too.</span>
+      <div class="rv-stars">
+        <input type="radio" id="s5" name="rating" value="5 out of 5" required><label for="s5" title="5 out of 5">&#9733;</label>
+        <input type="radio" id="s4" name="rating" value="4 out of 5"><label for="s4" title="4 out of 5">&#9733;</label>
+        <input type="radio" id="s3" name="rating" value="3 out of 5"><label for="s3" title="3 out of 5">&#9733;</label>
+        <input type="radio" id="s2" name="rating" value="2 out of 5"><label for="s2" title="2 out of 5">&#9733;</label>
+        <input type="radio" id="s1" name="rating" value="1 out of 5"><label for="s1" title="1 out of 5">&#9733;</label>
+      </div>
+    </div>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-head">Sum it up in one line</label>
+      <input type="text" id="rv-head" name="headline" required maxlength="90" placeholder="e.g. Found out I was on the wrong tax regime in four minutes">
+    </div>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-body">Your review</label>
+      <span class="hint">What did you come here for, what actually happened, and what would you tell a friend? Two or three sentences is plenty.</span>
+      <textarea id="rv-body" name="review" required minlength="40"></textarea>
+    </div>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-name">Your name</label>
+      <span class="hint">First name is fine. This is what appears on the review.</span>
+      <input type="text" id="rv-name" name="name" required>
+    </div>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-role">City and what you do <span style="font-weight:400;color:#7a8090">(optional)</span></label>
+      <span class="hint">Published as written &mdash; e.g. &ldquo;Pune, software tester&rdquo;. Leave blank to stay anonymous beyond your first name.</span>
+      <input type="text" id="rv-role" name="role">
+    </div>
+
+    <div class="rv-field">
+      <label class="lb" for="rv-email">Your email</label>
+      <span class="hint">Never published, never sold. Used only to confirm the review is real, and to reply if you raised a problem worth fixing.</span>
+      <input type="email" id="rv-email" name="email" required>
+    </div>
+
+    <label class="rv-check"><input type="checkbox" name="consent" value="yes" required> I am happy for my first name, my city and what I do, and this review to be published on this site.</label>
+    <label class="rv-check"><input type="checkbox" name="followup" value="yes"> Optional &mdash; you may email me if you need to check a detail before publishing.</label>
+
+    <button class="rv-submit" type="submit">Submit review</button>
+    <p style="font-size:.82rem;color:#7a8090;margin:14px 0 0;line-height:1.6">Nothing goes live automatically. Every review is read first, checked against the actual work or the actual page, and then published as written &mdash; or not published at all if it cannot be verified.</p>
+  </form>
+</section>
+
+<div class="rz-band">
+<section class="rz-sec" id="published">
+  <h2>Published reviews</h2>
+  <p class="lede">These appear exactly as they were written, apart from trimming for length. Nothing here is invented, bought, or requested in exchange for anything.</p>
+
+  <div class="rv-empty">
+    <strong>No reviews published yet.</strong>
+    <p style="margin:0;line-height:1.7">This section stays empty until a real reader sends a real one. It would be easy to fill it with glowing quotes from people who do not exist &mdash; plenty of sites do &mdash; but then nothing on this page would be worth reading. If you have used something here, <a href="#write" style="color:#e94560;font-weight:700">you can be the first</a>.</p>
+  </div>
+</section>
+</div>
+
+<section class="rz-sec">
+  <h2>How reviews are handled</h2>
+  <div style="max-width:760px">
+    <div class="rv-rule"><span class="n">1</span><p><strong>Nothing publishes itself.</strong> Every review arrives privately first. It goes live only after it has been read.</p></div>
+    <div class="rv-rule"><span class="n">2</span><p><strong>Bad reviews get published too.</strong> A two-star review that explains what went wrong is more useful to the next reader than ten five-star ones, and it tells me what to fix.</p></div>
+    <div class="rv-rule"><span class="n">3</span><p><strong>Nothing is written for you.</strong> Wording is never suggested, supplied, or &ldquo;polished&rdquo; into something you did not say. The only edit is trimming a very long review, and never in a way that changes what it means.</p></div>
+    <div class="rv-rule"><span class="n">4</span><p><strong>Reviews are never paid for.</strong> No discounts, no free work, no gift cards in exchange for a rating.</p></div>
+    <div class="rv-rule"><span class="n">5</span><p><strong>You can take it down.</strong> Email <a href="/contact" style="color:#e94560">through the contact page</a> and your review is removed, no reason needed.</p></div>
+    <div class="rv-rule"><span class="n">6</span><p><strong>Your email stays private.</strong> It is not published, not added to the newsletter list unless you sign up yourself, and not shared with anyone.</p></div>
+  </div>
+</section>
+
+<div class="rz-final">
+  <h2>Found a mistake instead of a win?</h2>
+  <p>If something on this site is wrong, out of date, or cost you time, that is worth more to me than praise. Say it here, or send it straight through the contact page.</p>
+  <a class="rz-btn" href="#write">Write a review</a>
+</div>
+
+<footer>
+  <p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> &middot; <a href="/terms-of-service">Terms of Service</a></p>
+</footer>
+<script src="/newsletter.js"></script>
+<script src="/whatsapp.js"></script>
+</body></html>
