@@ -330,5 +330,54 @@ var FP_NEWSLETTER = {
     f.appendChild(a);
   }
 
-  ready(function () { nav(); offer(); whatsapp(); reviews(); });
+
+  /* ------------------------------------------------------------------
+     Launch-offer bar. Hard-expires on 30 Sep 2026 so it can never go
+     stale on the site: after that date this function renders nothing and
+     needs no deploy to remove. Dismissible, and it stays dismissed.
+     ------------------------------------------------------------------ */
+  function offerBar() {
+    var END = new Date("2026-10-01T00:00:00+05:30");   /* first moment the offer is over */
+    var now = new Date();
+    if (now >= END) return;
+    if (document.getElementById("fp-offer")) return;
+    try { if (localStorage.getItem("fpOfferHid") === "1") return; } catch (e) {}
+
+    var days = Math.ceil((END - now) / 86400000);
+    var left = days <= 1 ? "Last day" : days + " days left";
+
+    var css = document.createElement("style");
+    css.textContent =
+      "#fp-offer{background:linear-gradient(90deg,#e94560,#c9304e);color:#fff;font:600 .89rem/1.4 'Segoe UI',Arial,sans-serif;" +
+      "padding:9px 44px 9px 16px;text-align:center;position:relative;z-index:9997}" +
+      "#fp-offer a{color:#fff;text-decoration:underline;font-weight:800}" +
+      "#fp-offer .fp-o-days{background:rgba(255,255,255,.22);border-radius:20px;padding:2px 10px;margin-left:8px;white-space:nowrap;font-weight:800}" +
+      "#fp-offer button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;" +
+      "font-size:1.25rem;line-height:1;cursor:pointer;padding:4px 9px;opacity:.75}" +
+      "#fp-offer button:hover{opacity:1}" +
+      "@media(max-width:560px){#fp-offer{font-size:.82rem;padding:9px 38px 9px 12px}}";
+    document.head.appendChild(css);
+
+    var bar = document.createElement("div");
+    bar.id = "fp-offer";
+    bar.innerHTML =
+      '<strong>50% off your first project</strong> with code <strong>LAUNCH50</strong> \u00b7 ' +
+      '<a href="/hire-me#order">see what I do</a> or <a href="/resume">get a free resume sample</a>' +
+      '<span class="fp-o-days">' + left + '</span>' +
+      '<button type="button" aria-label="Close offer">&times;</button>';
+    document.body.insertBefore(bar, document.body.firstChild);
+
+    bar.querySelector("button").addEventListener("click", function () {
+      bar.remove();
+      try { localStorage.setItem("fpOfferHid", "1"); } catch (e) {}
+      if (window.gtag) gtag("event", "offer_bar_dismiss");
+    });
+    bar.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        if (window.gtag) gtag("event", "offer_bar_click", { link_url: a.getAttribute("href") });
+      });
+    });
+  }
+
+  ready(function () { offerBar(); nav(); offer(); whatsapp(); reviews(); });
 })();
