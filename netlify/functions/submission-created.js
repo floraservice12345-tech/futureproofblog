@@ -45,8 +45,13 @@ const SPAM_PHRASES = [
   "make money fast", "виагра", "click here to claim", "dear sir/madam we are a"
 ];
 
-function spamScore(data) {
-  const msg = String(data.message || data.brief || "").toLowerCase();
+/* Forms where the free-text box is optional by design. A resume order can
+   legitimately arrive with an empty brief (the CV comes by email), so an
+   empty box there says nothing about whether the sender is real. */
+const OPTIONAL_MESSAGE_FORMS = ["resume-brief"];
+
+function spamScore(formName, data) {
+  const msg = String(data.message || data.brief || data.review || "").toLowerCase();
   const email = String(data.email || "").toLowerCase();
   let score = 0;
 
@@ -55,7 +60,7 @@ function spamScore(data) {
   if (links >= 3) score += 40;
   if (links >= 6) score += 40;
   SPAM_PHRASES.forEach(p => { if (msg.includes(p)) score += 35; });
-  if (msg.length < 15) score += 20;                       // nothing actually said
+  if (msg.length < 15 && !OPTIONAL_MESSAGE_FORMS.includes(formName)) score += 20;
   if (/(.)\1{9,}/.test(msg)) score += 30;                 // keyboard mashing
   if (!/@/.test(email)) score += 50;
   if (/\b(seo|backlink|guest post)\b/.test(msg) && /\bwe (are|offer|provide)\b/.test(msg)) score += 30;
@@ -68,39 +73,67 @@ function classify(formName, data) {
   const subject = String(data.subject || "").toLowerCase();
   const msg = String(data.message || data.brief || "").toLowerCase();
 
+  /* A resume order is the fastest-closing thing on the site and the page
+     promises a reply within two hours. It must never fall through to the
+     generic two-working-day bucket. */
+  if (formName === "resume-brief") {
+    const service = String(data.service || "");
+    const paid = /1,?500|2,?500|700/.test(service);
+    return { level: "ACTION", kind: "resume",
+             label: paid ? "Resume order — " + service : "Resume enquiry (free sample)",
+             sla: "two hours, 9am-9pm IST",
+             why: paid
+               ? "This is a paid resume order. The page promises a reply within two hours and same-day delivery."
+               : "Someone wants the free sample rewrite. It costs you one short reply and it is how the paid orders start." };
+  }
+
+  if (formName === "site-review") {
+    return { level: "FYI", kind: "review", noList: true,
+             label: "Reader review — " + String(data.rating || "no rating"),
+             sla: "when convenient",
+             why: "A reader reviewed the site. Read it, check it against the page or the work, then publish it as written." };
+  }
+
   if (formName === "project-brief") {
-    return { level: "ACTION", label: "New project brief", sla: "one working day",
+    return { level: "ACTION", kind: "brief", label: "New project brief", sla: "one working day",
              why: "Someone is asking you to quote for paid work." };
   }
   if (subject.includes("hire") || subject.includes("project brief") ||
       /\b(quote|quotation|budget|hire you|work with you|retainer|invoice|proposal|pricing|cost)\b/.test(msg) ||
       /\b(build|develop|website|web app|webapp|landing page|calculator|dashboard|automate|automation|script|scrape|clean up|cleanup|migrate|integrat)\w*\b/.test(msg)) {
-    return { level: "ACTION", label: "Enquiry about paid work", sla: "one working day",
+    return { level: "ACTION", kind: "enquiry", label: "Enquiry about paid work", sla: "one working day",
              why: "This reads like a paying enquiry, not a general question." };
   }
   if (subject.includes("correction") || /\b(wrong|incorrect|error|mistake|outdated)\b/.test(msg)) {
-    return { level: "ACTION", label: "Possible correction", sla: "two working days",
+    return { level: "ACTION", kind: "correction", label: "Possible correction", sla: "two working days",
              why: "Someone thinks something on the site is factually wrong. Worth checking today." };
   }
   if (subject.includes("partnership") || subject.includes("republish")) {
-    return { level: "REVIEW", label: "Partnership or republishing request", sla: "two working days",
+    return { level: "REVIEW", kind: "partnership", label: "Partnership or republishing request", sla: "two working days",
              why: "Needs a judgement call from you." };
   }
   if (subject.includes("topic")) {
-    return { level: "FYI", label: "Topic suggestion", sla: "when convenient",
+    return { level: "FYI", kind: "topic", label: "Topic suggestion", sla: "when convenient",
              why: "A content idea. No reply strictly needed, but they will appreciate one." };
   }
-  return { level: "REVIEW", label: "General message", sla: "two working days",
+  return { level: "REVIEW", kind: "general", label: "General message", sla: "two working days",
            why: "Read it and decide." };
 }
 
 /* ---------- email bodies ---------- */
 function ackHtml(name, cls) {
   const first = (name || "").trim().split(/\s+/)[0] || "there";
-  const extra = cls.level === "ACTION" && cls.label.includes("brief")
-    ? `<p style="margin:0 0 14px">Your quote will include a firm fixed price in rupees, a delivery date, and a one-paragraph outline of the approach — so you can judge the thinking before committing anything.</p>
-       <p style="margin:0 0 14px">One thing that speeds this up: if the work involves your own figures or documents, send them in a <strong>digital, exportable format</strong> — XLSX, CSV, DOCX, a text-based PDF or a live link. Scans and photographs have to be re-keyed by hand, which adds days for no benefit to either of us.</p>`
-    : `<p style="margin:0 0 14px">If it turns out to be something I can answer in a line, I will. If it needs more than that, it will take a little longer and I will tell you so rather than leaving you waiting.</p>`;
+  const BODIES = {
+    resume: `<p style="margin:0 0 14px"><strong>If you have not already sent your CV, that is the only thing I need.</strong> Reply to this email with it attached, or send it to <a href="mailto:contact@futureproofblog.in" style="color:#c9304e">contact@futureproofblog.in</a>.</p>
+       <p style="margin:0 0 14px">Please send it as a <strong>Word file, a Google Doc link, or a PDF you can select text in</strong> — not a scan and not a photograph of a printed CV. Text read from an image carries errors that are hard to spot and expensive to find later. It does not need to be tidy; rough is fine.</p>
+       <p style="margin:0 0 14px">What happens then: I rewrite the top third of your CV — headline, summary and most recent role — and send it back <strong>free</strong>, so you judge the actual work rather than a sales page. If you like it, the full rewrite follows the same day. You pay nothing until you have seen the finished version and told me you are happy with it.</p>`,
+    brief: `<p style="margin:0 0 14px">Your quote will include a firm fixed price in rupees, a delivery date, and a one-paragraph outline of the approach — so you can judge the thinking before committing anything.</p>
+       <p style="margin:0 0 14px">One thing that speeds this up: if the work involves your own figures or documents, send them in a <strong>digital, exportable format</strong> — XLSX, CSV, DOCX, a text-based PDF or a live link. Scans and photographs have to be re-keyed by hand, which adds days for no benefit to either of us.</p>`,
+    review: `<p style="margin:0 0 14px">Nothing publishes automatically. I read every review, check it against the page or the work it refers to, and then publish it as written apart from trimming for length. <strong>Critical reviews get published too</strong> — a two-star review that explains what went wrong is more useful to the next reader than ten five-star ones, and it tells me what to fix.</p>
+       <p style="margin:0 0 14px">Your email address is not published, not sold, and <strong>not added to any mailing list</strong>. If you change your mind later, say so and the review comes down, no reason needed.</p>`
+  };
+  const generic = `<p style="margin:0 0 14px">If it turns out to be something I can answer in a line, I will. If it needs more than that, it will take a little longer and I will tell you so rather than leaving you waiting.</p>`;
+  const extra = BODIES[cls.kind] || generic;
 
   return `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#23262f;line-height:1.65">
   <div style="background:#1a1a2e;padding:22px 24px;border-radius:10px 10px 0 0">
@@ -108,8 +141,10 @@ function ackHtml(name, cls) {
   </div>
   <div style="border:1px solid #e3e6ee;border-top:0;border-radius:0 0 10px 10px;padding:26px 24px">
     <p style="margin:0 0 14px">Hello ${escapeHtml(first)},</p>
-    <p style="margin:0 0 14px">Your message reached me — this is an automatic note so you know it did not vanish into a form.</p>
-    <p style="margin:0 0 14px"><strong>You will hear back from me personally within ${cls.sla}</strong>, usually sooner. Not from an assistant and not from an autoresponder; I read and answer everything myself.</p>
+    <p style="margin:0 0 14px">${cls.kind === "review"
+      ? "Your review reached me — this is an automatic note so you know it did not vanish into a form. Thank you for taking the time; it is genuinely more useful than you think."
+      : "Your message reached me — this is an automatic note so you know it did not vanish into a form."}</p>
+    ${cls.kind === "review" ? "" : `<p style="margin:0 0 14px"><strong>You will hear back from me personally within ${cls.sla}</strong>, usually sooner. Not from an assistant and not from an autoresponder; I read and answer everything myself.</p>`}
     ${extra}
     <p style="margin:0 0 14px">In the meantime, the <a href="https://futureproofblog.in/tools" style="color:#c9304e">free calculators</a> and the <a href="https://futureproofblog.in/" style="color:#c9304e">article archive</a> are there if useful.</p>
     <p style="margin:0">— Geeta<br><span style="color:#6b7288;font-size:.9rem">FutureProof Blog · futureproofblog.in</span></p>
@@ -135,7 +170,7 @@ function notifyHtml(formName, data, cls, score) {
        <strong>Reply by:</strong> ${escapeHtml(cls.sla)} &nbsp;·&nbsp; <strong>Form:</strong> ${escapeHtml(formName)} &nbsp;·&nbsp; <strong>Spam score:</strong> ${score}</p>
     <table style="width:100%;border-collapse:collapse;font-size:.92rem;border:1px solid #eceff5">${rows}</table>
     ${data.email ? `<p style="margin:18px 0 0"><a href="mailto:${escapeHtml(data.email)}" style="background:#c9304e;color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block">Reply to ${escapeHtml(data.email)}</a></p>` : ""}
-    <p style="margin:16px 0 0;color:#98a0b2;font-size:.8rem">The sender has already had an automatic acknowledgement telling them to expect a reply within ${escapeHtml(cls.sla)}.</p>
+    <p style="margin:16px 0 0;color:#98a0b2;font-size:.8rem">${cls.kind === "review" ? "The reviewer has had an automatic acknowledgement explaining how reviews are handled." : `The sender has already had an automatic acknowledgement telling them to expect a reply within ${escapeHtml(cls.sla)}.`}</p>
   </div>
 </div>`;
 }
@@ -172,6 +207,13 @@ async function fileContact(key, email, name, formName) {
   if (!r.ok && r.status !== 204) console.log("brevo contact failed", r.status);
 }
 
+/* ---------- acknowledgement subject lines ---------- */
+const ACK_SUBJECTS = {
+  resume: "Your resume rewrite — send me your CV and the free sample comes back today",
+  brief:  "Your brief has reached me — quote coming within one working day",
+  review: "Thank you for the review — here is what happens to it next"
+};
+
 /* ---------- entry point ---------- */
 export default async (req) => {
   let body;
@@ -192,7 +234,7 @@ export default async (req) => {
     return new Response("no api key", { status: 200 });
   }
 
-  const score = spamScore(data);
+  const score = spamScore(formName, data);
   const cls = classify(formName, data);
   const email = String(data.email || "").trim();
   const name = String(data.name || "").trim();
@@ -213,12 +255,12 @@ export default async (req) => {
     jobs.push(send(key, {
       sender: FROM, replyTo: { email: FROM.email, name: FROM.name },
       to: [{ email, name: name || undefined }],
-      subject: cls.level === "ACTION" && cls.label.includes("brief")
-        ? "Your brief has reached me — quote coming within one working day"
-        : "Thanks — your message reached FutureProof Blog",
+      subject: ACK_SUBJECTS[cls.kind] || "Thanks — your message reached FutureProof Blog",
       htmlContent: ackHtml(name, cls)
     }));
-    jobs.push(fileContact(key, email, name, formName));
+    /* A reviewer is told in writing on /reviews that they are not added to
+       any list. Filing them in Brevo would break that promise, so don't. */
+    if (!cls.noList) jobs.push(fileContact(key, email, name, formName));
   }
 
   const flag = cls.level === "ACTION" ? "[ACTION NEEDED]" : cls.level === "REVIEW" ? "[REVIEW]" : "[FYI]";
