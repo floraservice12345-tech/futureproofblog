@@ -88,6 +88,22 @@
 /* justified body copy (sitewide, 18 Sep 2026) */
 .article-wrap p,.article-wrap li,.page-content p,.page-content li,.article-body p,.article-body li,.faq-item p,.fp-note p,.fp-alert p,.fp-key p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .article-wrap td,.article-wrap th,.article-wrap figcaption,.article-meta,.article-meta p,.art-meta,.article-wrap .tag,.article-hero p{text-align:inherit;-webkit-hyphens:manual;hyphens:manual}
+
+/* ---- image loading + mobile readability (18 Sep 2026) ---- */
+.article-hero-img,.article-wrap img,img.art-img,.art-img img,img.fp-img{
+  background:linear-gradient(135deg,#eef1f7 0%,#dde4f0 100%);
+  background-size:cover;min-height:60px}
+@media(max-width:768px){
+  .article-wrap p,.article-wrap li{font-size:15.5px;line-height:1.78}
+  .article-wrap td,.article-wrap th{font-size:14px}
+  .art-excerpt,.art-card p{font-size:14.5px;line-height:1.62}
+  .art-card h3,.art-title{font-size:16.5px;line-height:1.4}
+  header nav a,.nav-inner nav a,nav a{padding-top:12px;padding-bottom:12px}
+  header nav,.nav-inner nav{row-gap:5px}
+  .offer-cta,.btn,.cta-btn,button[type=submit]{min-height:46px;font-size:15px}
+  .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
+  .faq-item p{font-size:15.2px;line-height:1.75}
+}
 </style>
   <script src="/analytics.js"></script><script src="/newsletter.js" defer></script><script src="/ads.js" defer></script>
   <meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:image" content="https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=1200&amp;q=70"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Stacks of coins increasing in height from left to right, representing growing savings"><meta name="twitter:image" content="https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=1200&amp;q=70"><meta name="twitter:title" content="Record ₹32,297 Crore SIP Inflows in August 2026: What the AMFI Data Means"><meta name="twitter:description" content="SIPs hit an all-time high of ₹32,297 crore in August 2026 and crossed 10 crore accounts. What the AMFI data means before you chase last month's top fund."><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="preconnect" href="https://images.unsplash.com" crossorigin><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -115,7 +131,7 @@
 <div class="page-wrap">
   <main class="article-wrap">
 
-<figure style="margin:0 0 24px;max-width:900px"><img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Stacks of coins increasing in height from left to right, representing growing savings" loading="eager" fetchpriority="high" style="width:100%;height:auto;border-radius:12px;display:block"></figure>
+<figure style="margin:0 0 24px;max-width:900px"><img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Stacks of coins increasing in height from left to right, representing growing savings" loading="eager" fetchpriority="high" style="width:100%;height:auto;border-radius:12px;display:block" srcset="https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1768207450151-30c0bf8e8091?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 1000px"></figure>
 
 <div class="fp-key">
 <p><strong>Where things stand.</strong> India's mutual fund industry just posted its strongest month ever for retail savings. SIP contributions hit an all-time high of <strong>₹32,297 crore</strong> in August 2026, and the number of active SIP accounts crossed <strong>10 crore</strong> for the first time, according to AMFI data released on 10 September. Equity fund inflows jumped 19% from July. But the category that took in the most money &mdash; small-cap funds &mdash; is exactly the kind of thing flow data is worst at picking for you. Here's the full breakdown, and what to actually do with it.</p>

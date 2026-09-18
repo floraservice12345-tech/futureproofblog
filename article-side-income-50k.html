@@ -63,6 +63,22 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 /* justified body copy (sitewide, 18 Sep 2026) */
 .article-wrap p,.article-wrap li,.page-content p,.page-content li,.article-body p,.article-body li,.faq-item p,.fp-note p,.fp-alert p,.fp-key p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .article-wrap td,.article-wrap th,.article-wrap figcaption,.article-meta,.article-meta p,.art-meta,.article-wrap .tag,.article-hero p{text-align:inherit;-webkit-hyphens:manual;hyphens:manual}
+
+/* ---- image loading + mobile readability (18 Sep 2026) ---- */
+.article-hero-img,.article-wrap img,img.art-img,.art-img img,img.fp-img{
+  background:linear-gradient(135deg,#eef1f7 0%,#dde4f0 100%);
+  background-size:cover;min-height:60px}
+@media(max-width:768px){
+  .article-wrap p,.article-wrap li{font-size:15.5px;line-height:1.78}
+  .article-wrap td,.article-wrap th{font-size:14px}
+  .art-excerpt,.art-card p{font-size:14.5px;line-height:1.62}
+  .art-card h3,.art-title{font-size:16.5px;line-height:1.4}
+  header nav a,.nav-inner nav a,nav a{padding-top:12px;padding-bottom:12px}
+  header nav,.nav-inner nav{row-gap:5px}
+  .offer-cta,.btn,.cta-btn,button[type=submit]{min-height:46px;font-size:15px}
+  .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
+  .faq-item p{font-size:15.2px;line-height:1.75}
+}
 </style>
 <meta property="og:url" content="https://futureproofblog.in/article-side-income-50k">
 <meta name="robots" content="index,follow,max-image-preview:large">

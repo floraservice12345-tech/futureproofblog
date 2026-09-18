@@ -88,6 +88,22 @@
 /* justified body copy (sitewide, 18 Sep 2026) */
 .article-wrap p,.article-wrap li,.page-content p,.page-content li,.article-body p,.article-body li,.faq-item p,.fp-note p,.fp-alert p,.fp-key p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .article-wrap td,.article-wrap th,.article-wrap figcaption,.article-meta,.article-meta p,.art-meta,.article-wrap .tag,.article-hero p{text-align:inherit;-webkit-hyphens:manual;hyphens:manual}
+
+/* ---- image loading + mobile readability (18 Sep 2026) ---- */
+.article-hero-img,.article-wrap img,img.art-img,.art-img img,img.fp-img{
+  background:linear-gradient(135deg,#eef1f7 0%,#dde4f0 100%);
+  background-size:cover;min-height:60px}
+@media(max-width:768px){
+  .article-wrap p,.article-wrap li{font-size:15.5px;line-height:1.78}
+  .article-wrap td,.article-wrap th{font-size:14px}
+  .art-excerpt,.art-card p{font-size:14.5px;line-height:1.62}
+  .art-card h3,.art-title{font-size:16.5px;line-height:1.4}
+  header nav a,.nav-inner nav a,nav a{padding-top:12px;padding-bottom:12px}
+  header nav,.nav-inner nav{row-gap:5px}
+  .offer-cta,.btn,.cta-btn,button[type=submit]{min-height:46px;font-size:15px}
+  .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
+  .faq-item p{font-size:15.2px;line-height:1.75}
+}
 </style>
   <script src="/analytics.js"></script><script src="/newsletter.js" defer></script><script src="/ads.js" defer></script>
   <meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:image" content="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=1200&amp;q=70"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Empty legislative council chamber — 57th GST Council meeting postponed to 7 October 2026"><meta name="twitter:image" content="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=1200&amp;q=70"><meta name="twitter:title" content="57th GST Council Meeting Postponed to 7 October 2026: What's Confirmed"><meta name="twitter:description" content="The 57th GST Council meeting, due today, was postponed to 7 October 2026 over a BRICS summit clash — here is what is confirmed on the new date and agenda so far."><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="preconnect" href="https://images.unsplash.com" crossorigin><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -115,7 +131,7 @@
 <div class="page-wrap">
   <main class="article-wrap">
 
-<figure style="margin:0 0 24px;max-width:900px"><img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Empty legislative council chamber with rows of seats — representative image of a government council meeting hall" loading="eager" fetchpriority="high" style="width:100%;height:auto;border-radius:12px;display:block"><figcaption style="text-align:center;font-size:.85rem;color:#777;margin-top:8px">Photo via Unsplash (free to use)</figcaption></figure>
+<figure style="margin:0 0 24px;max-width:900px"><img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Empty legislative council chamber with rows of seats — representative image of a government council meeting hall" loading="eager" fetchpriority="high" style="width:100%;height:auto;border-radius:12px;display:block" srcset="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 1000px"><figcaption style="text-align:center;font-size:.85rem;color:#777;margin-top:8px">Photo via Unsplash (free to use)</figcaption></figure>
 
 <div class="fp-key">
 <p><strong>Where things stand on 12 September 2026.</strong> The 57th GST Council meeting was due to be held today. It has been <strong>postponed to 7 October 2026</strong>, reportedly because it clashed with the 18th BRICS Leaders' Summit in New Delhi. The preparatory officers' meeting has also moved, to 5&ndash;6 October. <strong>No official agenda has been published yet</strong> &mdash; everything being reported about what the Council might discuss is sourced to unnamed officials or pre-postponement speculation, not a confirmed document, and this article treats it that way throughout.</p>
@@ -150,7 +166,7 @@
 
 <p>Notice what is absent from every version of this reported list: nothing specific to freelancers, sole proprietors or small individual taxpayers. That gap is addressed directly below rather than glossed over.</p>
 
-<figure style="margin:24px auto;max-width:900px"><img decoding="async" width="1200" height="750" class="article-hero-img" src="https://images.unsplash.com/photo-1772588627354-ca3617853217?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Tax forms, a calculator and a pen on a desk, representing GST compliance paperwork" loading="lazy" style="width:100%;height:auto;border-radius:12px;display:block"><figcaption style="text-align:center;font-size:.85rem;color:#777;margin-top:8px">Photo via Unsplash (free to use)</figcaption></figure>
+<figure style="margin:24px auto;max-width:900px"><img decoding="async" width="1200" height="750" class="article-hero-img" src="https://images.unsplash.com/photo-1772588627354-ca3617853217?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="Tax forms, a calculator and a pen on a desk, representing GST compliance paperwork" loading="lazy" style="width:100%;height:auto;border-radius:12px;display:block" srcset="https://images.unsplash.com/photo-1772588627354-ca3617853217?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1772588627354-ca3617853217?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1772588627354-ca3617853217?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 1000px"><figcaption style="text-align:center;font-size:.85rem;color:#777;margin-top:8px">Photo via Unsplash (free to use)</figcaption></figure>
 
 <h2>The freelancer and small-taxpayer question, answered honestly</h2>
 

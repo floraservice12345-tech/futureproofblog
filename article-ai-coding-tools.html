@@ -112,6 +112,22 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 /* justified body copy (sitewide, 18 Sep 2026) */
 .article-wrap p,.article-wrap li,.page-content p,.page-content li,.article-body p,.article-body li,.faq-item p,.fp-note p,.fp-alert p,.fp-key p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .article-wrap td,.article-wrap th,.article-wrap figcaption,.article-meta,.article-meta p,.art-meta,.article-wrap .tag,.article-hero p{text-align:inherit;-webkit-hyphens:manual;hyphens:manual}
+
+/* ---- image loading + mobile readability (18 Sep 2026) ---- */
+.article-hero-img,.article-wrap img,img.art-img,.art-img img,img.fp-img{
+  background:linear-gradient(135deg,#eef1f7 0%,#dde4f0 100%);
+  background-size:cover;min-height:60px}
+@media(max-width:768px){
+  .article-wrap p,.article-wrap li{font-size:15.5px;line-height:1.78}
+  .article-wrap td,.article-wrap th{font-size:14px}
+  .art-excerpt,.art-card p{font-size:14.5px;line-height:1.62}
+  .art-card h3,.art-title{font-size:16.5px;line-height:1.4}
+  header nav a,.nav-inner nav a,nav a{padding-top:12px;padding-bottom:12px}
+  header nav,.nav-inner nav{row-gap:5px}
+  .offer-cta,.btn,.cta-btn,button[type=submit]{min-height:46px;font-size:15px}
+  .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
+  .faq-item p{font-size:15.2px;line-height:1.75}
+}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FutureProof Blog">
@@ -131,7 +147,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   <h1>Best AI Coding Tools for Indian Developers in 2026: GitHub Copilot, Cursor, Claude &amp; More</h1>
   <div class="art-meta">📅 July 2026 &nbsp;·&nbsp; ⏱ 12 min read &nbsp;·&nbsp; 🖊️ Geeta Yadav</div>
 </div>
-<img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Developer coding on laptop — AI coding tools for Indian developers 2026" loading="eager" fetchpriority="high">
+<img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Developer coding on laptop — AI coding tools for Indian developers 2026" loading="eager" fetchpriority="high" srcset="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 1000px">
 <div class="article-wrap">
   <main class="article-body">
 
@@ -148,13 +164,13 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     </ol></div>
 
     <h2 id="why">Why AI Coding Tools Matter for Indian Developers</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Code on screen — Indian developer workspace AI tools" loading="lazy"><figcaption>India has over 5 million software developers — the second largest pool in the world. AI tools are reshaping how they work. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Code on screen — Indian developer workspace AI tools" loading="lazy" srcset="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>India has over 5 million software developers — the second largest pool in the world. AI tools are reshaping how they work. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>India has over 5 million software developers — the second largest pool globally. AI coding tools are no longer experimental — they are becoming a baseline professional skill, and developers who use them are measurably more productive. Studies consistently show AI-assisted developers complete tasks 30–55% faster on average.</p>
     <p>But the Indian developer market has specific needs: many work on legacy systems, enterprise Java and .NET codebases, Indian government technology stacks, and mobile-first products for low-bandwidth environments. This guide evaluates each tool against real Indian developer scenarios.</p>
     <div class="info-box"><strong>📌 Tested on:</strong> Python, JavaScript, Java, React, Node.js, SQL, and common Indian IT enterprise stacks.</div>
 
     <h2 id="copilot">GitHub Copilot — The Industry Standard</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="GitHub code repository — Copilot AI coding assistant" loading="lazy"><figcaption>GitHub Copilot integrates directly into VS Code, the most widely used editor among Indian developers. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="GitHub code repository — Copilot AI coding assistant" loading="lazy" srcset="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>GitHub Copilot integrates directly into VS Code, the most widely used editor among Indian developers. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>GitHub Copilot, built on OpenAI's Codex model, was the tool that started the AI coding revolution. It integrates directly into VS Code, JetBrains IDEs, and Neovim — covering virtually all editors used by Indian developers.</p>
 <div class="fp-ad" data-fp-ad="top" style="margin:2rem 0"></div>
 
@@ -169,7 +185,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     <p><strong>Limitations:</strong> Context is limited to the current file. It does not understand your full multi-file project without Copilot Workspace (premium feature).</p>
 
     <h2 id="cursor">Cursor IDE — The AI-Native Code Editor</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Modern laptop development environment — Cursor IDE AI coding" loading="lazy"><figcaption>Cursor IDE is a VS Code fork with AI built into its core — it understands your entire codebase, not just the current file. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Modern laptop development environment — Cursor IDE AI coding" loading="lazy" srcset="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>Cursor IDE is a VS Code fork with AI built into its core — it understands your entire codebase, not just the current file. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>Cursor is a fork of VS Code with AI deeply integrated at every level. Unlike Copilot (which is a plugin), Cursor is an entire editor built around AI assistance. Its key differentiator: it can read and understand your <em>entire codebase</em> at once, not just the current file.</p>
     <p><strong>Standout features:</strong></p>
     <ul>
@@ -200,7 +216,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     <p><strong>Pricing:</strong> Available on ChatGPT Plus at approximately ₹1,650/month.</p>
 
     <h2 id="replit">Replit AI — Best for Beginners and Rapid Prototyping</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Student learning to code on laptop — Replit AI for beginners" loading="lazy"><figcaption>Replit AI lets beginners describe what they want to build and generates a working app in the browser — no setup required. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Student learning to code on laptop — Replit AI for beginners" loading="lazy" srcset="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>Replit AI lets beginners describe what they want to build and generates a working app in the browser — no setup required. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>Replit is a browser-based IDE with an integrated AI that can build entire projects from a description. You do not need to install anything — it runs in your browser, which makes it ideal for beginners or developers who want to prototype quickly without environment setup.</p>
     <p><strong>Best for:</strong> Students, bootcamp learners, rapid prototyping, building simple web apps and scripts without local setup.</p>
 <div class="fp-ad" data-fp-ad="middle" style="margin:2rem 0"></div>

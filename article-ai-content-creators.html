@@ -112,6 +112,22 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 /* justified body copy (sitewide, 18 Sep 2026) */
 .article-wrap p,.article-wrap li,.page-content p,.page-content li,.article-body p,.article-body li,.faq-item p,.fp-note p,.fp-alert p,.fp-key p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .article-wrap td,.article-wrap th,.article-wrap figcaption,.article-meta,.article-meta p,.art-meta,.article-wrap .tag,.article-hero p{text-align:inherit;-webkit-hyphens:manual;hyphens:manual}
+
+/* ---- image loading + mobile readability (18 Sep 2026) ---- */
+.article-hero-img,.article-wrap img,img.art-img,.art-img img,img.fp-img{
+  background:linear-gradient(135deg,#eef1f7 0%,#dde4f0 100%);
+  background-size:cover;min-height:60px}
+@media(max-width:768px){
+  .article-wrap p,.article-wrap li{font-size:15.5px;line-height:1.78}
+  .article-wrap td,.article-wrap th{font-size:14px}
+  .art-excerpt,.art-card p{font-size:14.5px;line-height:1.62}
+  .art-card h3,.art-title{font-size:16.5px;line-height:1.4}
+  header nav a,.nav-inner nav a,nav a{padding-top:12px;padding-bottom:12px}
+  header nav,.nav-inner nav{row-gap:5px}
+  .offer-cta,.btn,.cta-btn,button[type=submit]{min-height:46px;font-size:15px}
+  .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
+  .faq-item p{font-size:15.2px;line-height:1.75}
+}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FutureProof Blog">
@@ -131,7 +147,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   <h1>AI Tools for Indian Content Creators in 2026: YouTube, Instagram, Blogs &amp; Podcasts</h1>
   <div class="art-meta">📅 July 2026 &nbsp;·&nbsp; ⏱ 13 min read &nbsp;·&nbsp; 🖊️ Geeta Yadav</div>
 </div>
-<img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Content creator recording video — AI tools for Indian YouTubers and Instagram creators 2026" loading="eager" fetchpriority="high">
+<img decoding="async" width="1200" height="630" class="article-hero-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Content creator recording video — AI tools for Indian YouTubers and Instagram creators 2026" loading="eager" fetchpriority="high" srcset="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 1000px">
 <div class="article-wrap">
   <main class="article-body">
 
@@ -148,12 +164,12 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     </ol></div>
 
     <h2 id="landscape">AI Is Reshaping Content Creation in India</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Content creator with camera and laptop — Indian YouTube creator AI tools" loading="lazy"><figcaption>India has one of the world's fastest-growing creator economies, with over 1,000 channels crossing 1 million subscribers. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Content creator with camera and laptop — Indian YouTube creator AI tools" loading="lazy" srcset="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>India has one of the world's fastest-growing creator economies, with over 1,000 channels crossing 1 million subscribers. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>India's creator economy is booming. With over 500 million internet users, a rapidly growing vernacular content market, and some of the world's most engaged social media audiences, Indian creators have a massive opportunity. AI tools are now making it possible for individual creators to produce content at the quality and volume that previously required full teams.</p>
     <p>This guide covers the AI tools that are actually moving the needle for Indian creators — not just the ones that are most marketed.</p>
 
     <h2 id="writing">AI Writing Tools for Blogs and Video Scripts</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Blogger writing on laptop — AI content writing tools India" loading="lazy"><figcaption>AI writing tools can dramatically speed up blog and script production while maintaining your unique voice. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Blogger writing on laptop — AI content writing tools India" loading="lazy" srcset="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>AI writing tools can dramatically speed up blog and script production while maintaining your unique voice. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>The best AI writing tools for Indian content creators:</p>
 <div class="fp-ad" data-fp-ad="top" style="margin:2rem 0"></div>
 
@@ -167,7 +183,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     <div class="info-box"><strong>⚠️ Important:</strong> Always rewrite AI-generated content in your own voice. Google's helpful content guidelines penalise AI content that provides no unique value. Your personal experience and perspective are what make content rank and retain audiences.</div>
 
     <h2 id="thumbnails">AI Thumbnail and Image Creation</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Design tools on computer screen — AI thumbnail creation for YouTube" loading="lazy"><figcaption>A great thumbnail can double your YouTube click-through rate. AI tools make professional thumbnail creation accessible to every creator. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Design tools on computer screen — AI thumbnail creation for YouTube" loading="lazy" srcset="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>A great thumbnail can double your YouTube click-through rate. AI tools make professional thumbnail creation accessible to every creator. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>Thumbnails are critical for YouTube success — a better thumbnail directly increases click-through rate. AI tools have democratised professional thumbnail creation:</p>
     <ul>
       <li><strong>Canva AI (free tier)</strong> — The best starting point for Indian creators. Canva's Magic Design generates thumbnail templates, Magic Write creates text, and the AI image generator creates custom backgrounds. Most Indian creators can get excellent results on the free tier.</li>
@@ -177,7 +193,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     </ul>
 
     <h2 id="video">AI Video Editing and Generation Tools</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1574717024453-354056aebe12?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Video editing setup — AI video tools for content creators" loading="lazy"><figcaption>AI video tools are reducing editing time from hours to minutes for many common content formats. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1574717024453-354056aebe12?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Video editing setup — AI video tools for content creators" loading="lazy" srcset="https://images.unsplash.com/photo-1574717024453-354056aebe12?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1574717024453-354056aebe12?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1574717024453-354056aebe12?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>AI video tools are reducing editing time from hours to minutes for many common content formats. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>AI video tools are rapidly changing what solo creators can produce:</p>
     <ul>
       <li><strong>CapCut (free)</strong> — The most popular video editor among Indian creators has powerful AI features: auto-subtitles, AI background removal, auto-reframe for different aspect ratios (16:9 to 9:16 for Reels automatically), and AI-powered noise reduction. Free and widely used.</li>
@@ -197,7 +213,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     </ul>
 
     <h2 id="seo">AI for SEO and Content Strategy</h2>
-    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c0e8?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Analytics dashboard on screen — AI SEO tools for content creators" loading="lazy"><figcaption>AI-powered SEO tools help creators find topics that viewers are actually searching for. (Photo: Unsplash — free commercial use)</figcaption></figure>
+    <figure><img decoding="async" width="600" height="400" src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c0e8?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Analytics dashboard on screen — AI SEO tools for content creators" loading="lazy" srcset="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c0e8?auto=format&amp;fit=crop&amp;w=480&amp;q=60 480w, https://images.unsplash.com/photo-1432888622747-4eb9a8f2c0e8?auto=format&amp;fit=crop&amp;w=800&amp;q=65 800w, https://images.unsplash.com/photo-1432888622747-4eb9a8f2c0e8?auto=format&amp;fit=crop&amp;w=1200&amp;q=70 1200w" sizes="(max-width:768px) 100vw, 800px" class="fp-img"><figcaption>AI-powered SEO tools help creators find topics that viewers are actually searching for. (Photo: Unsplash — free commercial use)</figcaption></figure>
     <p>Creating great content means nothing if nobody finds it. AI SEO tools for Indian creators:</p>
     <ul>
       <li><strong>VidIQ (free tier)</strong> — YouTube-specific AI tool that shows search volumes, competition scores, and suggests video titles and tags optimised for the algorithm. Essential for YouTube creators.</li>
