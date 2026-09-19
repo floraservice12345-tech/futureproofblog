@@ -9,3 +9,15 @@
 
 # common typo / legacy paths
 /index.html   /   301!
+
+# deleted articles still being crawled — found in Search Console 19 Sep 2026.
+# Each points at the closest living page so the link equity and any stray
+# traffic land somewhere useful instead of on a 404.
+/article-ai-skills-2030   /article-ai-proof-job   301!
+/article-ai-skills-2030.html   /article-ai-proof-job   301!
+/article-little-bird-ai   /article-ai-tools-best   301!
+/article-little-bird-ai.html   /article-ai-tools-best   301!
+/article-ai-tools-professionals   /article-ai-tools-save-10-hours-week   301!
+/article-ai-tools-professionals.html   /article-ai-tools-save-10-hours-week   301!
+/article-fable-5   /article-ai-in-games   301!
+/article-fable-5.html   /article-ai-in-games   301!
