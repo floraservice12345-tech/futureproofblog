@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Resume–Job Match Checker | FutureProof Blog</title>
+<meta name="description" content="Compare keywords in your resume and a job description privately in your browser. See exact overlaps and gaps; your text is never uploaded.">
+<meta name="keywords" content="resume job description match checker India, resume keyword checker, CV job match tool, ATS resume keywords">
+<meta name="author" content="Geeta Yadav">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://futureproofblog.in/resume-match-checker">
+<meta property="og:site_name" content="FutureProof Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Resume–Job Match Checker">
+<meta property="og:description" content="Check exact resume and job-description keyword overlap in your browser. Private, free and no sign-up.">
+<meta property="og:url" content="https://futureproofblog.in/resume-match-checker">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1a1a2e">
+<script src="/analytics.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Resume–Job Match Checker","url":"https://futureproofblog.in/resume-match-checker","applicationCategory":"BusinessApplication","operatingSystem":"Any","browserRequirements":"Requires a modern browser with JavaScript enabled","description":"A free, private browser tool that compares explicit keywords in a resume and job description. It reports wording overlap, not ATS compatibility or hiring outcomes.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"isPartOf":{"@id":"https://futureproofblog.in/#website"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this predict an ATS score or whether I will get an interview?","acceptedAnswer":{"@type":"Answer","text":"No. It counts exact wording overlap for selected terms only. Applicant tracking systems differ, and recruiters consider much more than keywords."}},{"@type":"Question","name":"Is my resume uploaded or stored?","acceptedAnswer":{"@type":"Answer","text":"No. The comparison runs in this browser tab. The text is not sent to a server or saved by this tool."}},{"@type":"Question","name":"Should I add every missing keyword?","acceptedAnswer":{"@type":"Answer","text":"Only add a skill or experience if it is accurate. Never claim a qualification or result you do not have."}}]}
+</script>
+<style>
+:root{--navy:#1a1a2e;--blue:#0f3460;--pink:#e94560;--ink:#24283a;--muted:#60687a;--line:#e2e6ef;--paper:#f5f7fb;--green:#087f5b}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#fff}
+a{color:var(--pink)}
+header{background:var(--navy);padding:0 22px}
+.nav{max-width:1120px;height:64px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:1.2rem;color:#ff6278;text-decoration:none;font-weight:800;white-space:nowrap}
+nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+nav a{color:#eee;text-decoration:none;font-size:.88rem}
+nav a:hover{color:#ff8293}
+.hero{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:52px 22px 44px}
+.hero-inner{max-width:980px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:#ff8093;font-size:.72rem;font-weight:800}
+h1{font-size:clamp(2rem,5vw,3.35rem);line-height:1.1;max-width:760px;margin:10px 0 15px;letter-spacing:-.035em}
+.hero p{max-width:740px;color:#e0e8f7;font-size:1.05rem;margin:0}
+.wrap{max-width:980px;margin:auto;padding:32px 20px 58px}
+.notice{border:1px solid #b7ddcf;background:#f1faf6;color:#205b49;padding:13px 16px;border-radius:10px;margin-bottom:22px;font-size:.92rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{border:1px solid var(--line);border-radius:14px;background:#fff;padding:20px;box-shadow:0 5px 20px rgba(26,26,46,.045)}
+.panel h2{font-size:1.05rem;margin:0 0 8px;color:var(--navy)}
+.panel p{margin:0 0 12px;color:var(--muted);font-size:.88rem}
+textarea{display:block;width:100%;min-height:245px;border:1px solid #cfd5e1;border-radius:9px;padding:13px;color:var(--ink);font:inherit;font-size:.93rem;line-height:1.55;resize:vertical}
+textarea:focus{outline:3px solid rgba(233,69,96,.15);border-color:var(--pink)}
+.count{font-size:.78rem;color:#7a8190;text-align:right;margin-top:5px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+button,.button{border:0;border-radius:8px;padding:12px 18px;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.primary{background:var(--pink);color:#fff}
+.secondary{background:#eef1f7;color:var(--navy)}
+button:hover,.button:hover{filter:brightness(.96)}
+button:focus-visible,.button:focus-visible{outline:3px solid #ff9aaa;outline-offset:2px}
+#message{min-height:1.5em;color:#a53535;font-size:.9rem}
+.results{display:none;margin-top:18px}
+.result-head{display:grid;grid-template-columns:130px 1fr;gap:20px;align-items:center;background:var(--paper);border-radius:12px;padding:18px;margin-bottom:16px}
+.score{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:#fff;border:8px solid #d8e3ef;text-align:center;color:var(--navy);font-weight:900;font-size:1.75rem}
+.score small{display:block;font-size:.65rem;color:var(--muted);font-weight:700;line-height:1.15}
+.bar-track{height:10px;background:#e1e6ef;border-radius:8px;overflow:hidden;margin:8px 0}
+.bar{height:100%;width:0;background:var(--green);transition:width .25s}
+.term-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.term-box{border:1px solid var(--line);border-radius:12px;padding:16px}
+.term-box h3{font-size:.95rem;margin:0 0 11px}
+.term-list{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none}
+.term-list li{font-size:.82rem;padding:5px 9px;border-radius:999px;background:#eff8f4;color:#185b43}
+#missingList li{background:#fff3e8;color:#8a4a0b}
+.tips{margin:16px 0 0;padding:16px 20px;border-radius:12px;background:#fff9e9;border:1px solid #f0e1b2}
+.tips h3{margin:0 0 8px;font-size:.95rem}
+.tips ul{margin:0;padding-left:20px}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.cta{margin-top:32px;padding:26px;border-radius:14px;background:var(--navy);color:#fff}
+.cta h2{margin:0 0 8px;font-size:1.35rem}
+.cta p{margin:0 0 16px;color:#e1e4ee;max-width:720px}
+.cta .button{background:var(--pink);color:#fff}
+.faq{margin-top:34px}
+.faq h2{color:var(--navy)}
+.faq details{border-bottom:1px solid var(--line);padding:13px 0}
+.faq summary{cursor:pointer;font-weight:750}
+.faq details p{color:var(--muted);margin:8px 0 0}
+footer{background:var(--navy);color:#d7d9e2;text-align:center;padding:22px;font-size:.82rem}
+footer a{color:#ff8093}
+@media(max-width:720px){.nav{height:auto;min-height:62px;padding:12px 0;align-items:flex-start;flex-direction:column}nav{justify-content:flex-start;gap:7px 14px}.hero{padding:38px 18px}.wrap{padding:24px 14px 45px}.grid,.term-cols{grid-template-columns:1fr}.result-head{grid-template-columns:92px 1fr;gap:14px}.score{width:86px;height:86px;font-size:1.35rem;border-width:6px}textarea{min-height:200px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><a class="logo" href="/">FutureProof Blog</a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/tools">Free Tools</a><a href="/resume">Resume Fix</a><a href="/hire-me">Hire Me</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><div class="eyebrow">Free · Private · No sign-up</div><h1>See which words your resume shares with a job description.</h1><p>Compare explicit keywords locally, then decide what to improve. This is a wording-overlap check, not an ATS score, hiring prediction or substitute for your judgement.</p></div></section>
+<main class="wrap">
+<div class="notice"><strong>Your text stays on this device.</strong> The comparison runs in this browser tab; resume and job-description text are not uploaded or saved by this tool. Paste only what you are comfortable handling on this device.</div>
+<div class="grid">
+<section class="panel"><h2 id="resumeHeading">1. Your resume text</h2><p>Paste the text version of your CV. You can remove your phone, address and other personal details first.</p><label class="sr-only" for="resumeText">Resume text</label><textarea id="resumeText" maxlength="20000" placeholder="Paste your resume text here..." aria-describedby="resumeCount"></textarea><div class="count" id="resumeCount">0 / 20,000 characters</div></section>
+<section class="panel"><h2 id="jobHeading">2. The job description</h2><p>Paste the role requirements. The tool checks important exact words and phrases it can identify.</p><label class="sr-only" for="jobText">Job description text</label><textarea id="jobText" maxlength="20000" placeholder="Paste the job description here..." aria-describedby="jobCount"></textarea><div class="count" id="jobCount">0 / 20,000 characters</div></section>
+</div>
+<div class="actions"><button class="primary" id="analyzeButton" type="button">Check keyword overlap</button><button class="secondary" id="demoButton" type="button">Try a fictional example</button><button class="secondary" id="clearButton" type="button">Clear text</button></div>
+<div id="message" role="status" aria-live="polite"></div>
+<section class="results" id="results" aria-labelledby="resultsHeading" aria-live="polite">
+<div class="result-head"><div class="score" id="scoreValue"><span>0%<small>keyword overlap</small></span></div><div><h2 id="resultsHeading">Exact wording shared with this job description</h2><p id="scoreSummary"></p><div class="bar-track" aria-hidden="true"><div class="bar" id="scoreBar"></div></div><p id="wordSummary"></p></div></div>
+<div class="term-cols"><section class="term-box"><h3>Found in both</h3><ul class="term-list" id="matchedList"></ul></section><section class="term-box"><h3>In the job description, not found in the resume</h3><ul class="term-list" id="missingList"></ul></section></div>
+<div class="tips"><h3>Use the result carefully</h3><ul><li>If a missing term describes something you have genuinely done, consider using the job's wording in a relevant bullet or skills section.</li><li>Never add a skill, qualification, metric or achievement unless it is true and you can explain it in an interview.</li><li>For each role, make the evidence clear: what you did, how you did it and the result. Use real figures only.</li></ul></div>
+<div class="result-actions"><button class="secondary" id="copyButton" type="button">Copy summary</button><button class="secondary" id="downloadButton" type="button">Download summary</button></div>
+</section>
+<section class="cta"><h2>Want a person to improve the actual CV?</h2><p>FutureProof Blog offers a free sample rewrite of the top section before you decide. The full resume rewrite starts at ₹1,500; your experience and claims stay based on the facts you provide.</p><a class="button" href="/resume#send">Request the free sample</a></section>
+<section class="faq"><h2>About this checker</h2><details><summary>Does the percentage mean my resume will pass an ATS?</summary><p>No. It is only the share of selected job-description terms that appear verbatim in your resume. Different systems parse documents differently, and employers evaluate context, evidence and fit—not a score from this page.</p></details><details><summary>Does the tool store or upload my CV?</summary><p>No. Analysis happens in your browser. This page does not send the text to a server, save it in browser storage or include it in analytics events.</p></details><details><summary>Should I copy every missing keyword into my CV?</summary><p>No. Add a term only if it accurately describes your skills or experience. Keyword stuffing and invented claims can hurt your application and your credibility.</p></details><details><summary>Why might a relevant skill be missing from the results?</summary><p>This lightweight checker compares exact words and common phrases. It does not understand synonyms, abbreviations or context. Read the job description yourself and use the tool as a prompt to review, not as a final verdict.</p></details></section>
+</main>
+<footer><p>© <span id="year"></span> FutureProof Blog · <a href="/privacy-policy">Privacy</a> · <a href="/contact">Contact</a></p></footer>
+<script>
+(function(){
+"use strict";
+var skills=["project management","stakeholder management","business analysis","data analysis","data visualization","data visualisation","financial modelling","financial modeling","financial analysis","financial reporting","content writing","content strategy","copywriting","digital marketing","search engine optimization","search engine optimisation","social media","market research","customer support","customer service","customer relationship management","account management","salesforce","microsoft excel","power query","power bi","google analytics","pivot tables","spreadsheet automation","supply chain","process improvement","quality assurance","risk management","team leadership","people management","curriculum development","classroom management","lesson planning","video editing","wordpress","web development","html css","html","css","javascript","react","python","sql","machine learning","artificial intelligence","generative ai","excel","canva","communication","problem solving","project delivery","product management","financial modelling","presentation design","search engine marketing","email marketing","paid advertising","content editing","technical writing","data cleaning"];
+var stopWords=new Set(("about above after again against all also an and any are as at be because been before being between both but by can candidate candidates capable company looking role roles responsibilities responsibility required requirements preferred qualifications qualification job work working experience years year including include strong excellent effective good ability skills skill knowledge understanding familiar familiarity proficient desirable plus nice using use used must will within across into through from for the with that this these those their they them your you our we who whom what which when where how have has had not may should would could its it is of on or other over per such than then there to up very while who").split(" "));
+var resume=document.getElementById("resumeText"), job=document.getElementById("jobText"), message=document.getElementById("message"), results=document.getElementById("results");
+function normalize(value){return String(value||"").toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9+#.]+/g," ").replace(/\s+/g," ").trim()}
+function includesTerm(haystack,term){return (" "+haystack+" ").indexOf(" "+normalize(term)+" ")!==-1}
+function countWords(value){var words=String(value||"").trim().match(/[a-z0-9+#.]+/gi);return words?words.length:0}
+function renderList(element,items,emptyText){element.textContent="";if(!items.length){var li=document.createElement("li");li.textContent=emptyText;element.appendChild(li);return}items.forEach(function(item){var li=document.createElement("li");li.textContent=item;element.appendChild(li)})}
+function updateCount(field,target){document.getElementById(target).textContent=field.value.length.toLocaleString("en-IN")+" / 20,000 characters"}
+resume.addEventListener("input",function(){updateCount(resume,"resumeCount")});
+job.addEventListener("input",function(){updateCount(job,"jobCount")});
+document.getElementById("analyzeButton").addEventListener("click",function(){
+message.textContent="";
+if(resume.value.trim().length<30||job.value.trim().length<30){message.textContent="Paste at least a few lines of both texts so the comparison has enough context.";return}
+var r=normalize(resume.value),j=normalize(job.value),foundPhrases=skills.filter(function(term){return term.indexOf(" ")!==-1&&includesTerm(j,term)}),phraseWords=new Set();
+foundPhrases.forEach(function(phrase){phrase.split(" ").forEach(function(word){phraseWords.add(word)})});
+var counts={};j.split(" ").forEach(function(word){if(word.length>=3&&!stopWords.has(word)&&!/^\d+$/.test(word)){counts[word]=(counts[word]||0)+1}});
+var singleSkills=new Set(skills.filter(function(term){return term.indexOf(" ")===-1}));
+var singles=Object.keys(counts).filter(function(word){return !phraseWords.has(word)||singleSkills.has(word)}).sort(function(a,b){return counts[b]-counts[a]||a.localeCompare(b)});
+var terms=Array.from(new Set(foundPhrases.concat(singles))).slice(0,20);
+var matched=terms.filter(function(term){return includesTerm(r,term)}),missing=terms.filter(function(term){return !includesTerm(r,term)});
+if(!terms.length){message.textContent="I could not find enough specific keywords in that job description. Try pasting the responsibilities and requirements sections.";return}
+var score=Math.round(matched.length/terms.length*100);
+document.getElementById("scoreValue").innerHTML="<span>"+score+"%<small>keyword overlap</small></span>";
+document.getElementById("scoreSummary").textContent=matched.length+" of "+terms.length+" selected terms from the job description appear verbatim in the resume.";
+document.getElementById("scoreBar").style.width=score+"%";
+document.getElementById("wordSummary").textContent="Text length: "+countWords(resume.value).toLocaleString("en-IN")+" resume words and "+countWords(job.value).toLocaleString("en-IN")+" job-description words. This is not an ATS pass probability.";
+renderList(document.getElementById("matchedList"),matched,"No selected terms matched exactly.");
+renderList(document.getElementById("missingList"),missing,"All selected terms matched; review the evidence and context yourself.");
+results.style.display="block";results.scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("demoButton").addEventListener("click",function(){
+resume.value="Digital marketing executive with 3 years of experience managing SEO content, Google Analytics reports and social media calendars. Used Excel to track campaign performance and shared monthly reports with stakeholders. Coordinated content production with a five-person team.";
+job.value="Digital Marketing Executive. Requirements: 3+ years of experience in SEO, content strategy, Google Analytics, Excel reporting and social media. Strong communication and stakeholder management skills. Coordinate a content calendar and present campaign performance to the team.";
+updateCount(resume,"resumeCount");updateCount(job,"jobCount");message.textContent="Fictional sample text loaded. Click Check keyword overlap to see how it works.";resume.focus()
+});
+document.getElementById("clearButton").addEventListener("click",function(){
+resume.value="";job.value="";updateCount(resume,"resumeCount");updateCount(job,"jobCount");results.style.display="none";message.textContent="Both fields cleared.";resume.focus()
+});
+function summaryText(){
+var score=document.getElementById("scoreValue").textContent.replace(/\s+/g," ").trim();
+var matched=Array.prototype.map.call(document.getElementById("matchedList").children,function(li){return li.textContent}).join(", ");
+var missing=Array.prototype.map.call(document.getElementById("missingList").children,function(li){return li.textContent}).join(", ");
+return "Resume–job keyword overlap: "+score+"\nMatched terms: "+matched+"\nTerms to review (add only if accurate): "+missing+"\nThis is exact wording overlap, not an ATS score or hiring prediction."
+}
+document.getElementById("copyButton").addEventListener("click",function(){
+navigator.clipboard.writeText(summaryText()).then(function(){message.textContent="Summary copied."}).catch(function(){message.textContent="Copy was blocked by this browser. You can download the summary instead."})
+});
+document.getElementById("downloadButton").addEventListener("click",function(){
+var blob=new Blob([summaryText()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="resume-job-keyword-review.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
