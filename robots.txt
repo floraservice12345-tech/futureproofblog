@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ai-content-studio-india.netlify.app/sitemap.xml
+Sitemap: https://futureproofblog-ai-content-studio.netlify.app/sitemap.xml
