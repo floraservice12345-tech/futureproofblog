@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free Project Brief Builder | FutureProof Blog</title>
+  <meta name="description" content="Turn a rough idea into a clear brief for a resume, website, content project, data report or workflow. Free and private in your browser.">
+  <link rel="canonical" href="https://futureproofblog.in/business-brief-builder">
+  <meta name="robots" content="index,follow">
+  <script src="/analytics.js"></script>
+  <meta property="og:type" content="website"><meta property="og:title" content="Free Project Brief Builder | FutureProof Blog"><meta property="og:description" content="Turn a rough idea into a clear project brief. Free, private and made for Indian professionals and small businesses."><meta property="og:url" content="https://futureproofblog.in/business-brief-builder">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Project Brief Builder","url":"https://futureproofblog.in/business-brief-builder","applicationCategory":"BusinessApplication","operatingSystem":"Any modern browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"A free browser-only tool that structures a resume, website, content, data or workflow project brief."}</script>
+  <style>
+    :root{font-family:Segoe UI,Arial,sans-serif;color:#1a1a2e;background:#f6f8fb;line-height:1.6}
+    *{box-sizing:border-box}body{margin:0}a{color:#bd2845}header{background:#1a1a2e;color:white;padding:18px max(20px,calc((100vw - 1080px)/2))}header a{color:white;text-decoration:none;margin-right:18px}header strong{color:#ff6c83;margin-right:28px;font-size:1.2rem}.hero{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;padding:48px 20px;text-align:center}.hero h1{margin:0 0 8px;font-size:clamp(1.8rem,4vw,2.6rem)}.hero p{max-width:680px;margin:auto;color:#dbe2f1}.wrap{max-width:1080px;margin:32px auto;padding:0 20px 48px;display:grid;grid-template-columns:minmax(280px,1fr) minmax(280px,1fr);gap:24px}.panel{background:#fff;border:1px solid #e0e5ef;border-radius:14px;padding:26px;box-shadow:0 4px 16px #1721400a}.panel h2{font-size:1.25rem;margin:0 0 8px}.hint{font-size:.9rem;color:#586174;margin:0 0 20px}label{display:block;font-weight:700;font-size:.9rem;margin:16px 0 5px}input,select,textarea{font:inherit;width:100%;border:1px solid #cdd4df;border-radius:8px;padding:10px 12px;color:#1a1a2e;background:#fff}textarea{min-height:90px;resize:vertical}button,.button{font:inherit;display:inline-block;border:0;background:#d93b59;color:white;border-radius:8px;padding:11px 17px;font-weight:700;cursor:pointer;text-decoration:none;margin:8px 8px 0 0}button.secondary{background:#e9edf5;color:#1a1a2e}.output{white-space:pre-wrap;background:#f7f9fc;border:1px solid #dce2ec;border-radius:8px;padding:18px;min-height:280px;font-size:.93rem;overflow-wrap:anywhere}.small{font-size:.85rem;color:#596273}.notice{max-width:1080px;margin:0 auto 30px;padding:0 20px}.notice div{background:#fff8e7;border:1px solid #f0dfaa;border-radius:10px;padding:16px 20px}footer{background:#1a1a2e;text-align:center;color:#bfc6d6;padding:22px}footer a{color:#ff8397}@media(max-width:740px){.wrap{grid-template-columns:1fr}header{padding:14px 20px}header nav{margin-top:8px}header a{display:inline-block;margin:4px 12px 4px 0}}
+  </style>
+</head>
+<body>
+<header><strong>FutureProof Blog</strong><nav style="display:inline"><a href="/">Home</a><a href="/tools">Free tools</a><a href="/hire-me">Services</a><a href="/subscribe">Subscribe</a></nav></header>
+<section class="hero"><h1>Project Brief Builder</h1><p>Turn a vague task into a clear brief for career documents, content, data, websites or workflow automation. Your text stays in this browser. No account or email needed.</p></section>
+<main class="wrap">
+  <section class="panel" aria-labelledby="form-title">
+    <h2 id="form-title">Describe the work</h2><p class="hint">Keep confidential numbers, passwords and identity documents out of this form. Add them later through a secure channel agreed with your professional.</p>
+    <label for="type">What is the project about?</label><select id="type"><option value="career">Resume or career documents</option><option value="website">Website or web tool</option><option value="content">Writing or marketing content</option><option value="data">Data, spreadsheet or report</option><option value="workflow">Process or workflow automation</option></select>
+    <label for="goal">What outcome do you need?</label><textarea id="goal" maxlength="800" placeholder="Example: I need a clear website for my coaching business with an enquiry form."></textarea>
+    <label for="audience">Who will use or review it?</label><input id="audience" maxlength="160" placeholder="Example: first-time customers in India">
+    <label for="materials">What material do you already have?</label><textarea id="materials" maxlength="500" placeholder="Example: current resume, target job description, website, source spreadsheet or process notes"></textarea>
+    <label for="deadline">Desired deadline</label><input id="deadline" maxlength="100" placeholder="Example: within two weeks">
+    <label for="budget">Budget, if known</label><input id="budget" maxlength="100" placeholder="Example: ₹3,000–₹5,000 or please quote">
+    <button id="build" type="button">Build my brief</button>
+  </section>
+  <section class="panel" aria-labelledby="output-title"><h2 id="output-title">Your ready-to-share brief</h2><p class="hint">Review every line before you send it. This tool structures your words; it does not verify facts or give professional advice.</p><div id="output" class="output" role="status" aria-live="polite">Your brief will appear here.</div><button id="copy" class="secondary" type="button" disabled>Copy</button><button id="download" class="secondary" type="button" disabled>Download .txt</button><p id="feedback" class="small"></p><p class="small">Want us to help with the preparatory work? <a href="/hire-me#order">Request a scoped quote</a>.</p></section>
+</main>
+<footer>© 2026 FutureProof Blog · <a href="/privacy-policy">Privacy</a> · <a href="/contact">Contact</a></footer>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const plans = {
+    career:{label:'Resume or career documents',deliverables:['Role-specific document list','Client-confirmed career facts and source notes','Editable deliverable and review plan'],questions:['Which role, industry and level are you targeting?','What education, work history and achievements can you confirm?']},
+    website:{label:'Website or web tool',deliverables:['Page or feature list with mobile layout','Working prototype and editable source files','Enquiry form or other agreed integrations'],questions:['Which pages and features are essential for launch?','Who will own hosting, domain and ongoing updates?']},
+    content:{label:'Writing or marketing content',deliverables:['Outline and approved scope','Source-backed draft in editable format','Final copy with agreed revisions'],questions:['What audience and action should each piece serve?','Which claims need your approval or source material?']},
+    data:{label:'Data, spreadsheet or report',deliverables:['Input-file and field list','Agreed calculations, charts or report sections','Editable workbook and explanation of assumptions'],questions:['What decision should the output help you make?','Which figures, definitions and assumptions should be treated as authoritative?']},
+    workflow:{label:'Process or workflow automation',deliverables:['Current-step map and desired outcome','Tool and permission list','Small scoped automation with handover notes'],questions:['Which repeated task takes the most time today?','Which accounts and tools do you control and want to connect?']}
+  };
+  let latest='';
+  const line=id=>$(id).value.trim()||'To be confirmed';
+  $('build').addEventListener('click',()=>{
+    const plan=plans[$('type').value];
+    latest=[plan.label.toUpperCase()+' — PROJECT BRIEF','', 'Outcome: '+line('goal'),'Audience or user: '+line('audience'),'Existing material: '+line('materials'),'Desired deadline: '+line('deadline'),'Budget: '+line('budget'),'','Suggested scope to confirm:',...plan.deliverables.map(x=>'• '+x),'','Questions to resolve:',...plan.questions.map(x=>'• '+x),'','Next step: agree deliverables, price, timeline and access before work starts.'].join('\n');
+    $('output').textContent=latest;$('copy').disabled=false;$('download').disabled=false;$('feedback').textContent='';
+  });
+  $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(latest);$('feedback').textContent='Copied to clipboard.'}catch(e){$('feedback').textContent='Copy is unavailable here. Select the text above instead.'}});
+  $('download').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([latest],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='futureproof-project-brief.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+})();
+</script>
+</body></html>
