@@ -12,7 +12,7 @@
       a topic suggestion is not.
    3. Sends the sender an immediate, human-sounding acknowledgement
       that says what happens next and by when.
-   4. Sends Rahul one notification with the sender's details, the
+   4. Sends the site owner one notification with the sender's details, the
       full message, and a subject line that says whether he needs
       to do something. Anything scored as spam is filed quietly
       instead of pinged.
@@ -73,18 +73,23 @@ function classify(formName, data) {
   const subject = String(data.subject || "").toLowerCase();
   const msg = String(data.message || data.brief || "").toLowerCase();
 
-  /* A resume order is the fastest-closing thing on the site and the page
-     promises a reply within two hours. It must never fall through to the
-     generic two-working-day bucket. */
+  if (formName === "quick-service-request") {
+    return { level: "ACTION", kind: "quick",
+             label: "Quick service request — " + String(data.service || "unspecified"),
+             sla: "one working day",
+             why: "Confirm scope and total, then send payment instructions. The website has collected no payment." };
+  }
+
+  /* Selecting a priced service in a form is an enquiry, not proof of payment. */
   if (formName === "resume-brief") {
     const service = String(data.service || "");
-    const paid = /1,?500|2,?500|700/.test(service);
-    return { level: "ACTION", kind: "resume",
-             label: paid ? "Resume order — " + service : "Resume enquiry (free sample)",
-             sla: "two hours, 9am-9pm IST",
-             why: paid
-               ? "This is a paid resume order. The page promises a reply within two hours and same-day delivery."
-               : "Someone wants the free sample rewrite. It costs you one short reply and it is how the paid orders start." };
+    const freeSample = /free sample|₹0/i.test(service);
+    return { level: "ACTION", kind: freeSample ? "resumeSample" : "resumeService",
+             label: freeSample ? "Free resume sample request" : "Career service enquiry — " + service,
+             sla: "one working day",
+             why: freeSample
+               ? "Confirm the CV and sample timing. The free sample does not create a paid order."
+               : "Confirm scope and price, then payment instructions. No payment was collected by the form." };
   }
 
   if (formName === "site-review") {
@@ -124,11 +129,15 @@ function classify(formName, data) {
 function ackHtml(name, cls) {
   const first = (name || "").trim().split(/\s+/)[0] || "there";
   const BODIES = {
-    resume: `<p style="margin:0 0 14px"><strong>If you have not already sent your CV, that is the only thing I need.</strong> Reply to this email with it attached, or send it to <a href="mailto:contact@futureproofblog.in" style="color:#c9304e">contact@futureproofblog.in</a>.</p>
+    resumeSample: `<p style="margin:0 0 14px"><strong>If you have not already sent your CV, that is the only thing I need.</strong> Reply to this email with it attached, or send it to <a href="mailto:contact@futureproofblog.in" style="color:#c9304e">contact@futureproofblog.in</a>.</p>
        <p style="margin:0 0 14px">Please send it as a <strong>Word file, a Google Doc link, or a PDF you can select text in</strong> — not a scan and not a photograph of a printed CV. Text read from an image carries errors that are hard to spot and expensive to find later. It does not need to be tidy; rough is fine.</p>
-       <p style="margin:0 0 14px">What happens then: I rewrite the top third of your CV — headline, summary and most recent role — and send it back <strong>free</strong>, so you judge the actual work rather than a sales page. If you like it, the full rewrite follows the same day. You pay nothing until you have seen the finished version and told me you are happy with it.</p>`,
+       <p style="margin:0 0 14px">I will confirm when the free opening-section rewrite can be sent. If you want the full resume after seeing it, I will confirm the price and delivery date. Paid work starts after payment is confirmed.</p>`,
+    resumeService: `<p style="margin:0 0 14px">Please send your existing CV if this is a rewrite, or the target job posting if this is a cover letter. A text-based Word file or PDF is easiest to work with.</p>
+       <p style="margin:0 0 14px">I will confirm the scope, total price and delivery date. The form has not charged you; paid work starts only after payment is confirmed.</p>`,
     brief: `<p style="margin:0 0 14px">Your quote will include a firm fixed price in rupees, a delivery date, and a one-paragraph outline of the approach — so you can judge the thinking before committing anything.</p>
-       <p style="margin:0 0 14px">One thing that speeds this up: if the work involves your own figures or documents, send them in a <strong>digital, exportable format</strong> — XLSX, CSV, DOCX, a text-based PDF or a live link. Scans and photographs have to be re-keyed by hand, which adds days for no benefit to either of us.</p>`,
+       <p style="margin:0 0 14px">Once you approve the written scope, I will send payment instructions. Work begins after the agreed advance is confirmed; final editable files are handed over after the balance is paid. If your task uses your own files, please send digital, exportable formats rather than scans.</p>`,
+    quick: `<p style="margin:0 0 14px">I will check that your request fits the selected quick-service package, then send the confirmed total and payment instructions. If it needs a different scope, you can decline the revised quote without charge.</p>
+       <p style="margin:0 0 14px">This website has not taken payment. The delivery clock starts only after the complete brief and payment are confirmed in the receiving account.</p>`,
     review: `<p style="margin:0 0 14px">Nothing publishes automatically. I read every review, check it against the page or the work it refers to, and then publish it as written apart from trimming for length. <strong>Critical reviews get published too</strong> — a two-star review that explains what went wrong is more useful to the next reader than ten five-star ones, and it tells me what to fix.</p>
        <p style="margin:0 0 14px">Your email address is not published, not sold, and <strong>not added to any mailing list</strong>. If you change your mind later, say so and the review comes down, no reason needed.</p>`
   };
@@ -209,8 +218,10 @@ async function fileContact(key, email, name, formName) {
 
 /* ---------- acknowledgement subject lines ---------- */
 const ACK_SUBJECTS = {
-  resume: "Your resume rewrite — send me your CV and the free sample comes back today",
+  resumeSample: "Your free resume sample request has reached us",
+  resumeService: "Your career-service request has reached us",
   brief:  "Your brief has reached me — quote coming within one working day",
+  quick:  "Your quick-service request has reached us — next steps",
   review: "Thank you for the review — here is what happens to it next"
 };
 
