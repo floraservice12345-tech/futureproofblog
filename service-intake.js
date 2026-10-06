@@ -67,6 +67,11 @@
     });
     if (volumeMatch) volume.value = volumeMatch.value;
   }
+  var offer = form.querySelector('select[name="offer_interest"]');
+  var requestedOffer = new URLSearchParams(window.location.search).get('offer');
+  if (offer && requestedOffer && Array.prototype.some.call(offer.options, function (option) {
+    return option.value === requestedOffer;
+  })) offer.value = requestedOffer;
   service.addEventListener('change', update);
   update();
 })();
