@@ -3,6 +3,13 @@
   var inIndia = new Date(Date.now() + 330 * 60000).toISOString().slice(0, 10);
   if (inIndia < '2026-10-06' || inIndia > '2026-10-31') return;
   document.documentElement.classList.add('october-sale-active');
+  if (location.hash === '#pilot-offer') {
+    history.replaceState(null, '', '#october-offer');
+    requestAnimationFrame(function () {
+      var offer = document.getElementById('october-offer');
+      if (offer) offer.scrollIntoView();
+    });
+  }
 
   var currency = /₹\s*([\d,]+(?:\.\d{1,2})?)/g;
   function amount(raw) { return Number(raw.replace(/,/g, '')); }

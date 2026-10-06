@@ -45,6 +45,10 @@
 
   function update() {
     var group = groupForSelection();
+    if (service.value === 'content-desk-membership') {
+      var membershipVolume = form.querySelector('select[name="volume"]');
+      if (membershipVolume) membershipVolume.value = 'Ongoing / retainer';
+    }
     panels.forEach(function (panel) {
       var active = panel.dataset.intakeGroup === group;
       panel.hidden = !active;
