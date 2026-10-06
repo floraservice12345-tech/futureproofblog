@@ -19,7 +19,7 @@
     if (!option || !service.value) return '';
     if (option.dataset.intake) return option.dataset.intake;
     var value = service.value.toLowerCase();
-    if (value === 'pilot-project') return '';
+    if (value === 'staged-project') return '';
     if (form.name === 'quick-service-request') {
       for (var group in quickGroups) {
         if (quickGroups[group].indexOf(value) !== -1) return group;
@@ -45,14 +45,13 @@
 
   function update() {
     var group = groupForSelection();
-    if (offer && service.value === 'pilot-project') offer.value = 'FIRST-PILOT';
     panels.forEach(function (panel) {
       var active = panel.dataset.intakeGroup === group;
       panel.hidden = !active;
       panel.disabled = !active;
     });
-    if (brief) brief.placeholder = service.value === 'pilot-project'
-      ? 'Describe the full project, who will use it, and one useful first deliverable we can scope as a pilot. Include any deadline or source material.'
+    if (brief) brief.placeholder = service.value === 'staged-project'
+      ? 'Describe the full project, who will use it, and the first deliverable you need. Include any deadline or source material.'
       : prompts[group] || 'Describe the result you want, who will use it, what you already have, and any deadline or constraints.';
   }
 
@@ -71,11 +70,6 @@
     });
     if (volumeMatch) volume.value = volumeMatch.value;
   }
-  var offer = form.querySelector('select[name="offer_interest"]');
-  var requestedOffer = new URLSearchParams(window.location.search).get('offer');
-  if (offer && requestedOffer && Array.prototype.some.call(offer.options, function (option) {
-    return option.value === requestedOffer;
-  })) offer.value = requestedOffer;
   service.addEventListener('change', update);
   update();
 })();

@@ -125,7 +125,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   .faq-item p{font-size:15.2px;line-height:1.75}
 }
 </style>
-</head>
+<link rel="stylesheet" href="/october-sale.css"></head>
 <body>
 <header>
   <div class="nav-inner">
@@ -181,7 +181,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   </div>
 </div>
 
-<div class="rz-sec" id="prices">
+<div class="rz-sec" id="prices"><div class="oct-sale-notice" data-sale-only><strong>October offer: 50% off each service normally priced ₹1,000 or more.</strong> Available to all clients for any number of eligible services through 31 October 2026. A ₹999 task stays ₹999. Submit your brief by 11:59 pm IST on 31 October, then accept the quote and pay within seven days of issue. <a href="/terms-of-service#october-sale">Offer terms</a>.</div>
   <h2>Fixed prices. No hourly meter.</h2>
   <p class="lede">You may review the free sample first. For full paid work, you receive the fixed scope, total and delivery date before paying. Two revision rounds within the agreed scope are included.</p>
   <div class="rz-tiers">
@@ -245,7 +245,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   <h2>Send your resume</h2>
   <p class="lede">We reply within one working day. The free sample has no charge; paid work begins after you accept the written scope, total and delivery date, and payment is confirmed. Read the <a href="/terms-of-service#paid-services">service terms</a> and <a href="/refund-policy">refund policy</a> before ordering.</p>
   <form name="resume-brief" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you-resume" style="background:#fff;border:1px solid #e3e6ee;border-radius:14px;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,.05);max-width:760px">
-    <input type="hidden" name="form-name" value="resume-brief"><input type="hidden" name="subject" value="New career service request: %{formName} (%{submissionId})">
+    <input type="hidden" name="form-name" value="resume-brief"><input type="hidden" name="campaign" value=""><input type="hidden" name="subject" value="New career service request: %{formName} (%{submissionId})">
     <p style="display:none"><label>Skip this: <input name="bot-field"></label></p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
       <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">Your name<input type="text" name="name" required style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400" autocomplete="name"></label>
@@ -299,4 +299,4 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 <script src="/whatsapp.js"></script>
 <script src="/analytics.js" defer></script>
 <script>(function(){var id=new URLSearchParams(location.search).get('service');var select=document.querySelector('form[name="resume-brief"] select[name="service"]');if(id&&select&&Array.prototype.some.call(select.options,function(option){return option.value===id;}))select.value=id;})();</script>
-</body></html>
+<script src="/october-sale.js" defer></script></body></html>

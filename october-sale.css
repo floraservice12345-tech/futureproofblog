@@ -1,0 +1,27 @@
+[data-sale-only]{display:none!important}
+html.october-sale-active [data-sale-only]{display:block!important}
+.oct-price{display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}
+.oct-price del{color:#737985;font-size:.72em;font-weight:500;text-decoration-thickness:2px}
+.oct-price strong{color:#b8163f;font-weight:900}
+.oct-badge{display:inline-block;margin-left:.35em;padding:2px 7px;border-radius:999px;background:#b8163f;color:#fff;font-size:.67rem;font-weight:900;letter-spacing:.03em;vertical-align:middle;white-space:nowrap}
+.oct-regular{display:block;color:#687184;font-size:.72rem;font-weight:600;line-height:1.3;margin:3px 0 8px}
+.oct-card-eligible{border-color:#eaa9b8!important;box-shadow:0 6px 22px rgba(184,22,63,.09)}
+.oct-month-note{margin:7px 0;line-height:1.4;color:#6b4450}
+.oct-sale-notice{max-width:1120px;margin:12px auto 26px;padding:18px 20px;background:#fff3f6;border:2px solid #e94560;border-radius:12px;color:#3b2130;line-height:1.6}
+.oct-sale-notice strong{color:#aa163b}
+.oct-sale-notice a{font-weight:800}
+.membership-wrap{padding:38px 24px;background:#f7f5fb}
+.membership-card{max-width:1080px;margin:auto;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,.8fr);gap:25px;background:#fff;border:1px solid #ded5e9;border-radius:18px;padding:28px;box-shadow:0 10px 32px rgba(26,26,46,.08)}
+.membership-copy h2{font-size:clamp(1.5rem,3vw,2.2rem);margin:4px 0 12px;color:#1a1a2e}
+.membership-copy p,.membership-copy li{line-height:1.65;color:#485061}
+.membership-copy ul{padding-left:20px}
+.membership-kicker{color:#af2452!important;font-size:.74rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.membership-fine{font-size:.85rem}
+.membership-cta{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:#241c3f;color:#fff;border-radius:13px;padding:23px}
+.membership-cta>span{font-size:.75rem;letter-spacing:.1em;font-weight:900;color:#f8c6d4}
+.membership-cta .pkg-price{color:#fff;margin:8px 0 0}
+.membership-cta .oct-price strong{color:#fff}
+.membership-cta .oct-price del{color:#d9c6d3}
+.membership-cta p,.membership-cta small{color:#e9e1ee;line-height:1.5}
+.membership-cta .pilot-action{margin:12px 0;text-align:center}
+@media(max-width:720px){.membership-card{grid-template-columns:1fr;padding:20px}.oct-price{white-space:normal}.oct-badge{margin-left:0}}

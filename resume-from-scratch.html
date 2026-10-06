@@ -17,7 +17,7 @@
   <style>
     :root{font-family:Segoe UI,Arial,sans-serif;color:#202437;background:#f5f7fb;line-height:1.65}*{box-sizing:border-box}body{margin:0}a{color:#c9304e}header{background:#1a1a2e;color:white;padding:14px max(20px,calc((100vw - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}header a{color:#fff;text-decoration:none;margin-left:16px}.brand{font-weight:800;color:#ff7189}.hero{background:linear-gradient(135deg,#1a1a2e,#183d67);color:#fff;padding:64px 20px;text-align:center}.hero .eyebrow{color:#ff9aad;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:800}.hero h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.15;margin:10px auto 16px;max-width:850px}.hero p{max-width:700px;margin:0 auto 24px;color:#e2e8f3;font-size:1.08rem}.button{display:inline-block;background:#e94560;color:#fff;text-decoration:none;font-weight:800;padding:13px 22px;border-radius:8px;margin:5px}.button.alt{background:#fff;color:#202437}.wrap{max-width:1040px;margin:0 auto;padding:34px 20px 64px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.card,.panel{background:#fff;border:1px solid #e0e5ee;border-radius:13px;padding:22px}.card h2,.panel h2{font-size:1.15rem;margin:0 0 8px;color:#1a1a2e}.price{font-size:1.3rem;font-weight:800;color:#c9304e}.panel{margin:22px 0}.panel li{margin:8px 0}.callout{background:#fff4f6;border-left:4px solid #c9304e;padding:16px 18px;border-radius:8px}.faq{border-top:1px solid #e0e5ee;padding:14px 0}.faq h3{font-size:1rem;margin:0 0 4px}.faq p{margin:0;color:#51596b}footer{background:#1a1a2e;color:#d7dbea;text-align:center;padding:22px}footer a{color:#ff8397}@media(max-width:650px){header{display:block}header nav{margin-top:8px}header a{margin:0 12px 0 0}.hero{padding:48px 20px}}
   </style>
-</head>
+<link rel="stylesheet" href="/october-sale.css"></head>
 <body>
 <header><a class="brand" href="/">FutureProof Blog</a><nav><a href="/hire-me">Services</a><a href="/resume">Resume rewrite sample</a><a href="/">Home</a></nav></header>
 <section class="hero">
@@ -27,7 +27,7 @@
   <a class="button" href="/hire-me?service=resume-from-scratch#order">Request my fixed quote</a>
   <a class="button alt" href="#process">See how it works</a>
 </section>
-<main class="wrap">
+<main class="wrap"><div class="oct-sale-notice" data-sale-only><strong>October offer: 50% off each service normally priced ₹1,000 or more.</strong> Available to all clients for any number of eligible services through 31 October 2026. A ₹999 task stays ₹999. Submit your brief by 11:59 pm IST on 31 October, then accept the quote and pay within seven days of issue. <a href="/terms-of-service#october-sale">Offer terms</a>.</div>
   <section class="grid" aria-label="Service details">
     <div class="card"><h2>What you receive</h2><p>An editable Word resume and PDF, arranged for one target role, plus one revision after you review the first draft.</p></div>
     <div class="card"><h2>Starting price</h2><p class="price">₹2,999</p><p>Standard early-career resume. Senior, technical or multi-role versions receive a written quote first.</p></div>
@@ -45,5 +45,5 @@
   <p style="text-align:center"><a class="button" href="/hire-me?service=resume-from-scratch#order">Request my fixed quote</a></p>
 </main>
 <footer>© 2026 FutureProof Blog · <a href="/privacy-policy">Privacy</a> · <a href="/terms-of-service">Terms</a> · <a href="/hire-me">All services</a></footer>
-</body>
+<script src="/october-sale.js" defer></script></body>
 </html>
