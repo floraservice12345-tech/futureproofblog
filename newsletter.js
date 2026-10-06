@@ -86,7 +86,7 @@ var FP_NEWSLETTER = {
 
     form.addEventListener("submit", function () {
       if (window.gtag) {
-        gtag("event", "newsletter_signup", { page_path: location.pathname });
+        gtag("event", "newsletter_signup_attempt", { page_path: location.pathname });
       }
     });
   }
@@ -160,14 +160,27 @@ var FP_NEWSLETTER = {
     NAMES.forEach(function (n) {
       var list = document.querySelectorAll('form[name="' + n + '"]');
       for (var i = 0; i < list.length; i++) {
-        list[i].addEventListener("submit", remember);
+        list[i].addEventListener("submit", function () {
+          try { localStorage.setItem('fp_newsletter_pending', String(Date.now())); } catch (_) {}
+        });
       }
     });
   }
 
   function run() {
-    // Landing on the confirmation page means the address is confirmed.
-    if (location.pathname.indexOf("/thank-you") === 0) { remember(); return; }
+    // Service enquiry thank-you pages must never mark a visitor subscribed.
+    if (/^\/thank-you(?:\.html)?\/?$/.test(location.pathname)) {
+      var pending = 0;
+      try {
+        pending = Number(localStorage.getItem('fp_newsletter_pending') || 0);
+        localStorage.removeItem('fp_newsletter_pending');
+      } catch (_) {}
+      if (pending && Date.now() - pending < 30 * 86400000) {
+        if (window.gtag) gtag('event', 'sign_up', { method: 'email' });
+        remember();
+      }
+      return;
+    }
     if (stored()) replaceForms(); else markOnSubmit();
   }
 
@@ -236,14 +249,14 @@ var FP_NEWSLETTER = {
   }
 
   var CARDS = {
-    career: card("FREE — NO CATCH", "Is your resume even being read?",
-      "Most CVs are rejected by screening software before a person opens them &mdash; usually for formatting, not for the person. Send me yours and I will rewrite the top third free, today, with nothing to pay and nothing to cancel.",
+    career: card("FREE RESUME SAMPLE", "Want a clearer, role-targeted resume?",
+      "Request a free opening-section sample using your real career details. We confirm timing by email, and full paid work begins only after you accept a written quote.",
       "/resume", "Get my free sample rewrite"),
-    money: card("SAME-DAY DELIVERY", "Need the spreadsheet, deck or report itself?",
-      "Working Excel models, data cleaned and analysed, decks and reports built to your brief &mdash; delivered as finished files you own and can edit. Fixed price quoted within one working day, nothing payable until you approve it.",
+    money: card("DATA & DOCUMENTS", "Need the spreadsheet, deck or report itself?",
+      "Get a written scope, fixed price and delivery date for a workbook, chart, report or deck built from the source material you provide.",
       "/hire-me#sameday", "See same-day services"),
-    write: card("FROM &#8377;1,200", "Want this written for your business instead?",
-      "Articles, website copy, product listings and content calendars &mdash; researched first, written second, publish-ready. This article is the standard your brief gets, so judge the work rather than a sales page.",
+    write: card("WRITING SERVICES", "Want this written for your business instead?",
+      "Start with one scoped article, product listing, email or website section. Your written quote shows the current price and included revisions before payment.",
       "/hire-me", "See services &amp; prices")
   };
 

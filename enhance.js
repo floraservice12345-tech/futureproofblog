@@ -1,22 +1,20 @@
 /* ============================================================
    FutureProof Blog — reader engagement module
    ------------------------------------------------------------
-   Added 19 September 2026. Three things, all driven off
-   /articles-index.json so nothing needs maintaining per article:
+   Added 19 September 2026. Shared article features:
 
      1. Related articles  — 3 genuinely relevant pieces at the
         end of every article, scored on shared category and
-        keyword overlap. This is the pages-per-session lever:
-        a reader who reads two articles instead of one is worth
-        roughly double in ad impressions and is far likelier to
-        reach a service page.
+        keyword overlap, using /articles-index.json so links update
+        without editing every article.
 
      2. Table of contents — auto-built from the article's own
         H2s when there are 5 or more. Helps readers skim, helps
-        dwell time, and gives Google jump-link candidates.
+        readers navigate long articles.
 
-     3. Reading progress bar — a thin bar at the top. Cheap,
-        and it measurably reduces mid-article drop-off.
+     3. Reading progress bar — a thin bar at the top.
+
+     4. Reader share links — tagged URLs for channel attribution.
 
    Safe everywhere: if there is no <main class="article-wrap">,
    or the fetch fails, it does nothing at all and throws nothing.
@@ -59,6 +57,12 @@
       ".fp-rtitle{font-size:.97rem;font-weight:700;color:#1a1a2e;line-height:1.35;margin-bottom:6px}",
       ".fp-rex{font-size:.82rem;color:#5a5f6e;line-height:1.55;flex:1;text-align:left}",
       ".fp-rmeta{font-size:.72rem;color:#999;margin-top:10px}",
+      ".fp-share{margin:2rem 0 0;padding:1.2rem 0;border-top:1px solid #e3e6ee}",
+      ".fp-share p{margin:0 0 .7rem;color:#5a5f6e;font-size:.9rem;text-align:left}",
+      ".fp-share-links{display:flex;flex-wrap:wrap;gap:.6rem}",
+      ".fp-share-links a{display:inline-block;padding:.55rem .8rem;border:1px solid #d8deea;",
+      "border-radius:8px;color:#0f3460;background:#fff;text-decoration:none;font-weight:700;font-size:.86rem}",
+      ".fp-share-links a:hover{border-color:#e94560;color:#c52d49}",
       "@media(max-width:768px){.fp-rgrid{grid-template-columns:1fr}",
       ".fp-toc li{font-size:15px}.fp-rtitle{font-size:16px}.fp-rex{font-size:14px}}"
     ].join("");
@@ -120,7 +124,58 @@
     heads[0].parentNode.insertBefore(box, heads[0]);
   }
 
-  /* ---------- 3. related articles ---------- */
+  /* ---------- 3. reader shares with campaign attribution ---------- */
+  function shareBar() {
+    if (main.querySelector('.fp-share')) return;
+    var canonical = document.querySelector('link[rel="canonical"]');
+    var articleUrl;
+    try {
+      articleUrl = new URL(canonical ? canonical.href : location.href, location.href);
+      if (articleUrl.origin !== location.origin) return;
+    } catch (_) { return; }
+    var slug = articleUrl.pathname.replace(/^\/|\/$/g, '').replace(/\.html$/i, '');
+    var title = (document.querySelector('h1') || {}).textContent || document.title;
+    var share = document.createElement('section');
+    share.className = 'fp-share';
+    share.setAttribute('aria-label', 'Share this article');
+    var intro = document.createElement('p');
+    intro.textContent = 'Found this useful? Share the guide with someone who needs it.';
+    var links = document.createElement('div');
+    links.className = 'fp-share-links';
+    [
+      { label: 'WhatsApp', source: 'whatsapp', medium: 'social' },
+      { label: 'LinkedIn', source: 'linkedin', medium: 'social' },
+      { label: 'Email', source: 'email_share', medium: 'email' }
+    ].forEach(function (channel) {
+      var tracked = new URL(articleUrl.href);
+      tracked.search = '';
+      tracked.hash = '';
+      tracked.searchParams.set('utm_source', channel.source);
+      tracked.searchParams.set('utm_medium', channel.medium);
+      tracked.searchParams.set('utm_campaign', 'reader_share');
+      tracked.searchParams.set('utm_content', slug);
+      var a = document.createElement('a');
+      a.textContent = channel.label;
+      a.setAttribute('data-track-share', channel.source);
+      if (channel.source === 'whatsapp') {
+        a.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(title.trim() + ' ' + tracked.href);
+      } else if (channel.source === 'linkedin') {
+        a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(tracked.href);
+      } else {
+        a.href = 'mailto:?subject=' + encodeURIComponent(title.trim()) + '&body=' + encodeURIComponent(tracked.href);
+      }
+      if (channel.source !== 'email_share') {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+      links.appendChild(a);
+    });
+    share.appendChild(intro);
+    share.appendChild(links);
+    main.appendChild(share);
+  }
+
+  /* ---------- 4. related articles ---------- */
   function norm(u) {
     if (!u) return "";
     return u.replace(/^https?:\/\/[^/]+/, "").split("#")[0].split("?")[0]
@@ -213,6 +268,7 @@
     injectStyle();
     progressBar();
     tableOfContents();
+    shareBar();
     relatedArticles();
   } catch (e) { /* silent */ }
 })();

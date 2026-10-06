@@ -1,0 +1,17 @@
+/* Keep long-form article prose aligned while protecting narrow screens. */
+.article-wrap p,
+.article-wrap li,
+.article-wrap blockquote {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* Captions, forms and calls to action are interface text, not article prose. */
+.article-wrap figcaption,
+.article-wrap form p,
+.article-wrap button,
+.article-wrap .article-cta p {
+  text-align: left;
+}

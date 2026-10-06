@@ -41,21 +41,81 @@ window.addEventListener('fp:form-sent', function () {
   if (!GA4_MEASUREMENT_ID || GA4_MEASUREMENT_ID.indexOf("XXXX") !== -1) {
     return; // not configured yet — loads nothing, breaks nothing
   }
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+  function savedConsent() {
+    try {
+      var value = localStorage.getItem('fp_cookie_consent');
+      if (value === 'accepted' || value === 'declined') return value;
+      value = localStorage.getItem('fpb_cookies_accepted');
+      if (value === '1') return 'accepted';
+      if (value === 'declined') return 'declined';
+      value = localStorage.getItem('c');
+      if (value === '1') return 'accepted';
+      if (value === '0') return 'declined';
+    } catch (_) {}
+    return '';
+  }
+  function consentState(choice) {
+    var granted = choice === 'accepted' ? 'granted' : 'denied';
+    return { analytics_storage: granted, ad_storage: granted,
+      ad_user_data: 'denied', ad_personalization: 'denied' };
+  }
+  var existingChoice = savedConsent();
+  gtag('consent', 'default', consentState(existingChoice));
+  gtag("js", new Date());
+  gtag("config", GA4_MEASUREMENT_ID, { anonymize_ip: true });
   var s = document.createElement("script");
   s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_MEASUREMENT_ID;
   document.head.appendChild(s);
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag("js", new Date());
-  gtag("config", GA4_MEASUREMENT_ID, { anonymize_ip: true });
+  // Article and site banners share one remembered choice. A decline now
+  // changes tag consent instead of merely hiding a banner.
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest && event.target.closest('button');
+    var banner = button && button.closest('#cb, #ck, #fpb-cookie-banner, .cookie-banner');
+    if (!banner) return;
+    var label = (button.textContent || '').trim().toLowerCase();
+    var choice = /accept|allow/.test(label) ? 'accepted' :
+      /decline|reject/.test(label) ? 'declined' : '';
+    if (!choice) return;
+    try {
+      localStorage.setItem('fp_cookie_consent', choice);
+      localStorage.setItem('fpb_cookies_accepted', choice === 'accepted' ? '1' : 'declined');
+      localStorage.setItem('c', choice === 'accepted' ? '1' : '0');
+    } catch (_) {}
+    gtag('consent', 'update', consentState(choice));
+    banner.style.display = 'none';
+  }, true);
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!savedConsent()) return;
+    document.querySelectorAll('#cb, #ck, #fpb-cookie-banner, .cookie-banner').forEach(function (banner) {
+      banner.style.display = 'none';
+    });
+  });
 
   // Track outbound affiliate clicks so you can see what actually earns
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a");
     if (!a || !a.href) return;
+    if (a.dataset.trackShare) {
+      gtag('event', 'share', { method: a.dataset.trackShare,
+        content_type: 'article', item_id: location.pathname });
+    }
+    try {
+      var destination = new URL(a.href, location.href);
+      if (destination.origin === location.origin &&
+          /^\/(hire-me|quick-services|resume|resume-from-scratch|resume-match-checker|business-brief-builder)(?:\.html)?$/.test(destination.pathname)) {
+        var area = a.closest('header, nav') ? 'navigation' :
+          a.closest('footer') ? 'footer' :
+          a.closest('.article-wrap, article') ? 'article' :
+          a.closest('.pilot-wrap') ? 'offer' : 'content';
+        gtag('event', 'service_cta_click', { destination: destination.pathname,
+          source_area: area, page_path: location.pathname });
+      }
+    } catch (_) {}
     if (a.href.indexOf("amazon.in") !== -1) {
       gtag("event", "affiliate_click", {
         link_url: a.href,
