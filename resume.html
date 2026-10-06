@@ -195,7 +195,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
         <li>Also supplied as a short application email</li>
         <li>Delivery date confirmed before payment</li>
       </ul>
-      <a href="#send">Start this &rarr;</a>
+      <a href="/resume?service=cover-letter#send">Start this &rarr;</a>
     </div>
     <div class="rz-tier hot">
       <div class="nm">Most people take this</div>
@@ -209,7 +209,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
         <li>Editable Word file and PDF, both yours to keep</li>
         <li>Two revision rounds within scope</li>
       </ul>
-      <a href="#send">Start this &rarr;</a>
+      <a href="/resume?service=resume-plus-linkedin#send">Start this &rarr;</a>
     </div>
     <div class="rz-tier">
       <div class="nm">Resume only</div>
@@ -222,7 +222,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
         <li>Editable Word file and PDF</li>
         <li>Two revision rounds within scope</li>
       </ul>
-      <a href="#send">Start this &rarr;</a>
+      <a href="/resume?service=resume-rewrite#send">Start this &rarr;</a>
     </div>
   </div>
   <p style="text-align:center;margin-top:22px;font-size:.92rem;color:#5a5f6e">Applying to a specific job and want the CV tailored to that posting as well? Add ₹500 per posting. Bulk and campus rates on request.</p>
@@ -245,29 +245,34 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   <h2>Send your resume</h2>
   <p class="lede">We reply within one working day. The free sample has no charge; paid work begins after you accept the quote and payment is confirmed.</p>
   <form name="resume-brief" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you-resume" style="background:#fff;border:1px solid #e3e6ee;border-radius:14px;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,.05);max-width:760px">
-    <input type="hidden" name="form-name" value="resume-brief">
+    <input type="hidden" name="form-name" value="resume-brief"><input type="hidden" name="subject" value="New career service request: %{formName} (%{submissionId})">
     <p style="display:none"><label>Skip this: <input name="bot-field"></label></p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
       <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">Your name<input type="text" name="name" required style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400" autocomplete="name"></label>
       <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">Email<input type="email" name="email" required style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400" autocomplete="email" inputmode="email" spellcheck="false"></label>
       <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">What do you need?<select name="service" required style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400;background:#fff">
         <option>Free sample rewrite first (&#8377;0)</option>
-        <option>Resume rewrite (&#8377;1,500)</option>
-        <option>Resume + LinkedIn (&#8377;2,500)</option>
-        <option>Cover letter (&#8377;700)</option>
+        <option value="resume-rewrite">Resume rewrite (&#8377;1,500)</option>
+        <option value="resume-from-scratch">Resume writing from scratch (from &#8377;2,999)</option>
+        <option value="resume-plus-linkedin">Resume + LinkedIn (&#8377;2,500)</option>
+        <option value="cover-letter">Cover letter (&#8377;700)</option>
         <option>Not sure yet</option>
       </select></label>
       <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">Target role or industry<input type="text" name="target" placeholder="e.g. Business analyst, fintech" style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400"></label>
     </div>
-    <div style="margin-top:18px;background:#f6f7fb;border:1px solid #e3e6ee;border-radius:10px;padding:16px 18px">
-      <p style="margin:0 0 8px;font-size:.9rem;font-weight:700;color:#1a1a2e">How to get me your CV</p>
-      <p style="margin:0 0 10px;font-size:.88rem;color:#4a5060;line-height:1.65">Easiest way: <strong>email the file to <a href="mailto:contact@futureproofblog.in?subject=My%20CV%20for%20rewrite" style="color:#e94560">contact@futureproofblog.in</a></strong> &mdash; Word, Google Doc link, or a PDF you can select text in. Please not a scan or a photo of a printed CV; text read from an image carries errors that are hard to catch.</p>
-      <p style="margin:0;font-size:.88rem;color:#4a5060;line-height:1.65">Or paste the text straight into the box below. Formatting does not matter &mdash; I am rebuilding it anyway.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px">
+      <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">What is your main goal?<select name="career_goal" required style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400;background:#fff"><option value="">Choose the closest</option><option>Improve an existing resume</option><option>Build my first resume from scratch</option><option>Change role or industry</option><option>Match a specific job posting</option><option>Improve LinkedIn or an application email</option><option>Not sure yet</option></select></label>
+      <label style="font-size:.85rem;font-weight:700;color:#1a1a2e">What material can you provide?<select name="career_material" style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400;background:#fff"><option>Existing CV or LinkedIn profile</option><option>Career notes only</option><option>Job posting only</option><option>I need help gathering the details</option></select></label>
     </div>
-    <label style="display:block;margin-top:14px;font-size:.85rem;font-weight:700;color:#1a1a2e">Paste your CV, or just tell me what you need <span style="font-weight:400;color:#888">(optional if you are emailing the file)</span>
-      <textarea name="brief" rows="7" placeholder="Paste your CV text here. Or write 'emailing it' and send the file to contact@futureproofblog.in — either works." style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400;font-family:inherit"></textarea></label>
+    <div style="margin-top:18px;background:#f6f7fb;border:1px solid #e3e6ee;border-radius:10px;padding:16px 18px">
+      <p style="margin:0 0 8px;font-size:.9rem;font-weight:700;color:#1a1a2e">How to share your CV</p>
+      <p style="margin:0 0 10px;font-size:.88rem;color:#4a5060;line-height:1.65">Paste the text in the box below, or say that you prefer to send a file after we reply with the destination. Word, a Google Doc link, or a PDF with selectable text works best. Please avoid scans and photographs.</p>
+      <p style="margin:0;font-size:.88rem;color:#4a5060;line-height:1.65">Formatting does not matter. Please remove Aadhaar, PAN, bank details and unrelated sensitive information.</p>
+    </div>
+    <label style="display:block;margin-top:14px;font-size:.85rem;font-weight:700;color:#1a1a2e">Paste your CV or describe what you need <span style="font-weight:400;color:#888">(you can ask to send a file later)</span>
+      <textarea name="brief" rows="7" placeholder="Paste CV text here, or write: I prefer to send a Word or text-based PDF after you reply. My target role is..." style="display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d6dae6;border-radius:7px;font-size:.95rem;font-weight:400;font-family:inherit"></textarea></label>
     <button type="submit" style="margin-top:18px;background:#e94560;color:#fff;border:0;padding:14px 30px;border-radius:8px;font-weight:800;font-size:1rem;cursor:pointer;width:100%">Send my career-service request &rarr;</button>
-    <p style="font-size:.78rem;color:#888;text-align:center;margin-top:12px">Your CV is used only to write your rewrite. It is never shared, published or added to any list.</p>
+    <p style="font-size:.78rem;color:#888;text-align:center;margin-top:12px">We use your CV to assess and deliver your request. It is not published or added to a mailing list. See our <a href="/privacy-policy">privacy policy</a> for how form data is handled.</p>
   </form>
 </div>
 
@@ -293,4 +298,5 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 <script src="/newsletter.js"></script>
 <script src="/whatsapp.js"></script>
 <script src="/analytics.js" defer></script>
+<script>(function(){var id=new URLSearchParams(location.search).get('service');var select=document.querySelector('form[name="resume-brief"] select[name="service"]');if(id&&select&&Array.prototype.some.call(select.options,function(option){return option.value===id;}))select.value=id;})();</script>
 </body></html>

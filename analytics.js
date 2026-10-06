@@ -9,6 +9,34 @@
 
 var GA4_MEASUREMENT_ID = "G-BXCSZN56NT";   // <-- the only line to ever change
 
+// A thank-you page is a lead only when reached from a form submitted in this tab.
+var FP_LEAD_ROUTES = {
+  '/thank-you-brief': 'project-brief',
+  '/thank-you-quick': 'quick-service-request',
+  '/thank-you-resume': 'resume-brief',
+  '/thank-you-contact': 'contact'
+};
+document.addEventListener('submit', function (event) {
+  var name = event.target && event.target.getAttribute && event.target.getAttribute('name');
+  if (Object.keys(FP_LEAD_ROUTES).some(function (route) { return FP_LEAD_ROUTES[route] === name; })) {
+    try { sessionStorage.setItem('fp_pending_lead', JSON.stringify({ name: name, at: Date.now() })); } catch (_) {}
+  }
+}, true);
+var FP_CONFIRMED_FORM = (function () {
+  var page = location.pathname.replace(/\.html$/, '').replace(/\/+$/, '');
+  var expected = FP_LEAD_ROUTES[page];
+  if (!expected) return '';
+  try {
+    var pending = JSON.parse(sessionStorage.getItem('fp_pending_lead') || '{}');
+    sessionStorage.removeItem('fp_pending_lead');
+    if (pending.name === expected && Date.now() - pending.at < 600000) return expected;
+  } catch (_) {}
+  return '';
+})();
+window.addEventListener('fp:form-sent', function () {
+  try { sessionStorage.removeItem('fp_pending_lead'); } catch (_) {}
+});
+
 (function () {
   if (!GA4_MEASUREMENT_ID || GA4_MEASUREMENT_ID.indexOf("XXXX") !== -1) {
     return; // not configured yet — loads nothing, breaks nothing
@@ -36,6 +64,17 @@ var GA4_MEASUREMENT_ID = "G-BXCSZN56NT";   // <-- the only line to ever change
       });
     }
   }, true);
+
+  // Count only a completed form route, never an attempted submit.
+  var page = location.pathname.replace(/\.html$/, '').replace(/\/+$/, '');
+  if (FP_CONFIRMED_FORM) {
+    gtag('event', 'generate_lead', { form_name: FP_CONFIRMED_FORM, page_path: page });
+  }
+  window.addEventListener('fp:form-sent', function (event) {
+    if (event.detail && event.detail.formName === 'contact') {
+      gtag('event', 'generate_lead', { form_name: 'contact', page_path: location.pathname });
+    }
+  });
 })();
 
 
@@ -83,21 +122,13 @@ var META_PIXEL_ID = "";   // <-- the only line to ever change
     fbq('track', 'ViewContent', { content_name: 'Hire me services', content_category: 'services' });
   }
 
-  // --- Lead when an enquiry form is genuinely submitted ---
-  var LEAD_FORMS = { 'resume-brief': 'resume', 'project-brief': 'project', 'contact': 'contact' };
-  document.addEventListener('submit', function (e) {
-    var form = e.target;
-    if (!form || !form.getAttribute) return;
-    var name = form.getAttribute('name');
-    if (!LEAD_FORMS[name]) return;
-    fbq('track', 'Lead', { content_category: LEAD_FORMS[name], content_name: name });
-    if (window.gtag) {
-      gtag('event', 'generate_lead', { form_name: name, page_path: location.pathname });
-    }
-  }, true);
-
-  // --- thank-you pages count as a confirmed lead too ---
-  if (p.indexOf('/thank-you-brief') === 0) {
-    fbq('track', 'Lead', { content_category: 'brief-confirmed', content_name: 'thank-you-brief' });
+  // --- Count successful routes, including quick service requests. ---
+  if (FP_CONFIRMED_FORM) {
+    fbq('track', 'Lead', { content_category: 'services', content_name: FP_CONFIRMED_FORM });
   }
+  window.addEventListener('fp:form-sent', function (event) {
+    if (event.detail && event.detail.formName === 'contact') {
+      fbq('track', 'Lead', { content_category: 'services', content_name: 'contact' });
+    }
+  });
 })();

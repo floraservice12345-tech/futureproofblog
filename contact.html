@@ -181,6 +181,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
       form.reset();
       msg.className = 'form-msg success';
       msg.textContent = '✅ Thanks for reaching out! Your message has been sent — we\'ll get back to you soon.';
+      window.dispatchEvent(new CustomEvent('fp:form-sent', { detail: { formName: 'contact' } }));
     })
     .catch(function(){
       msg.className = 'form-msg error';
