@@ -99,8 +99,8 @@ function classify(formName, data) {
              why: "A reader reviewed the site. Read it, check it against the page or the work, then publish it as written." };
   }
 
-  if (formName === "project-brief") {
-    return { level: "ACTION", kind: "brief", label: "New project brief", sla: "one working day",
+  if (formName === "project-brief" || formName === "promo-enquiry") {
+    return { level: "ACTION", kind: "brief", label: formName === "promo-enquiry" ? "New enquiry from business promo" : "New project brief", sla: "one working day",
              why: "Someone is asking you to quote for paid work." };
   }
   if (subject.includes("hire") || subject.includes("project brief") ||

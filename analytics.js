@@ -12,6 +12,7 @@ var GA4_MEASUREMENT_ID = "G-BXCSZN56NT";   // <-- the only line to ever change
 // A thank-you page is a lead only when reached from a form submitted in this tab.
 var FP_LEAD_ROUTES = {
   '/thank-you-brief': 'project-brief',
+  '/thank-you-promo': 'promo-enquiry',
   '/thank-you-quick': 'quick-service-request',
   '/thank-you-resume': 'resume-brief',
   '/thank-you-contact': 'contact'
