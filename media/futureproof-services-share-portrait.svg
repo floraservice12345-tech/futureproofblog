@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">FutureProof Blog services poster</title>
+  <desc id="desc">Career documents, writing, data and web tools. Enquire at futureproofblog.in/start or contact@futureproofblog.in. BharatBiz Content Studio at futureproofblog.in/content-studio.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#1b3b5e"/><stop offset=".55" stop-color="#12273f"/><stop offset="1" stop-color="#0d1c30"/></linearGradient>
+    <linearGradient id="bar" x2="1" y2="0"><stop stop-color="#fa5774"/><stop offset="1" stop-color="#e83e5d"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="15" stdDeviation="20" flood-color="#061322" flood-opacity=".28"/></filter>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif}
+      .white{fill:#fff}.light{fill:#dce9f6}.soft{fill:#abc3d9}.pink{fill:#ff8ea2}.nav{font-size:27px;font-weight:800}.eyebrow{font-size:21px;font-weight:800;letter-spacing:4px}.headline{font-size:82px;font-weight:900;letter-spacing:-3px}.subtitle{font-size:30px}.card-title{font-size:30px;font-weight:800}.card-detail{font-size:23px}.card-num{font-size:26px;font-weight:900}.studio-head{font-size:31px;font-weight:850;fill:#142741}.studio-sub{font-size:24px;fill:#354861}.studio-link{font-size:26px;font-weight:800;fill:#b72244}.cta-kicker{font-size:22px;font-weight:800;letter-spacing:2px}.cta-url{font-size:43px;font-weight:900;letter-spacing:-1px}.email{font-size:32px;font-weight:700}.footer{font-size:20px}
+    </style>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <circle cx="995" cy="430" r="310" fill="none" stroke="#75b9f1" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="-130" cy="1170" r="260" fill="#e94560" fill-opacity=".07"/>
+  <rect x="64" y="62" width="62" height="62" rx="17" fill="url(#bar)"/>
+  <text x="95" y="105" class="white" font-size="37" font-weight="900" text-anchor="middle">F</text>
+  <text x="146" y="103" class="white nav">FutureProof Blog</text>
+  <text x="984" y="101" class="soft" font-size="20" font-weight="700" text-anchor="end">SAKET · NEW DELHI</text>
+
+  <text x="66" y="192" class="pink eyebrow">PRACTICAL ONLINE SERVICES</text>
+  <text x="64" y="284" class="white headline">One small task.</text>
+  <text x="64" y="375" class="pink headline">A clear result.</text>
+  <text x="66" y="431" class="light subtitle">A written scope, fixed quote and delivery date</text>
+  <text x="66" y="470" class="light subtitle">before paid work begins.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="62" y="526" width="466" height="158" rx="24" fill="#203d5c" stroke="#7399bc" stroke-opacity=".65"/>
+    <rect x="550" y="526" width="466" height="158" rx="24" fill="#203d5c" stroke="#7399bc" stroke-opacity=".65"/>
+    <rect x="62" y="704" width="466" height="158" rx="24" fill="#203d5c" stroke="#7399bc" stroke-opacity=".65"/>
+    <rect x="550" y="704" width="466" height="158" rx="24" fill="#203d5c" stroke="#7399bc" stroke-opacity=".65"/>
+  </g>
+  <text x="88" y="571" class="pink card-num">01</text><text x="88" y="616" class="white card-title">Resume &amp; career</text><text x="88" y="653" class="light card-detail">Rewrite or start from scratch</text>
+  <text x="576" y="571" class="pink card-num">02</text><text x="576" y="616" class="white card-title">Content &amp; copy</text><text x="576" y="653" class="light card-detail">Articles, emails, proposals</text>
+  <text x="88" y="749" class="pink card-num">03</text><text x="88" y="794" class="white card-title">Data &amp; Excel</text><text x="88" y="831" class="light card-detail">Reports and useful workbooks</text>
+  <text x="576" y="749" class="pink card-num">04</text><text x="576" y="794" class="white card-title">Small web tools</text><text x="576" y="831" class="light card-detail">Calculators and landing pages</text>
+
+  <rect x="62" y="893" width="954" height="157" rx="23" fill="#f5f8fc"/>
+  <rect x="62" y="893" width="13" height="157" rx="6" fill="#e94560"/>
+  <text x="96" y="939" class="studio-head">BharatBiz Content Studio</text>
+  <text x="96" y="975" class="studio-sub">Free AI brief builder · 30-day calendar enquiry</text>
+  <text x="96" y="1019" class="studio-link">futureproofblog.in/content-studio</text>
+
+  <rect x="62" y="1081" width="954" height="194" rx="25" fill="url(#bar)"/>
+  <text x="94" y="1123" class="white cta-kicker">SEND A BRIEF · FREE ENQUIRY</text>
+  <text x="94" y="1181" class="white cta-url">futureproofblog.in/start</text>
+  <text x="94" y="1235" class="white email">contact@futureproofblog.in</text>
+  <text x="66" y="1310" class="soft footer">Online delivery · Saket, New Delhi 110017 · Quote before payment</text>
+</svg>
