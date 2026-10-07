@@ -16,9 +16,29 @@ var FP_LEAD_ROUTES = {
   '/thank-you-resume': 'resume-brief',
   '/thank-you-contact': 'contact'
 };
+// Keep the acquisition source through internal navigation and include it in
+// the enquiry notification. The October offer may already occupy this field.
+var FP_LEAD_SOURCE = (function () {
+  try {
+    var params = new URLSearchParams(location.search);
+    var parts = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].map(function (key) {
+      return (params.get(key) || '').replace(/[^a-zA-Z0-9_.-]/g, '').slice(0, 60);
+    });
+    if (parts.some(Boolean)) {
+      var source = parts.join('/');
+      sessionStorage.setItem('fp_lead_source', source);
+      return source;
+    }
+    return sessionStorage.getItem('fp_lead_source') || '';
+  } catch (_) { return ''; }
+})();
 document.addEventListener('submit', function (event) {
   var name = event.target && event.target.getAttribute && event.target.getAttribute('name');
   if (Object.keys(FP_LEAD_ROUTES).some(function (route) { return FP_LEAD_ROUTES[route] === name; })) {
+    var campaign = event.target.querySelector('input[name="campaign"]');
+    if (campaign && FP_LEAD_SOURCE && campaign.value.indexOf(FP_LEAD_SOURCE) === -1) {
+      campaign.value = [campaign.value, FP_LEAD_SOURCE].filter(Boolean).join(' | ');
+    }
     try { sessionStorage.setItem('fp_pending_lead', JSON.stringify({ name: name, at: Date.now() })); } catch (_) {}
   }
 }, true);
