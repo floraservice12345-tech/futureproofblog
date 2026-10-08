@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">FutureProof Blog online services share card</title>
-  <desc id="desc">Career, content, data and web services. Send an enquiry at futureproofblog.in/start or contact@futureproofblog.in. Explore BharatBiz Content Studio at futureproofblog.in/content-studio.</desc>
+  <desc id="desc">Career, content, data and web services. Call +91 95405 28064 or email contact@futureproofblog.in. Office: 35, B Block, Pramod Mahajan Marg, Saket, New Delhi 110017. Enquire at futureproofblog.in/start. Explore BharatBiz Content Studio at futureproofblog.in/content-studio.</desc>
   <defs>
     <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#1b3b5e"/><stop offset=".58" stop-color="#12273f"/><stop offset="1" stop-color="#0b182b"/></linearGradient>
     <linearGradient id="cta" x2="1" y2="1"><stop stop-color="#f75a76"/><stop offset="1" stop-color="#e83e5d"/></linearGradient>
@@ -31,8 +31,10 @@
   <line x1="788" y1="337" x2="1112" y2="337" stroke="#c9d5e3"/>
   <text x="788" y="379" fill="#203047" font-size="20" font-weight="800">OR EMAIL</text>
   <text x="788" y="418" fill="#b72244" font-size="24" font-weight="800">contact@futureproofblog.in</text>
-  <text x="788" y="485" fill="#506179" font-size="18">No payment on the enquiry form.</text>
-  <text x="788" y="515" fill="#506179" font-size="18">Online delivery · Saket, New Delhi</text>
+  <text x="788" y="455" fill="#203047" font-size="20" font-weight="800">CALL · +91 95405 28064</text>
+  <text x="788" y="487" fill="#506179" font-size="15">35, B Block, Pramod Mahajan Marg, Saket</text>
+  <text x="788" y="509" fill="#506179" font-size="15">New Delhi 110017, India</text>
+  <text x="788" y="548" fill="#506179" font-size="16">No payment on the enquiry form.</text>
   <a href="https://futureproofblog.in/" target="_top" aria-label="Open FutureProof Blog"><rect x="55" y="50" width="300" height="54" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/start" target="_top" aria-label="Request a service"><rect x="55" y="180" width="635" height="160" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Explore listed services"><rect x="55" y="350" width="650" height="83" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
@@ -40,4 +42,6 @@
   <a href="https://futureproofblog.in/content-studio" target="_top" aria-label="Open BharatBiz Content Studio"><rect x="55" y="575" width="390" height="35" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/start" target="_top" aria-label="Send a brief"><rect x="785" y="278" width="345" height="43" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="mailto:contact@futureproofblog.in" aria-label="Email FutureProof Blog"><rect x="785" y="389" width="345" height="44" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="tel:+919540528064" aria-label="Call FutureProof Blog"><rect x="785" y="434" width="345" height="30" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=35%2C%20B%20Block%2C%20Pramod%20Mahajan%20Marg%2C%20Saket%2C%20New%20Delhi%20110017" target="_top" aria-label="Find the Saket office on Google Maps"><rect x="785" y="466" width="345" height="59" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
 </svg>

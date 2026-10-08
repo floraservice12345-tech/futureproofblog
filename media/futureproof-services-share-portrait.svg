@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
   <title id="title">FutureProof Blog services poster</title>
-  <desc id="desc">Career documents, writing, data and web tools. Enquire at futureproofblog.in/start or contact@futureproofblog.in. BharatBiz Content Studio at futureproofblog.in/content-studio.</desc>
+  <desc id="desc">Career documents, writing, data and web tools. Call +91 95405 28064, email contact@futureproofblog.in, or enquire at futureproofblog.in/start. Office: 35, B Block, Pramod Mahajan Marg, Saket, New Delhi 110017. BharatBiz Content Studio at futureproofblog.in/content-studio.</desc>
   <defs>
     <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#1b3b5e"/><stop offset=".55" stop-color="#12273f"/><stop offset="1" stop-color="#0d1c30"/></linearGradient>
     <linearGradient id="bar" x2="1" y2="0"><stop stop-color="#fa5774"/><stop offset="1" stop-color="#e83e5d"/></linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="15" stdDeviation="20" flood-color="#061322" flood-opacity=".28"/></filter>
     <style>
       text{font-family:Arial,Helvetica,sans-serif}
-      .white{fill:#fff}.light{fill:#dce9f6}.soft{fill:#abc3d9}.pink{fill:#ff8ea2}.nav{font-size:27px;font-weight:800}.eyebrow{font-size:21px;font-weight:800;letter-spacing:4px}.headline{font-size:82px;font-weight:900;letter-spacing:-3px}.subtitle{font-size:30px}.card-title{font-size:30px;font-weight:800}.card-detail{font-size:23px}.card-num{font-size:26px;font-weight:900}.studio-head{font-size:31px;font-weight:850;fill:#142741}.studio-sub{font-size:24px;fill:#354861}.studio-link{font-size:26px;font-weight:800;fill:#b72244}.cta-kicker{font-size:22px;font-weight:800;letter-spacing:2px}.cta-url{font-size:43px;font-weight:900;letter-spacing:-1px}.email{font-size:32px;font-weight:700}.footer{font-size:20px}
+      .white{fill:#fff}.light{fill:#dce9f6}.soft{fill:#abc3d9}.pink{fill:#ff8ea2}.nav{font-size:27px;font-weight:800}.eyebrow{font-size:21px;font-weight:800;letter-spacing:4px}.headline{font-size:82px;font-weight:900;letter-spacing:-3px}.subtitle{font-size:30px}.card-title{font-size:30px;font-weight:800}.card-detail{font-size:23px}.card-num{font-size:26px;font-weight:900}.studio-head{font-size:31px;font-weight:850;fill:#142741}.studio-sub{font-size:24px;fill:#354861}.studio-link{font-size:26px;font-weight:800;fill:#b72244}.cta-kicker{font-size:22px;font-weight:800;letter-spacing:2px}.cta-url{font-size:43px;font-weight:900;letter-spacing:-1px}.email{font-size:32px;font-weight:700}.phone{font-size:27px;font-weight:800}.footer{font-size:18px}
     </style>
   </defs>
   <rect width="1080" height="1350" fill="url(#bg)"/>
@@ -41,11 +41,12 @@
   <text x="96" y="975" class="studio-sub">Free AI brief builder · 30-day calendar enquiry</text>
   <text x="96" y="1019" class="studio-link">futureproofblog.in/content-studio</text>
 
-  <rect x="62" y="1081" width="954" height="194" rx="25" fill="url(#bar)"/>
+  <rect x="62" y="1081" width="954" height="211" rx="25" fill="url(#bar)"/>
   <text x="94" y="1123" class="white cta-kicker">SEND A BRIEF · FREE ENQUIRY</text>
   <text x="94" y="1181" class="white cta-url">futureproofblog.in/start</text>
-  <text x="94" y="1235" class="white email">contact@futureproofblog.in</text>
-  <text x="66" y="1310" class="soft footer">Online delivery · Saket, New Delhi 110017 · Quote before payment</text>
+  <text x="94" y="1228" class="white email">contact@futureproofblog.in</text>
+  <text x="94" y="1270" class="white phone">Call · +91 95405 28064</text>
+  <text x="66" y="1325" class="soft footer">35, B Block, Pramod Mahajan Marg, Saket, New Delhi 110017, India</text>
   <a href="https://futureproofblog.in/" target="_top" aria-label="Open FutureProof Blog"><rect x="64" y="62" width="330" height="64" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/resume" target="_top" aria-label="Explore career services"><rect x="62" y="526" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Request writing and content services"><rect x="550" y="526" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
@@ -53,5 +54,7 @@
   <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Request a small web tool"><rect x="550" y="704" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/content-studio" target="_top" aria-label="Open BharatBiz Content Studio"><rect x="93" y="987" width="690" height="50" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
   <a href="https://futureproofblog.in/start" target="_top" aria-label="Send a brief"><rect x="90" y="1137" width="725" height="59" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
-  <a href="mailto:contact@futureproofblog.in" aria-label="Email FutureProof Blog"><rect x="90" y="1199" width="720" height="57" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="mailto:contact@futureproofblog.in" aria-label="Email FutureProof Blog"><rect x="90" y="1192" width="720" height="54" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="tel:+919540528064" aria-label="Call FutureProof Blog"><rect x="90" y="1245" width="620" height="47" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=35%2C%20B%20Block%2C%20Pramod%20Mahajan%20Marg%2C%20Saket%2C%20New%20Delhi%20110017" target="_top" aria-label="Find the Saket office on Google Maps"><rect x="62" y="1298" width="950" height="43" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
 </svg>
