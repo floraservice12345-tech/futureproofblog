@@ -1,0 +1,5 @@
+# Preserve binary documents and media exactly, including on Windows checkouts.
+*.pdf binary
+*.png binary
+*.gif binary
+*.webm binary

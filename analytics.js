@@ -121,14 +121,26 @@ window.addEventListener('fp:form-sent', function () {
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a");
     if (!a || !a.href) return;
+    if (/^(tel:|mailto:)/i.test(a.getAttribute('href') || '')) {
+      gtag('event', 'contact_click', { contact_method: a.protocol === 'tel:' ? 'phone' : 'email',
+        page_path: location.pathname });
+    }
+    if (a.dataset.promoDownload) {
+      gtag('event', 'promo_download', { asset_type: a.dataset.promoDownload,
+        page_path: location.pathname });
+    }
+    if (a.dataset.promoService) {
+      gtag('event', 'service_interest', { service_type: a.dataset.promoService,
+        page_path: location.pathname });
+    }
     if (a.dataset.trackShare) {
       gtag('event', 'share', { method: a.dataset.trackShare,
-        content_type: 'article', item_id: location.pathname });
+        content_type: location.pathname.indexOf('/business-promo') === 0 ? 'service' : 'article', item_id: location.pathname });
     }
     try {
       var destination = new URL(a.href, location.href);
       if (destination.origin === location.origin &&
-          /^\/(hire-me|quick-services|resume|resume-from-scratch|resume-match-checker|business-brief-builder)(?:\.html)?$/.test(destination.pathname)) {
+          /^\/(hire-me|quick-services|resume|resume-from-scratch|resume-match-checker|business-brief-builder|business-promo|start|content-studio)(?:\.html)?$/.test(destination.pathname)) {
         var area = a.closest('header, nav') ? 'navigation' :
           a.closest('footer') ? 'footer' :
           a.closest('.article-wrap, article') ? 'article' :
