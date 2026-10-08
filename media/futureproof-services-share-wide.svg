@@ -33,4 +33,11 @@
   <text x="788" y="418" fill="#b72244" font-size="24" font-weight="800">contact@futureproofblog.in</text>
   <text x="788" y="485" fill="#506179" font-size="18">No payment on the enquiry form.</text>
   <text x="788" y="515" fill="#506179" font-size="18">Online delivery · Saket, New Delhi</text>
+  <a href="https://futureproofblog.in/" target="_top" aria-label="Open FutureProof Blog"><rect x="55" y="50" width="300" height="54" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/start" target="_top" aria-label="Request a service"><rect x="55" y="180" width="635" height="160" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Explore listed services"><rect x="55" y="350" width="650" height="83" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/content-studio" target="_top" aria-label="Open BharatBiz Content Studio"><rect x="55" y="517" width="550" height="95" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/content-studio" target="_top" aria-label="Open BharatBiz Content Studio"><rect x="55" y="575" width="390" height="35" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/start" target="_top" aria-label="Send a brief"><rect x="785" y="278" width="345" height="43" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="mailto:contact@futureproofblog.in" aria-label="Email FutureProof Blog"><rect x="785" y="389" width="345" height="44" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
 </svg>

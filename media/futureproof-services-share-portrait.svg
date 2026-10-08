@@ -46,4 +46,12 @@
   <text x="94" y="1181" class="white cta-url">futureproofblog.in/start</text>
   <text x="94" y="1235" class="white email">contact@futureproofblog.in</text>
   <text x="66" y="1310" class="soft footer">Online delivery · Saket, New Delhi 110017 · Quote before payment</text>
+  <a href="https://futureproofblog.in/" target="_top" aria-label="Open FutureProof Blog"><rect x="64" y="62" width="330" height="64" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/resume" target="_top" aria-label="Explore career services"><rect x="62" y="526" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Request writing and content services"><rect x="550" y="526" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Request data and Excel services"><rect x="62" y="704" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/hire-me#order" target="_top" aria-label="Request a small web tool"><rect x="550" y="704" width="466" height="158" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/content-studio" target="_top" aria-label="Open BharatBiz Content Studio"><rect x="93" y="987" width="690" height="50" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="https://futureproofblog.in/start" target="_top" aria-label="Send a brief"><rect x="90" y="1137" width="725" height="59" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
+  <a href="mailto:contact@futureproofblog.in" aria-label="Email FutureProof Blog"><rect x="90" y="1199" width="720" height="57" fill="#fff" fill-opacity="0" pointer-events="all"/></a>
 </svg>
