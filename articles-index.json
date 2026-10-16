@@ -1,7 +1,20 @@
 {
- "generated": "2026-09-29",
- "count": 49,
+ "generated": "2026-10-16",
+ "count": 50,
  "articles": [
+  {
+   "title": "From Excel Sheet to a Simple App: A Weekend Project for Non-Coders",
+   "url": "/article-excel-to-simple-app-weekend-2026",
+   "excerpt": "Build a simple app from Excel or Google Sheets without coding. Download the starter tracker, follow the weekend plan and test before sharing.",
+   "tags": [
+    "AI & Work",
+    "No-Code",
+    "Excel"
+   ],
+   "date": "2026-10-16",
+   "readTime": "9 min read",
+   "keywords": "excel to app no code appsheet power apps google sheets weekend tracker spreadsheet"
+  },
   {
    "title": "15 Side Hustles That Can Help Indians Earn Extra Income in 2026",
    "url": "/article-15-side-hustles-india-2026",
