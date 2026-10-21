@@ -29,7 +29,9 @@ var FP_WHATSAPP = {
   if (!num) return; // not configured — render nothing
 
   var onResume = location.pathname.indexOf("/resume") === 0;
-  var text = onResume ? FP_WHATSAPP.messageResume : FP_WHATSAPP.message;
+  var text = location.pathname.indexOf("/resume-from-scratch") === 0
+    ? "Hi, I need a resume written from scratch. Please confirm the scope, price and delivery date."
+    : onResume ? FP_WHATSAPP.messageResume : FP_WHATSAPP.message;
   var href = "https://wa.me/" + num + "?text=" + encodeURIComponent(text);
 
   function build() {

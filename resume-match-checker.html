@@ -157,6 +157,10 @@ var missing=Array.prototype.map.call(document.getElementById("missingList").chil
 return "Resume–job keyword overlap: "+score+"\nMatched terms: "+matched+"\nTerms to review (add only if accurate): "+missing+"\nThis is exact wording overlap, not an ATS score or hiring prediction."
 }
 document.getElementById("copyButton").addEventListener("click",function(){
+if (!navigator.clipboard || !navigator.clipboard.writeText) {
+  message.textContent="Copy is unavailable in this browser. Use Download summary instead.";
+  return;
+}
 navigator.clipboard.writeText(summaryText()).then(function(){message.textContent="Summary copied."}).catch(function(){message.textContent="Copy was blocked by this browser. You can download the summary instead."})
 });
 document.getElementById("downloadButton").addEventListener("click",function(){

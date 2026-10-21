@@ -25,3 +25,19 @@
 # Short, memorable links printed on the shareable services posters.
 /start   /business-promo   302
 /content-studio   https://futureproofblog-ai-content-studio.netlify.app/   302
+
+# Retired verification copies use the current public pages.
+/hire-me-live-check /hire-me 301!
+/hire-me-live-check.html /hire-me 301!
+/live-check-index / 301!
+/live-check-index.html / 301!
+/verify-index / 301!
+/verify-index.html / 301!
+/verify2-index / 301!
+/verify2-index.html / 301!
+/verify3-index / 301!
+/verify3-index.html / 301!
+/verify-article-claude-financial-advisors-2026 /article-claude-financial-advisors-2026 301!
+/verify-article-claude-financial-advisors-2026.html /article-claude-financial-advisors-2026 301!
+/verify-article-nifty-it-stocks-rally-sept-2026 /article-nifty-it-stocks-rally-sept-2026 301!
+/verify-article-nifty-it-stocks-rally-sept-2026.html /article-nifty-it-stocks-rally-sept-2026 301!

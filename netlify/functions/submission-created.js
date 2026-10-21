@@ -179,7 +179,7 @@ function notifyHtml(formName, data, cls, score) {
        <strong>Reply by:</strong> ${escapeHtml(cls.sla)} &nbsp;·&nbsp; <strong>Form:</strong> ${escapeHtml(formName)} &nbsp;·&nbsp; <strong>Spam score:</strong> ${score}</p>
     <table style="width:100%;border-collapse:collapse;font-size:.92rem;border:1px solid #eceff5">${rows}</table>
     ${data.email ? `<p style="margin:18px 0 0"><a href="mailto:${escapeHtml(data.email)}" style="background:#c9304e;color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block">Reply to ${escapeHtml(data.email)}</a></p>` : ""}
-    <p style="margin:16px 0 0;color:#98a0b2;font-size:.8rem">${cls.kind === "review" ? "The reviewer has had an automatic acknowledgement explaining how reviews are handled." : `The sender has already had an automatic acknowledgement telling them to expect a reply within ${escapeHtml(cls.sla)}.`}</p>
+    <p style="margin:16px 0 0;color:#98a0b2;font-size:.8rem">${cls.kind === "review" ? "An automatic acknowledgement is attempted separately, explaining how reviews are handled." : `An automatic acknowledgement is attempted separately, telling the sender to expect a reply within ${escapeHtml(cls.sla)}.`}</p>
   </div>
 </div>`;
 }
@@ -252,12 +252,12 @@ export default async (req) => {
 
   if (score >= 60) {
     // Filed, not pinged. No acknowledgement to a spammer, no interruption to Rahul.
-    await send(key, {
+    const spamFiled = await send(key, {
       sender: FROM, to: [{ email: OWNER }],
       subject: `[filed as spam · ${score}] ${formName}`,
       htmlContent: notifyHtml(formName, data, cls, score)
     });
-    return new Response("spam filed", { status: 200 });
+    return new Response(spamFiled ? "spam filed" : "owner notification failed", { status: spamFiled ? 200 : 502 });
   }
 
   const jobs = [];
@@ -283,6 +283,15 @@ export default async (req) => {
     htmlContent: notifyHtml(formName, data, cls, score)
   }));
 
-  await Promise.allSettled(jobs);
+  const results = await Promise.allSettled(jobs);
+  // The owner message is the final job. Never conceal a failed delivery as success.
+  const ownerResult = results[results.length - 1];
+  if (ownerResult.status !== "fulfilled" || ownerResult.value !== true) {
+    console.error("Owner notification failed; submission remains in Netlify Forms.");
+    return new Response("owner notification failed", { status: 502 });
+  }
+  const secondaryFailures = results.slice(0, -1).filter(result =>
+    result.status === "rejected" || result.value === false).length;
+  if (secondaryFailures) console.error("Secondary enquiry delivery failures:", secondaryFailures);
   return new Response("ok", { status: 200 });
 };

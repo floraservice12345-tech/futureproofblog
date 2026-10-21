@@ -254,7 +254,7 @@ var FP_NEWSLETTER = {
       "/resume", "Get my free sample rewrite"),
     money: card("DATA & DOCUMENTS", "Need the spreadsheet, deck or report itself?",
       "Get a written scope, fixed price and delivery date for a workbook, chart, report or deck built from the source material you provide.",
-      "/hire-me#sameday", "See same-day services"),
+      "/hire-me#order", "Request a fixed quote"),
     write: card("WRITING SERVICES", "Want this written for your business instead?",
       "Start with one scoped article, product listing, email or website section. Your written quote shows the current price and included revisions before payment.",
       "/hire-me", "See services &amp; prices")
@@ -279,6 +279,7 @@ var FP_NEWSLETTER = {
 
   function offer() {
     if (location.pathname.indexOf("/article-") !== 0) return;
+    if (document.querySelector(".reader-next-step, .article-cta")) return;
     var body = document.body.innerHTML;
     // already carries the hand-written version — leave it alone
     if (body.indexOf("FREE — NO CATCH") !== -1 ||
@@ -300,7 +301,9 @@ var FP_NEWSLETTER = {
     if (!num || document.getElementById("fp-wa")) return;
 
     var onResume = location.pathname.indexOf("/resume") === 0;
-    var text = onResume
+    var text = location.pathname.indexOf("/resume-from-scratch") === 0
+      ? "Hi, I need a resume written from scratch. Please confirm the scope, price and delivery date."
+      : onResume
       ? "Hi, I'd like the free sample rewrite of my resume."
       : "Hi, I found futureproofblog.in and I'd like to ask about your services.";
 
