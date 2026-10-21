@@ -54,7 +54,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
   .faq-item p{font-size:15.2px;line-height:1.75}
 }
-</style>
+.search-box input:focus-visible,.search-box button:focus-visible{outline:3px solid #ffd166;outline-offset:3px}[hidden]{display:none!important}</style>
 <!-- Google AdSense -->
 
 <meta property="og:title" content="Search Articles">
@@ -71,12 +71,12 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 <div class="hero">
 <h1>&#128269; Search Articles</h1>
 <p>Find insights on AI tools, careers, investing, and technology for Indian professionals</p>
-<div class="search-box">
-<input type="text" id="searchInput" placeholder="Search articles... e.g. AI tools, SIP, coding" autofocus>
-<button onclick="doSearch()">Search</button>
-</div></div>
+<form class="search-box" role="search" onsubmit="event.preventDefault();doSearch()">
+<input aria-label="Search articles by topic" type="search" maxlength="120" id="searchInput" placeholder="Search articles... e.g. AI tools, SIP, coding" autofocus>
+<button type="submit">Search</button>
+</form></div>
 <div class="container">
-<div id="resultsCount" class="results-count"></div>
+<div id="resultsCount" class="results-count" role="status" aria-live="polite"></div>
 <div id="searchResults"></div>
 <div class="all-articles" id="allArticles"><h2>All Articles</h2><div id="articleList"></div></div>
 </div>
@@ -85,14 +85,65 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 <script>
 var articles = [];
 var indexReady = false;
-function hl(text,q){if(!q)return text;var words=q.trim().split(/\s+/).filter(function(w){return w.length>2});var r=text;words.forEach(function(w){var re=new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");r=r.replace(re,"<span class='hl'>$1</span>")});return r}
-function renderCard(a,q){return "<div class='result-card'><h3><a href='"+a.url+"'>"+hl(a.title,q)+"</a></h3><p class='excerpt'>"+hl(a.excerpt,q)+"</p><div class='tags'>"+a.tags.map(function(t){return "<span class='tag'>"+t+"</span>"}).join("")+"</div></div>"}
-function doSearch(){if(!indexReady)return;var q=document.getElementById("searchInput").value.trim().toLowerCase();var rd=document.getElementById("searchResults");var cd=document.getElementById("resultsCount");var aad=document.getElementById("allArticles");if(!q){rd.innerHTML="";cd.innerHTML="";aad.style.display="block";renderAll();return}aad.style.display="none";var words=q.split(/\s+/).filter(function(w){return w.length>1});var scored=articles.map(function(a){var sc=0;var st=(a.title+" "+a.excerpt+" "+a.keywords+" "+a.tags.join(" ")).toLowerCase();words.forEach(function(w){if(a.title.toLowerCase().indexOf(w)>-1)sc+=10;if(a.tags.some(function(t){return t.toLowerCase().indexOf(w)>-1}))sc+=5;if(a.keywords.indexOf(w)>-1)sc+=3;if(a.excerpt.toLowerCase().indexOf(w)>-1)sc+=2});return Object.assign({},a,{score:sc})}).filter(function(a){return a.score>0}).sort(function(a,b){return b.score-a.score});if(scored.length===0){cd.innerHTML="";rd.innerHTML="<div class='no-results'><h3>No articles found for <em>"+q+"</em></h3><p>Try a different keyword, or browse All Articles below</p></div>";return}cd.innerHTML="Found <strong>"+scored.length+"</strong> article"+(scored.length!==1?"s":"")+" for <em>"+q+"</em>";rd.innerHTML=scored.map(function(a){return renderCard(a,q)}).join("")}
-function renderAll(){document.getElementById("articleList").innerHTML=articles.map(function(a){return renderCard(a,"")}).join("")}
-document.getElementById("searchInput").addEventListener("keyup",function(e){if(e.key==="Enter")doSearch();if(this.value.length>2||this.value.length===0)doSearch()});
+function element(tag, text, className) {
+  var node = document.createElement(tag);
+  if (text !== undefined) node.textContent = text;
+  if (className) node.className = className;
+  return node;
+}
+function renderCard(a) {
+  var card = element('div', undefined, 'result-card');
+  var heading = element('h3');
+  var link = element('a', a.title);
+  var url;
+  try { url = new URL(a.url, location.origin); } catch (_) { return card; }
+  if (url.origin !== location.origin || !url.pathname.startsWith('/article-')) return card;
+  link.href = url.pathname;
+  heading.appendChild(link);
+  card.appendChild(heading);
+  card.appendChild(element('p', a.excerpt, 'excerpt'));
+  var tags = element('div', undefined, 'tags');
+  (a.tags || []).forEach(function (t) { tags.appendChild(element('span', t, 'tag')); });
+  card.appendChild(tags);
+  return card;
+}
+function renderAll() {
+  var list = document.getElementById('articleList');
+  list.replaceChildren();
+  articles.forEach(function (a) { list.appendChild(renderCard(a)); });
+}
+function doSearch() {
+  if (!indexReady) return;
+  var q = document.getElementById('searchInput').value.trim().toLowerCase().slice(0,120);
+  var results = document.getElementById('searchResults');
+  var count = document.getElementById('resultsCount');
+  var all = document.getElementById('allArticles');
+  results.replaceChildren();
+  if (!q) { count.textContent = ''; all.hidden = false; renderAll(); return; }
+  var words = q.split(/\s+/).filter(Boolean);
+  var scored = articles.map(function (a) {
+    var score = 0;
+    words.forEach(function (word) {
+      if ((a.title || '').toLowerCase().includes(word)) score += 10;
+      if ((a.tags || []).some(function(t) { return t.toLowerCase().includes(word); })) score += 5;
+      if ((a.keywords || '').toLowerCase().includes(word)) score += 3;
+      if ((a.excerpt || '').toLowerCase().includes(word)) score += 2;
+    });
+    return {article:a, score:score};
+  }).filter(function(a) { return a.score > 0; }).sort(function(a,b) { return b.score-a.score; });
+  all.hidden = scored.length > 0;
+  count.textContent = scored.length ? 'Found '+scored.length+' articles for “'+q+'”.' : 'No matching articles. Browse all guides below or try Excel, resume or remote work.';
+  if (!scored.length) renderAll();
+  scored.forEach(function(a) { results.appendChild(renderCard(a.article)); });
+}
+var searchTimer;
+document.getElementById('searchInput').addEventListener('input', function() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(doSearch, 180);
+});
 document.getElementById("articleList").innerHTML="<p style='color:#888;padding:20px 0'>Loading articles…</p>";
-fetch("/articles-index.json").then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(function(data){articles=data.articles||[];indexReady=true;var urlP=new URLSearchParams(window.location.search);var qP=urlP.get("q");if(qP){document.getElementById("searchInput").value=qP;doSearch()}else{renderAll()}}).catch(function(err){document.getElementById("articleList").innerHTML="<p style='color:#c00;padding:20px 0'>Could not load the article list right now. Please refresh, or browse articles from the <a href='/'>homepage</a>.</p>";console.error("articles-index.json load failed:",err)});
+fetch("/articles-index.json").then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(function(data){articles=data.articles||[];indexReady=true;var urlP=new URLSearchParams(window.location.search);var qP=urlP.get("q");if(qP){document.getElementById("searchInput").value=qP.slice(0,120)}doSearch()}).catch(function(err){document.getElementById("articleList").innerHTML="<p style='color:#c00;padding:20px 0'>Could not load the article list right now. Please refresh, or browse articles from the <a href='/'>homepage</a>.</p>";console.error("articles-index.json load failed:",err)});
 window.addEventListener("scroll",function(){var b=document.getElementById("backToTop");if(window.scrollY>300)b.classList.add("visible");else b.classList.remove("visible");var p=document.getElementById("progress-bar");p.style.width=((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100)+"%"});
-if(!localStorage.getItem("cookieConsent")){var ban=document.createElement("div");ban.style.cssText="position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;z-index:10000;flex-wrap:wrap;gap:10px;font-size:0.9rem;";ban.innerHTML='<span>We use cookies to improve your experience. <a href="/privacy-policy" style="color:#e94560">Learn more</a></span><div style="display:flex;gap:10px"><button onclick="localStorage.setItem(\'cookieConsent\',\'accepted\');this.parentElement.parentElement.remove()" style="background:#e94560;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Accept</button><button onclick="localStorage.setItem(\'cookieConsent\',\'declined\');this.parentElement.parentElement.remove()" style="background:#444;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Decline</button></div>';document.body.appendChild(ban)}
+if(!localStorage.getItem("fp_cookie_consent")&&!localStorage.getItem("cookieConsent")){var ban=document.createElement("div");ban.className="cookie-banner";ban.style.cssText="position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;z-index:10000;flex-wrap:wrap;gap:10px;font-size:0.9rem;";ban.innerHTML='<span>We use cookies to improve your experience. <a href="/privacy-policy" style="color:#e94560">Learn more</a></span><div style="display:flex;gap:10px"><button onclick="localStorage.setItem(\'cookieConsent\',\'accepted\');this.parentElement.parentElement.remove()" style="background:#e94560;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Accept</button><button onclick="localStorage.setItem(\'cookieConsent\',\'declined\');this.parentElement.parentElement.remove()" style="background:#444;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Decline</button></div>';document.body.appendChild(ban)}
 </script>
 </body></html>

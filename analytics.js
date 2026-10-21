@@ -67,7 +67,7 @@ window.addEventListener('fp:form-sent', function () {
   window.gtag = gtag;
   function savedConsent() {
     try {
-      var value = localStorage.getItem('fp_cookie_consent');
+      var value = localStorage.getItem('fp_cookie_consent') || localStorage.getItem('cookieConsent');
       if (value === 'accepted' || value === 'declined') return value;
       value = localStorage.getItem('fpb_cookies_accepted');
       if (value === '1') return 'accepted';
@@ -156,6 +156,25 @@ window.addEventListener('fp:form-sent', function () {
         page_path: location.pathname
       });
     }
+  }, true);
+
+  // A start is intent only; generate_lead remains reserved for successful submissions.
+  // Never send field values, client names, emails or briefs to Analytics.
+  var startedForms = new WeakSet();
+  document.addEventListener('input', function (event) {
+    var form = event.target && event.target.form;
+    if (!form || startedForms.has(form)) return;
+    var name = form.getAttribute('name');
+    if (!Object.keys(FP_LEAD_ROUTES).some(function (route) { return FP_LEAD_ROUTES[route] === name; })) return;
+    startedForms.add(form);
+    gtag('event', 'enquiry_start', { form_name: name, page_path: location.pathname });
+  }, true);
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[data-reader-step]');
+    if (!link) return;
+    var kind = link.getAttribute('data-reader-step');
+    if (kind !== 'free-tool' && kind !== 'small-service') return;
+    gtag('event', 'reader_next_step', { step_type: kind, page_path: location.pathname });
   }, true);
 
   // Count only a completed form route, never an attempted submit.

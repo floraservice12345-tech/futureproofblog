@@ -15,3 +15,10 @@
 .article-wrap .article-cta p {
   text-align: left;
 }
+
+.reader-next-step{margin:32px 0;padding:22px;background:#f6f7fb;border:1px solid #dce1eb;border-left:4px solid #a91f38;border-radius:10px}
+.article-wrap .reader-next-step p{text-align:left}
+.reader-next-step h2{margin:0 0 12px;font-size:1.3rem}
+.reader-next-step a{color:#8c1930;text-decoration:underline;text-underline-offset:3px}
+.reader-next-step a:focus-visible{outline:3px solid #0f3460;outline-offset:3px}
+.reader-next-step .reader-note{font-size:.88rem;line-height:1.6}
