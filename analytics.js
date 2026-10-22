@@ -125,6 +125,9 @@ window.addEventListener('fp:form-sent', function () {
       gtag('event', 'contact_click', { contact_method: a.protocol === 'tel:' ? 'phone' : 'email',
         page_path: location.pathname });
     }
+    if (a.dataset.contactMethod === 'whatsapp') {
+      gtag('event', 'contact_click', { contact_method: 'whatsapp', page_path: location.pathname });
+    }
     if (a.dataset.promoDownload) {
       gtag('event', 'promo_download', { asset_type: a.dataset.promoDownload,
         page_path: location.pathname });
@@ -175,6 +178,14 @@ window.addEventListener('fp:form-sent', function () {
     var kind = link.getAttribute('data-reader-step');
     if (kind !== 'free-tool' && kind !== 'small-service') return;
     gtag('event', 'reader_next_step', { step_type: kind, page_path: location.pathname });
+  }, true);
+
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest && event.target.closest('a[data-starter-service]');
+    if (!link) return;
+    var service = link.getAttribute('data-starter-service');
+    if (['catalogue','application-email','resume-summary','formula-fixes'].indexOf(service) < 0) return;
+    gtag('event', 'starter_service_click', { service_id: service, page_path: location.pathname });
   }, true);
 
   // Count only a completed form route, never an attempted submit.
