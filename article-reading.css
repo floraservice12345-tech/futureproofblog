@@ -22,3 +22,7 @@
 .reader-next-step a{color:#8c1930;text-decoration:underline;text-underline-offset:3px}
 .reader-next-step a:focus-visible{outline:3px solid #0f3460;outline-offset:3px}
 .reader-next-step .reader-note{font-size:.88rem;line-height:1.6}
+/* Original article illustrations stay sharp, responsive and captioned. */
+.article-wrap .article-illustration{margin:26px 0 30px}
+.article-wrap .article-illustration img{display:block;width:100%;height:auto;border:1px solid #e2e6ee;border-radius:12px;background:#f7f8fb}
+.article-wrap .article-illustration figcaption{margin:9px 2px 0;color:#596275;font-size:.88rem;line-height:1.5}
