@@ -1,0 +1,59 @@
+/* Layout for the five practical income guides. */
+.income-guide-page{background:#f3f5f8}
+.income-guide-page .article-hero{background:linear-gradient(145deg,#fffaf3,#f0f6f5);border-bottom:1px solid #e2e6ee;padding:46px 20px 34px}
+.income-guide-page .article-hero h1{max-width:960px;letter-spacing:-.025em;font-size:clamp(2rem,4.6vw,3.3rem)}
+.income-guide-page .article-hero .meta{max-width:850px;margin:16px auto 0;line-height:1.7}
+.income-guide-page .page-wrap{padding-top:28px}
+.practical-guide,.practical-guide *{box-sizing:border-box}
+.article-wrap.practical-guide{max-width:930px;font-size:1.025rem;padding:32px clamp(18px,5vw,50px)}
+.practical-guide h2{margin-top:40px;padding-top:8px;font-size:clamp(1.35rem,3.3vw,1.75rem);letter-spacing:-.015em;scroll-margin-top:22px}
+.practical-guide h3{line-height:1.35}
+.practical-guide .guide-summary{padding:20px 24px;background:#f0f6f4;border:1px solid #d2e4de;border-left:5px solid #347e72;border-radius:13px}
+.practical-guide .guide-kicker{margin:0 0 10px;text-align:left;font-size:.78rem!important;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#28675d}
+.practical-guide .guide-summary ul{margin:0;padding-left:21px}
+.practical-guide .guide-summary li{text-align:left;line-height:1.65;margin:7px 0}
+.guide-download{display:flex;align-items:center;justify-content:space-between;gap:20px;background:#fff8eb;border:1px solid #edd9b6;border-radius:12px;padding:19px 22px;margin:20px 0}
+.practical-guide .guide-download p{font-size:.88rem;line-height:1.5;text-align:left;margin:5px 0 0;color:#596275}
+.practical-guide a.guide-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 17px;background:#a91f38;color:#fff;border:1px solid #a91f38;border-radius:8px;text-decoration:none;text-align:center;line-height:1.4;font-size:.92rem;font-weight:700}
+.guide-download .guide-button{flex-shrink:0}
+.practical-guide .guide-toc{margin:24px 0 30px;padding:20px 24px;background:#fafbfc}
+.practical-guide .guide-toc ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 30px;list-style:none;margin:12px 0 0;padding:0}
+.practical-guide .guide-toc li{text-align:left;margin:0;line-height:1.45}
+.practical-guide .guide-toc a{padding:6px 0;font-size:.92rem;display:block;text-underline-offset:3px}
+.practical-guide .article-illustration{margin:30px 0}
+.practical-guide .article-illustration>a{display:block;border-radius:12px}
+.practical-guide .article-illustration img{width:100%;height:auto}
+.visual-zoom{display:block;margin-top:3px;font-size:.82rem;color:#647087}
+.practical-guide .table-wrap{border:1px solid #dce2ec;border-radius:11px;margin:20px 0;max-width:100%;overflow-x:auto}
+.practical-guide .table-wrap table{margin:0;min-width:560px}
+.practical-guide .table-wrap caption{text-align:left;padding:14px 15px;background:#f2f5fa;color:#34425a;font-size:.88rem;font-weight:700;line-height:1.5}
+.practical-guide th,.practical-guide td{padding:12px 14px;min-width:0;font-size:.94rem;line-height:1.6;border:0;border-bottom:1px solid #e0e5ed}
+.practical-guide thead th{background:#17213b;color:#fff}
+.practical-guide tbody th{background:transparent;font-weight:600}
+.practical-guide tbody tr:nth-child(even){background:#f8fafc}
+.practical-guide tbody tr:last-child>*{border-bottom:0}
+.practical-guide .guide-template{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f8fc;border:1px solid #dce2ec;border-left:4px solid #a91f38;border-radius:8px;padding:22px;font: .94rem/1.75 'Segoe UI',Arial,sans-serif;color:#263047}
+.guide-faq{border:1px solid #dce2ec;border-radius:12px;overflow:hidden;margin:20px 0 30px}
+.guide-faq details{padding:0 20px;background:#fff;border-bottom:1px solid #dce2ec}
+.guide-faq details:last-child{border-bottom:0}
+.guide-faq summary{padding:18px 0;cursor:pointer;font-weight:700;line-height:1.45;color:#202a43}
+.practical-guide .guide-faq p{margin:0 0 20px;text-align:left}
+.guide-help{padding:24px;background:#fff5ef;border:1px solid #ead6cc;border-radius:12px;margin:38px 0 25px}
+.practical-guide .guide-help h2{margin:0 0 12px;padding:0;font-size:1.35rem}
+.practical-guide .guide-help p{text-align:left}
+.guide-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+.practical-guide .guide-small{font-size:.85rem;line-height:1.6;color:#596275;text-align:left;margin-bottom:0}
+.guide-calculator{margin:22px 0 32px;border:1px solid #c6d7d5;border-radius:14px;background:#f0f7f5;padding:24px}
+.guide-calculator h3{margin:0 0 10px;font-size:1.25rem;color:#1e514b}
+.practical-guide .guide-calculator p{text-align:left}
+.calculator-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:22px 0}
+.calculator-inputs label{font-size:.88rem;line-height:1.5;font-weight:600;color:#283449}
+.calculator-inputs input{display:block;width:100%;margin-top:7px;padding:12px;border:1px solid #91aaa7;border-radius:7px;font:inherit;font-size:1rem;color:#17213b;background:#fff}
+.calculator-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.practical-guide .calculator-results p{margin:0;padding:14px;background:#fff;border:1px solid #c8dbd6;border-radius:8px;font-size:.8rem;line-height:1.5;text-align:left}
+.calculator-results strong{display:block;font-size:1.3rem;line-height:1.4;color:#205e52;margin-top:8px;overflow-wrap:anywhere}
+.guide-calculator button{min-height:44px;padding:10px 16px;border:1px solid #8a9d9b;border-radius:7px;background:#fff;color:#244e49;font:inherit;font-size:.9rem;cursor:pointer}
+.practical-guide .calculator-error{color:#8f1932;font-weight:600}
+.practical-guide :focus-visible{outline:3px solid #c47b16;outline-offset:4px}
+@media(max-width:600px){.income-guide-page .page-wrap{padding:16px 10px 35px}.article-wrap.practical-guide{padding:21px 17px;font-size:1rem}.guide-download{display:block;padding:18px}.guide-download .guide-button{margin-top:15px;width:100%}.practical-guide .guide-toc ul{grid-template-columns:1fr;gap:0}.practical-guide .guide-toc{padding:18px}.practical-guide .guide-summary{padding:17px 18px}.calculator-inputs,.calculator-results{grid-template-columns:1fr}.guide-calculator{padding:18px}.calculator-results strong{font-size:1.4rem}.guide-help{padding:20px}.guide-actions{display:block}.guide-actions>a{margin:6px 0;display:inline-block}.practical-guide .guide-template{padding:17px}.practical-guide .table-wrap{font-size:.9rem}}
+@media print{.income-guide-page header,.income-guide-page footer,.guide-toc,.guide-download,.guide-help,.reader-next-step{display:none}.income-guide-page,.income-guide-page .article-hero{background:#fff}.article-wrap.practical-guide{border:0;box-shadow:none;max-width:none;padding:0}.guide-faq details{break-inside:avoid}.article-illustration,.table-wrap{break-inside:avoid}.practical-guide .table-wrap{overflow:visible}.practical-guide .table-wrap table{min-width:0}.guide-calculator{break-inside:avoid}}

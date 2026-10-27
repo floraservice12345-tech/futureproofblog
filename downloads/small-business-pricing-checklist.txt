@@ -1,0 +1,34 @@
+SMALL-BUSINESS PRICING AND CASH-CHECK NOTES
+FutureProof Blog | Reviewed 27 October 2026
+Source article: https://futureproofblog.in/article-calculate-small-business-profit
+Planning aid only. Keep accounting/tax decisions separate and use a qualified professional where needed.
+
+PER PRODUCT / SERVICE
+Sale value after discounts/refunds (excluding taxes collected where applicable):
+Materials:
+Packaging:
+Payment / marketplace charges (count each charge once):
+Delivery you pay:
+Waste / returns / rework allowance:
+Order costs plus allowance:
+Owner minutes per order:
+Chosen owner-time value per hour:
+Owner-time allowance = minutes x hourly value / 60:
+Adjusted planning contribution = sale value - order costs/allowance - owner-time allowance:
+
+MONTHLY
+Fixed expenses used in this model:
+Orders to cover these expenses = fixed expenses / positive adjusted contribution; round up:
+Expected volume based on actual evidence:
+Check discounts, higher costs and slower deliveries separately:
+
+CASH CHECK
+Cash actually received:
+Bills due, supplier payments and stock purchases:
+Customer balances not yet collected:
+Refund commitments:
+Equipment/loan payments:
+Available cash after these commitments:
+
+EXAMPLE ONLY
+Price 500; listed order costs 230; waste allowance 20; owner-time allowance 100 => adjusted contribution 150. Fixed costs 4500 / 150 => 30 identical orders. A 10% discount gives price 450 and contribution 100 => 45 orders, assuming unchanged costs and no other expenses or taxes. This is not a forecast or statutory profit calculation.
