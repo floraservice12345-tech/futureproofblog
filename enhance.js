@@ -71,6 +71,7 @@
 
   /* ---------- 1. reading progress ---------- */
   function progressBar() {
+    if (document.querySelector('#fp-progress,#fpb-progress,#progress-bar,#reading-progress,.fp-reading-progress')) return;
     var bar = document.createElement("div");
     bar.id = "fp-progress";
     document.body.appendChild(bar);
@@ -94,6 +95,7 @@
     return t.toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-").slice(0, 60);
   }
   function tableOfContents() {
+    if (main.querySelector('.toc,.guide-toc,.fp-toc,.fp-reading-toc,#toc,nav[aria-label="In this article"]')) return;
     var heads = [].slice.call(main.querySelectorAll("h2"))
       .filter(function (h) {
         var t = (h.textContent || "").trim();
