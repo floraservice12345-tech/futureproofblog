@@ -18,8 +18,9 @@
    form's Share -> Simple HTML embed code. This is the only file
    to edit; every sign-up box on every page reads from it.
 
-   Blank the URL and all forms fall back to Netlify Forms, exactly
-   as before — nothing breaks.
+   If JavaScript or the configured endpoint is unavailable, the HTML fallback
+   can record an address in Netlify but cannot confirm a Brevo subscription.
+   /subscribe and /thank-you provide a direct hosted signup link.
    ============================================================ */
 
 var FP_NEWSLETTER = {
@@ -105,88 +106,14 @@ var FP_NEWSLETTER = {
   }
 })();
 
-/* ------------------------------------------------------------
-   Already-subscribed state
-   ------------------------------------------------------------
-   Brevo dedupes on its side — an address that is already a
-   confirmed contact is updated, never added twice. But it will
-   still send that person another confirmation email if they hit
-   the form again, and being asked to subscribe to something you
-   already subscribed to is the most irritating thing a site does.
-
-   So once someone subscribes from this browser we remember it and
-   replace every sign-up box with a short acknowledgement plus a
-   link to the guide. There is a "not me" link for shared devices.
-   ------------------------------------------------------------ */
+/* A local visit or form attempt cannot verify Brevo double opt-in.
+   Remove the old browser-only confirmation flag and keep signup forms usable.
+   The hosted form and its confirmation email are the source of subscription status. */
 (function () {
-  var KEY = "fp_subscribed";
-  function stored() {
-    try { return localStorage.getItem(KEY); } catch (e) { return null; }
-  }
-  function remember() {
-    try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
-  }
-  function forget() {
-    try { localStorage.removeItem(KEY); } catch (e) {}
-    location.reload();
-  }
-  window.fpForgetSubscription = forget;
-
-  var NAMES = ["newsletter", "nl-sidebar", "newsletter-article", "newsletter-home"];
-
-  function replaceForms() {
-    NAMES.forEach(function (n) {
-      var list = document.querySelectorAll('form[name="' + n + '"]');
-      for (var i = 0; i < list.length; i++) {
-        var f = list[i];
-        if (f.getAttribute("data-fp-done")) continue;
-        f.setAttribute("data-fp-done", "1");
-        var box = document.createElement("div");
-        box.style.cssText =
-          "border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);" +
-          "border-radius:8px;padding:14px 16px;font-size:.92rem;line-height:1.6";
-        box.innerHTML =
-          '<strong>You are already on the list.</strong> ' +
-          '<a href="/guides/10-ai-tools-india-2026.pdf" style="color:inherit;text-decoration:underline">' +
-          'Download the free guide again</a>' +
-          ' &middot; <a href="#" style="color:inherit;text-decoration:underline;opacity:.75" ' +
-          'onclick="fpForgetSubscription();return false;">not me</a>';
-        if (f.parentNode) f.parentNode.replaceChild(box, f);
-      }
-    });
-  }
-
-  function markOnSubmit() {
-    NAMES.forEach(function (n) {
-      var list = document.querySelectorAll('form[name="' + n + '"]');
-      for (var i = 0; i < list.length; i++) {
-        list[i].addEventListener("submit", function () {
-          try { localStorage.setItem('fp_newsletter_pending', String(Date.now())); } catch (_) {}
-        });
-      }
-    });
-  }
-
-  function run() {
-    // Service enquiry thank-you pages must never mark a visitor subscribed.
-    if (/^\/thank-you(?:\.html)?\/?$/.test(location.pathname)) {
-      var pending = 0;
-      try {
-        pending = Number(localStorage.getItem('fp_newsletter_pending') || 0);
-        localStorage.removeItem('fp_newsletter_pending');
-      } catch (_) {}
-      if (pending && Date.now() - pending < 30 * 86400000) {
-        if (window.gtag) gtag('event', 'sign_up', { method: 'email' });
-        remember();
-      }
-      return;
-    }
-    if (stored()) replaceForms(); else markOnSubmit();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else { run(); }
+  try {
+    localStorage.removeItem('fp_subscribed');
+    localStorage.removeItem('fp_newsletter_pending');
+  } catch (_) { /* Storage is optional; signup continues without it. */ }
 })();
 
 /* ============================================================

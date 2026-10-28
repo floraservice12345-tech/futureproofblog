@@ -112,7 +112,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     </div>
     <div style="border:1px solid #e3e6ee;border-top:3px solid #e94560;border-radius:8px;padding:16px 18px">
       <strong style="display:block;color:#1a1a2e;margin-bottom:5px">Who replies</strong>
-      <span style="color:#555;font-size:.9rem">Geeta Yadav, founder and lead writer. Not an assistant, not an autoresponder.</span>
+      <span style="color:#555;font-size:.9rem">Geeta Yadav, founder. An automated acknowledgement may arrive first; a reviewed response follows.</span>
     </div>
   </div>
 
@@ -129,9 +129,11 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   </div>
 
   <h2>Send a message</h2>
+  <p>Describe what you need in a sentence or two. After submitting, keep your enquiry reference. If no acknowledgement arrives, check spam or email <a href="mailto:contact@futureproofblog.in">contact@futureproofblog.in</a>; you can also call <a href="tel:+919540528064">+91 95405 28064</a>.</p>
   <form class="contact-form" id="contact-form" method="POST" name="contact" action="/thank-you-contact" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="contact">
-    <p class="hp"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+    <input type="hidden" name="reference" value="">
+    <p class="hp" hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
     <div>
       <label for="name">Name</label>
@@ -167,37 +169,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   <p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> &middot; <a href="/terms-of-service">Terms of Service</a></p>
 </footer>
 
-<script>
-(function(){
-  var form = document.getElementById('contact-form');
-  var msg = document.getElementById('form-msg');
-  if (!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('button[type="submit"]');
-    if (btn){ btn.disabled = true; btn.textContent = 'Sending...'; }
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-    .then(function(res){
-      if (!res.ok) throw new Error('Network response was not ok');
-      form.reset();
-      msg.className = 'form-msg success';
-      msg.textContent = '✅ Thanks for reaching out! Your message has been sent — we\'ll get back to you soon.';
-      window.dispatchEvent(new CustomEvent('fp:form-sent', { detail: { formName: 'contact' } }));
-    })
-    .catch(function(){
-      msg.className = 'form-msg error';
-      msg.textContent = '⚠️ Something went wrong. Please email us directly at contact@futureproofblog.in';
-    })
-    .finally(function(){
-      if (btn){ btn.disabled = false; btn.textContent = 'Send Message →'; }
-    });
-  });
-})();
-</script>
+<script src="/contact-form.js?v=20261028" defer></script>
 <script src="/whatsapp.js"></script>
 </body>
 </html>
