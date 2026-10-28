@@ -74,7 +74,7 @@ var FP_NEWSLETTER = {
       if (inp.parentNode) inp.parentNode.removeChild(inp);
     }
 
-    // Brevo's serve endpoint expects these two alongside the fields
+    // Brevo's serve endpoint expects these fields alongside the email address.
     var extras = { email_address_check: "", locale: "en", html_type: "simple" };
     Object.keys(extras).forEach(function (n) {
       if (form.querySelector('input[name="' + n + '"]')) return;
@@ -85,9 +85,75 @@ var FP_NEWSLETTER = {
       form.appendChild(i);
     });
 
-    form.addEventListener("submit", function () {
-      if (window.gtag) {
-        gtag("event", "newsletter_signup_attempt", { page_path: location.pathname });
+    var pending = false;
+    var status = document.createElement("div");
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    status.setAttribute("aria-atomic", "true");
+    status.style.cssText = "display:none;width:100%;box-sizing:border-box;background:#f0f7ff;color:#17324d;border:1px solid #b7cee3;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:.9rem;line-height:1.5;text-align:left";
+    form.appendChild(status);
+
+    function showStatus(message, offerHostedForm) {
+      status.textContent = message;
+      status.style.display = "block";
+      if (offerHostedForm) {
+        var hosted = document.createElement("a");
+        hosted.href = action;
+        hosted.textContent = "Open the hosted signup page";
+        hosted.style.cssText = "display:inline-block;margin-top:8px;color:#17324d;text-decoration:underline;font-weight:700";
+        status.appendChild(document.createElement("br"));
+        status.appendChild(hosted);
+      }
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      if (pending) return;
+      if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
+      if (typeof window.fetch !== "function" || typeof AbortController === "undefined" ||
+          typeof FormData === "undefined" || typeof URLSearchParams === "undefined") {
+        showStatus("Please use our email provider's signup page to request your confirmation email. Your address is still in the form.", true);
+        return;
+      }
+
+      pending = true;
+      form.setAttribute("aria-busy", "true");
+      var buttons = Array.prototype.map.call(form.querySelectorAll('button[type="submit"], button:not([type]), input[type="submit"]'), function (button) {
+        var state = { element: button, disabled: button.disabled };
+        button.disabled = true;
+        return state;
+      });
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 18000);
+      showStatus("Sending your signup request…", false);
+      try {
+        if (window.gtag) {
+          try { window.gtag("event", "newsletter_signup_attempt", { page_path: location.pathname }); } catch (_) {}
+        }
+        var response = await window.fetch(action, {
+          method: "POST",
+          mode: "cors",
+          credentials: "omit",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(form)).toString(),
+          signal: controller.signal
+        });
+        if (!response.ok || response.type === "opaque") throw new Error("Signup was not accepted");
+        var result = await response.json();
+        if (!result || result.success !== true) throw new Error("Signup was not accepted");
+        // This confirms only provider acceptance of the signup request.
+        // Double opt-in is completed through the email link, not local storage.
+        showStatus("Your signup request was accepted. Check your email for the confirmation link.", false);
+        location.assign("/thank-you");
+      } catch (_) {
+        showStatus(controller.signal.aborted
+          ? "We could not confirm the signup before the request timed out. Check your inbox and Spam folder before retrying, or use the hosted signup page. Your address is still in the form."
+          : "We could not confirm the signup. Check your inbox and Spam folder in case it was accepted, then retry or use the hosted signup page. Your address is still in the form.", true);
+      } finally {
+        clearTimeout(timeout);
+        pending = false;
+        form.removeAttribute("aria-busy");
+        buttons.forEach(function (state) { state.element.disabled = state.disabled; });
       }
     });
   }
