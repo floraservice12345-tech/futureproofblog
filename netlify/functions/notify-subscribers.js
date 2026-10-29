@@ -19,14 +19,32 @@
 // Auth: a shared secret read from the NOTIFY_SECRET Netlify env var (same
 // pattern as BREVO_API_KEY — never hardcoded in source, since this repo is
 // public). It just stops random callers from hitting this public endpoint
-// and creating junk campaign drafts in Rahul's Brevo account. Worst case if
-// it leaked: someone creates draft campaigns nobody sends, since the
-// separate action=send call is a second, distinct step. Rahul must paste a
+// and creating or sending campaigns in the Brevo account. The secret protects
+// both actions; the two-step workflow does not protect a leaked secret.
+// The account owner must configure a
 // value for NOTIFY_SECRET into Netlify himself, same as he did for
 // BREVO_API_KEY — see futureproofblog-standing-instructions.md section 1.5.
 
 const SENDER = { email: 'contact@futureproofblog.in', name: 'FutureProof Blog' };
 const LIST_NAME = 'FutureProof subscribers';
+const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+function articleURL(value) {
+  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//')) return '';
+  try {
+    const url = new URL(value, 'https://futureproofblog.in');
+    return url.origin === 'https://futureproofblog.in' && /^\/article-[a-z0-9-]+$/.test(url.pathname) ? url.href : '';
+  } catch (_) { return ''; }
+}
+async function requestBrevo(url, options) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    // Consume the body inside the timeout as well as the response headers.
+    const body = await response.text();
+    return { ok: response.ok, status: response.status, json: () => JSON.parse(body || '{}') };
+  } finally { clearTimeout(timer); }
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -39,6 +57,9 @@ exports.handler = async (event) => {
   } catch (e) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON body' }) };
   }
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'A JSON object is required' }) };
+  }
 
   const expectedSecret = process.env.NOTIFY_SECRET;
   if (!expectedSecret || payload.secret !== expectedSecret) {
@@ -50,22 +71,22 @@ exports.handler = async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: 'BREVO_API_KEY not configured in Netlify env vars' }) };
   }
   const brevoHeaders = { 'api-key': apiKey, 'content-type': 'application/json' };
+  try {
 
   // --- action: send -------------------------------------------------------
   if (payload.action === 'send') {
     const { campaignId } = payload;
-    if (!campaignId) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'campaignId required for action=send' }) };
+    if (!['number', 'string'].includes(typeof campaignId) || !/^[1-9][0-9]*$/.test(String(campaignId)) || !Number.isSafeInteger(Number(campaignId))) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'A positive integer campaignId is required' }) };
     }
-    const res = await fetch(`https://api.brevo.com/v3/emailCampaigns/${campaignId}/sendNow`, {
+    const res = await requestBrevo(`https://api.brevo.com/v3/emailCampaigns/${campaignId}/sendNow`, {
       method: 'POST',
       headers: brevoHeaders,
     });
     if (res.status === 204) {
       return { statusCode: 200, body: JSON.stringify({ sent: true, campaignId }) };
     }
-    const text = await res.text();
-    return { statusCode: res.status, body: JSON.stringify({ sent: false, error: text }) };
+    return { statusCode: 502, body: JSON.stringify({ sent: false, error: 'Email provider did not accept the send request', providerStatus: res.status }) };
   }
 
   // --- action: draft --------------------------------------------------------
@@ -74,15 +95,18 @@ exports.handler = async (event) => {
   }
 
   const { articles } = payload;
-  if (!Array.isArray(articles) || articles.length === 0) {
+  if (!Array.isArray(articles) || articles.length === 0 || articles.length > 100) {
     return { statusCode: 400, body: JSON.stringify({ error: 'articles array required: [{title, url, excerpt}]' }) };
+  }
+  if (articles.some(article => !article || typeof article.title !== 'string' || !article.title.trim() || article.title.length > 250 || /[\r\n]/.test(article.title) || typeof article.excerpt !== 'string' || article.excerpt.length > 5000 || !articleURL(article.url))) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Each article needs a title, excerpt and a local /article- URL' }) };
   }
 
   // Resolve the subscriber list ID by name each time, rather than hardcoding
   // it, so nothing breaks if the list is ever recreated.
-  const listsRes = await fetch('https://api.brevo.com/v3/contacts/lists?limit=50&sort=desc', { headers: brevoHeaders });
+  const listsRes = await requestBrevo('https://api.brevo.com/v3/contacts/lists?limit=50&sort=desc', { headers: brevoHeaders });
   if (!listsRes.ok) {
-    return { statusCode: 502, body: JSON.stringify({ error: 'Could not fetch Brevo lists', detail: await listsRes.text() }) };
+    return { statusCode: 502, body: JSON.stringify({ error: 'Could not fetch Brevo lists', providerStatus: listsRes.status }) };
   }
   const listsData = await listsRes.json();
   const targetList = (listsData.lists || []).find((l) => l.name === LIST_NAME);
@@ -99,9 +123,9 @@ exports.handler = async (event) => {
     .map(
       (a) => `
     <tr><td style="padding:16px 0;border-top:1px solid #e6e9f2">
-      <h2 style="margin:0 0 8px;font-size:1.1rem;color:#1a1a2e">${a.title}</h2>
-      <p style="margin:0 0 10px;color:#444;font-size:.95rem;line-height:1.6">${a.excerpt}</p>
-      <a href="https://futureproofblog.in${a.url}" style="color:#e94560;font-weight:700;text-decoration:none">Read it &rarr;</a>
+      <h2 style="margin:0 0 8px;font-size:1.1rem;color:#1a1a2e">${escapeHtml(a.title)}</h2>
+      <p style="margin:0 0 10px;color:#444;font-size:.95rem;line-height:1.6">${escapeHtml(a.excerpt)}</p>
+      <a href="${escapeHtml(articleURL(a.url))}" style="color:#e94560;font-weight:700;text-decoration:none">Read it &rarr;</a>
     </td></tr>`
     )
     .join('');
@@ -118,7 +142,7 @@ exports.handler = async (event) => {
     </td></tr>
   </table></body></html>`;
 
-  const createRes = await fetch('https://api.brevo.com/v3/emailCampaigns', {
+  const createRes = await requestBrevo('https://api.brevo.com/v3/emailCampaigns', {
     method: 'POST',
     headers: brevoHeaders,
     body: JSON.stringify({
@@ -132,11 +156,19 @@ exports.handler = async (event) => {
   });
 
   if (!createRes.ok) {
-    return { statusCode: createRes.status, body: JSON.stringify({ error: await createRes.text() }) };
+    return { statusCode: 502, body: JSON.stringify({ error: 'Email provider did not create the draft', providerStatus: createRes.status }) };
   }
   const created = await createRes.json();
+  if (!created || !Number.isSafeInteger(created.id) || created.id < 1) {
+    return { statusCode: 502, body: JSON.stringify({ error: 'Draft creation could not be confirmed; check Brevo before retrying' }) };
+  }
   return {
     statusCode: 200,
     body: JSON.stringify({ draftCreated: true, campaignId: created.id, listId: targetList.id, subject }),
   };
+  } catch (_) {
+    // A timeout may occur after the provider accepted an action. Do not retry
+    // automatically: check the campaign in Brevo before sending again.
+    return { statusCode: 502, body: JSON.stringify({ error: 'Email provider response could not be confirmed; check the campaign before retrying' }) };
+  }
 };

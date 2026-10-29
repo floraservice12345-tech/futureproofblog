@@ -87,7 +87,7 @@ footer a{color:#e94560;text-decoration:none}
   .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
   .faq-item p{font-size:15.2px;line-height:1.75}
 }
-</style>
+input[aria-invalid="true"]{border:2px solid #a7213d!important}[hidden]{display:none!important}</style>
 <script src="/analytics.js"></script><script src="/ads.js" defer></script>
 <link rel="canonical" href="https://futureproofblog.in/tax-regime-calculator"><meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:url" content="https://futureproofblog.in/tax-regime-calculator"><meta property="og:type" content="website"><meta property="og:title" content="Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog"><meta property="og:description" content="Free India income tax calculator, FY 2026-27. New vs old regime side by side with the 87A rebate, marginal relief and cess — plus your break-even deduction figure."><meta property="og:image" content="https://futureproofblog.in/images/og/tax-regime-calculator.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://futureproofblog.in/images/og/tax-regime-calculator.jpg"><meta name="twitter:title" content="Income Tax Calculator FY 2026-27: New vs Old Regime (India) | FutureProof Blog"><meta name="twitter:description" content="Free India income tax calculator, FY 2026-27. New vs old regime side by side with the 87A rebate, marginal relief and cess — plus your break-even deduction figure."><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><link rel="alternate" type="application/rss+xml" title="FutureProof Blog" href="/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Income Tax Calculator FY 2026-27", "url": "https://futureproofblog.in/tax-regime-calculator", "description": "Compares income tax under India's new and old regimes for FY 2026-27, including the Section 87A rebate, marginal relief above Rs 12 lakh and the 4% cess, and derives the deduction level at which the old regime becomes cheaper.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any modern web browser", "browserRequirements": "Requires JavaScript", "inLanguage": "en-IN", "image": "https://futureproofblog.in/images/og/tax-regime-calculator.jpg", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "author": {"@type": "Person", "@id": "https://futureproofblog.in/#person", "name": "Geeta Yadav", "jobTitle": "Founder & Lead Writer", "url": "https://futureproofblog.in/about", "worksFor": {"@id": "https://futureproofblog.in/#organization"}}, "publisher": {"@type": "Organization", "@id": "https://futureproofblog.in/#organization", "name": "FutureProof Blog", "url": "https://futureproofblog.in", "logo": {"@type": "ImageObject", "url": "https://futureproofblog.in/images/icon-512.png", "width": 512, "height": 512}, "email": "contact@futureproofblog.in", "areaServed": "IN"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://futureproofblog.in/"}, {"@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://futureproofblog.in/tools"}, {"@type": "ListItem", "position": 3, "name": "Income Tax Calculator FY 2026-27: New vs Old Regime (India)", "item": "https://futureproofblog.in/tax-regime-calculator"}]}</script></head><body>
 <header><div class="nav-inner"><a href="/" class="logo">FutureProof Blog</a><nav><a href="/">Home</a><a href="/ai-work">AI &amp; Work</a><a href="/ai-tools">AI Tools</a><a href="/money-property">Money &amp; Property</a><a href="/tools" class="active">Free Tools</a><a href="/hire-me">Hire Me</a><a href="/resume">Resume Fix</a><a href="/about">About</a><a href="/subscribe">Subscribe</a><a href="/#latest">📰 Latest</a></nav></div></header>
@@ -103,11 +103,12 @@ footer a{color:#e94560;text-decoration:none}
 
   <form class="card" id="f" autocomplete="off" onsubmit="return false">
     <h2>Your numbers</h2>
+    <p id="tool-input-error" role="alert" hidden style="color:#8d1e38;border-left:4px solid #8d1e38;padding:12px;background:#fff4f6"></p>
     <p class="hint">Nothing is sent anywhere. The maths runs in your browser.</p>
 
     <label for="gross">Gross annual income (₹)
       <span class="sub">Total salary or income before any deduction</span></label>
-    <input type="number" id="gross" value="1500000" min="0" step="10000">
+    <input type="number" id="gross" value="1500000" min="0" step="10000" max="1000000000" aria-describedby="tool-input-error">
 
     <label for="type">Income type</label>
     <select id="type">
@@ -127,22 +128,22 @@ footer a{color:#e94560;text-decoration:none}
       <p class="note">Leave a box at 0 if it does not apply. The new regime allows almost none of these, which is the whole trade-off.</p>
 
       <label for="d80c">Section 80C (₹)<span class="sub">EPF, PPF, ELSS, life insurance, tuition fees, home loan principal. Capped at ₹1,50,000</span></label>
-      <input type="number" id="d80c" value="150000" min="0" step="5000">
+      <input type="number" id="d80c" value="150000" min="0" step="5000" max="150000" aria-describedby="tool-input-error">
 
       <label for="d80d">Section 80D — health insurance (₹)<span class="sub">Your family's premium, plus parents'</span></label>
-      <input type="number" id="d80d" value="25000" min="0" step="1000">
+      <input type="number" id="d80d" value="25000" min="0" step="1000" max="1000000000" aria-describedby="tool-input-error">
 
       <label for="hra">HRA exemption (₹)<span class="sub">Usually the largest one. Only if you rent and have the receipts</span></label>
-      <input type="number" id="hra" value="0" min="0" step="10000">
+      <input type="number" id="hra" value="0" min="0" step="10000" max="1000000000" aria-describedby="tool-input-error">
 
       <label for="hl">Home loan interest — Section 24(b) (₹)<span class="sub">Capped at ₹2,00,000 for a self-occupied property</span></label>
-      <input type="number" id="hl" value="0" min="0" step="10000">
+      <input type="number" id="hl" value="0" min="0" step="10000" max="200000" aria-describedby="tool-input-error">
 
       <label for="nps">NPS — Section 80CCD(1B) (₹)<span class="sub">Capped at ₹50,000, over and above 80C</span></label>
-      <input type="number" id="nps" value="0" min="0" step="5000">
+      <input type="number" id="nps" value="0" min="0" step="5000" max="50000" aria-describedby="tool-input-error">
 
       <label for="oth">Any other old-regime deductions (₹)<span class="sub">80E, 80G, 80TTA, LTA and so on</span></label>
-      <input type="number" id="oth" value="0" min="0" step="1000">
+      <input type="number" id="oth" value="0" min="0" step="1000" max="1000000000" aria-describedby="tool-input-error">
     </div>
   </form>
 
@@ -200,6 +201,7 @@ footer a{color:#e94560;text-decoration:none}
 
 <footer><p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/terms-of-service">Terms of Service</a></p></footer>
 
+<script src="/tool-input-validation.js?v=20261029"></script>
 <script>
 (function(){
   var NEW_SLABS=[[400000,0],[800000,.05],[1200000,.10],[1600000,.15],[2000000,.20],[2400000,.25],[Infinity,.30]];
@@ -225,6 +227,15 @@ footer a{color:#e94560;text-decoration:none}
   var E=function(id){return document.getElementById(id);};
 
   function compute(){
+    if (!window.FPValidateToolNumbers(E('f'))) {
+      E('taxNew').textContent=E('taxOld').textContent='—';
+      E('vTitle').textContent='Complete the highlighted fields.';
+      E('vBody').textContent=E('vBreak').textContent='';
+      E('bd').getElementsByTagName('tbody')[0].innerHTML='';
+      E('surWarn').style.display=E('mrNote').style.display='none';
+      ['rNew','rOld'].forEach(function(id){E(id).className='reg';var badge=E(id).querySelector('.badge');if(badge)badge.remove();});
+      return false;
+    }
     var gross=Math.max(0,+E('gross').value||0);
     var salaried=E('type').value==='salaried';
     var age=+E('age').value;
@@ -281,10 +292,11 @@ footer a{color:#e94560;text-decoration:none}
       vb.innerHTML='Your deductions of <strong>'+inr(dedOld)+'</strong> are large enough to beat the new regime’s lower rates. Remember you must <strong>actively opt in</strong> — the new regime applies by default — and you will need the proofs.';
     } else {
       vt.textContent='Both regimes cost you exactly the same.';
-      vb.innerHTML='At '+inr(dedOld)+' of deductions you are sitting on the break-even line. Anything more and the old regime pulls ahead; anything less and the new one does.';
+      vb.textContent=totNew===0 ? 'Both estimates are zero on these inputs. Further deductions cannot reduce either estimate below zero.' : 'Both estimates match on these inputs. Change the eligible deductions to compare another scenario.';
     }
 
-    // break-even deduction figure
+    // Find the first whole-rupee deduction at which old-regime tax is no higher.
+    vbr.textContent='';
     if(gross>0){
       var target=afterRebNew; // pre-cess new-regime tax to match
       var lo=0, hi=Math.max(0,gross-sdOld), be=null;
@@ -296,12 +308,13 @@ footer a{color:#e94560;text-decoration:none}
         var t=rt-rb;
         if(t>target){ lo=mid; } else { hi=mid; be=mid; }
       }
-      if(be===null||be>=gross-sdOld-1){
-        vbr.innerHTML='<strong>Break-even:</strong> at this income the old regime cannot catch up — even zero taxable income under the old regime would not beat the new regime here.';
-      } else if(be<=0){
-        vbr.innerHTML='<strong>Break-even:</strong> the old regime wins here even with no deductions at all.';
+      var threshold=Math.max(0,Math.ceil(hi-0.000001));
+      if(target===0){
+        vbr.innerHTML='<strong>Zero-tax comparison:</strong> the new-regime estimate is zero. The old-regime estimate also reaches zero with at least <strong>'+inr(threshold)+'</strong> in eligible deductions and exemptions beyond its standard deduction. It cannot be cheaper than zero.';
+      } else if(threshold===0){
+        vbr.innerHTML='<strong>Comparison:</strong> the old-regime estimate is already no higher with no additional deductions.';
       } else {
-        vbr.innerHTML='<strong>Break-even:</strong> the old regime only beats the new one once your total deductions and exemptions exceed about <strong>'+inr(be)+'</strong>. You have entered '+inr(dedOld)+'.'+(be>dedOld?' You are '+inr(be-dedOld)+' short.':' You are '+inr(dedOld-be)+' past it.');
+        vbr.innerHTML='<strong>Deduction threshold:</strong> at least about <strong>'+inr(threshold)+'</strong> in eligible old-regime deductions and exemptions makes its estimate no higher than the new-regime estimate. You entered '+inr(dedOld)+'. A rebate threshold can create a jump rather than an exact tie.';
       }
     }
 
@@ -331,12 +344,20 @@ footer a{color:#e94560;text-decoration:none}
     html+='<tr class="tot"><td>Total tax payable</td><td class="n">'+inr(totNew)+'</td><td class="n">'+inr(totOld)+'</td></tr>';
     E('bd').getElementsByTagName('tbody')[0].innerHTML=html;
 
-    if(window.gtag){ gtag('event','calculator_use',{calculator:'tax_regime'}); }
+    return true;
   }
 
   var f=E('f');
-  f.addEventListener('input',compute);
-  f.addEventListener('change',compute);
+  var calculatorUseTracked=false;
+  function onCalculatorInput(){
+    var valid=compute();
+    if(valid && !calculatorUseTracked && window.gtag){
+      calculatorUseTracked=true;
+      gtag('event','calculator_use',{calculator:'tax_regime'});
+    }
+  }
+  f.addEventListener('input',onCalculatorInput);
+  f.addEventListener('change',onCalculatorInput);
   f.addEventListener('submit',function(e){e.preventDefault();});
   compute();
 })();

@@ -29,7 +29,7 @@
     <label for="budget">Budget, if known</label><input id="budget" maxlength="100" placeholder="Example: ₹3,000–₹5,000 or please quote">
     <button id="build" type="button">Build my brief</button>
   </section>
-  <section class="panel" aria-labelledby="output-title"><h2 id="output-title">Your ready-to-share brief</h2><p class="hint">Review every line before you send it. This tool structures your words; it does not verify facts or give professional advice.</p><div id="output" class="output" role="status" aria-live="polite">Your brief will appear here.</div><button id="copy" class="secondary" type="button" disabled>Copy</button><button id="download" class="secondary" type="button" disabled>Download .txt</button><p id="feedback" class="small"></p><p class="small">Want us to help with the preparatory work? <a href="/hire-me#order">Request a scoped quote</a>.</p></section>
+  <section class="panel" aria-labelledby="output-title"><h2 id="output-title">Your ready-to-share brief</h2><p class="hint">Review every line before you send it. This tool structures your words; it does not verify facts or give professional advice.</p><div id="output" class="output" role="status" aria-live="polite">Your brief will appear here.</div><button id="copy" class="secondary" type="button" disabled>Copy</button><button id="download" class="secondary" type="button" disabled>Download .txt</button><p id="feedback" class="small" role="status" aria-live="polite"></p><p class="small">Want us to help with the preparatory work? <a href="/hire-me#order">Request a scoped quote</a>.</p></section>
 </main>
 <footer>© 2026 FutureProof Blog · <a href="/privacy-policy">Privacy</a> · <a href="/contact">Contact</a></footer>
 <script>
@@ -43,14 +43,19 @@
     workflow:{label:'Process or workflow automation',deliverables:['Current-step map and desired outcome','Tool and permission list','Small scoped automation with handover notes'],questions:['Which repeated task takes the most time today?','Which accounts and tools do you control and want to connect?']}
   };
   let latest='';
+  ['type','goal','audience','materials','deadline','budget'].forEach(id=>{
+    const invalidate=()=>{if(!latest)return;latest='';$('copy').disabled=true;$('download').disabled=true;$('output').textContent='Your inputs changed. Select Build my brief to update this preview.';$('feedback').textContent='Rebuild the brief before copying or downloading.'};
+    $(id).addEventListener('input',invalidate);$(id).addEventListener('change',invalidate);
+  });
   const line=id=>$(id).value.trim()||'To be confirmed';
   $('build').addEventListener('click',()=>{
     const plan=plans[$('type').value];
+    if(!plan){$('feedback').textContent='Choose a project type first.';return;}
     latest=[plan.label.toUpperCase()+' — PROJECT BRIEF','', 'Outcome: '+line('goal'),'Audience or user: '+line('audience'),'Existing material: '+line('materials'),'Desired deadline: '+line('deadline'),'Budget: '+line('budget'),'','Suggested scope to confirm:',...plan.deliverables.map(x=>'• '+x),'','Questions to resolve:',...plan.questions.map(x=>'• '+x),'','Next step: agree deliverables, price, timeline and access before work starts.'].join('\n');
     $('output').textContent=latest;$('copy').disabled=false;$('download').disabled=false;$('feedback').textContent='';
   });
-  $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(latest);$('feedback').textContent='Copied to clipboard.'}catch(e){$('feedback').textContent='Copy is unavailable here. Select the text above instead.'}});
-  $('download').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([latest],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='futureproof-project-brief.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+  $('copy').addEventListener('click',async()=>{if(!latest)return;try{await navigator.clipboard.writeText(latest);$('feedback').textContent='Copied to clipboard.'}catch(e){$('feedback').textContent='Copy is unavailable here. Select the text above instead.'}});
+  $('download').addEventListener('click',()=>{if(!latest)return;const url=URL.createObjectURL(new Blob([latest],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='futureproof-project-brief.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 })();
 </script>
 </body></html>

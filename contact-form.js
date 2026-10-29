@@ -12,7 +12,7 @@
   }
   function show(kind, message, ref) {
     status.className = 'form-msg ' + kind;
-    status.replaceChildren(document.createTextNode(message + ' Reference: ' + ref + '. '));
+    status.textContent = message + ' Reference: ' + ref + '. ';
     var email = document.createElement('a');
     email.href = 'mailto:contact@futureproofblog.in?subject=' + encodeURIComponent('Enquiry follow-up ' + ref);
     email.textContent = 'Email us with this reference';
@@ -21,11 +21,16 @@
     status.focus();
   }
   form.addEventListener('submit', async function (event) {
+    // Keep the native Netlify POST usable when enhanced submission is unavailable.
+    // Do this before preventing the browser's normal form submission.
+    if (typeof fetch !== 'function' || typeof AbortController === 'undefined' ||
+        typeof FormData === 'undefined' || typeof URLSearchParams === 'undefined') return;
+    var refInput = form.querySelector('input[name="reference"]');
+    if (!refInput) return;
     event.preventDefault();
-    if (pending || !form.reportValidity()) return;
+    if (pending || (typeof form.reportValidity === 'function' && !form.reportValidity())) return;
     pending = true;
     var button = form.querySelector('button[type="submit"]');
-    var refInput = form.querySelector('input[name="reference"]');
     var ref = refInput.value || reference();
     refInput.value = ref;
     if (button) { button.disabled = true; button.textContent = 'Sending…'; }

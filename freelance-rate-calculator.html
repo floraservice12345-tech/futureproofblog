@@ -82,7 +82,7 @@ footer a{color:#e94560;text-decoration:none}
   .fp-note p,.fp-alert p,.fp-key p{font-size:15px}
   .faq-item p{font-size:15.2px;line-height:1.75}
 }
-</style>
+input[aria-invalid="true"]{border:2px solid #a7213d!important}[hidden]{display:none!important}</style>
 <script src="/analytics.js"></script><script src="/ads.js" defer></script>
 <link rel="canonical" href="https://futureproofblog.in/freelance-rate-calculator"><meta property="og:site_name" content="FutureProof Blog"><meta property="og:locale" content="en_IN"><meta property="og:url" content="https://futureproofblog.in/freelance-rate-calculator"><meta property="og:type" content="website"><meta property="og:title" content="How Much to Charge for Blog Posts in India: Free Calculator"><meta property="og:description" content="Estimate a freelance blog-post rate from your income target, work hours, costs and article length. Free India calculator; no data leaves your browser."><meta property="og:image" content="https://futureproofblog.in/images/og/freelance-rate-calculator.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="How Much to Charge for Blog Posts in India: Free Calculator"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://futureproofblog.in/images/og/freelance-rate-calculator.jpg"><meta name="twitter:title" content="How Much to Charge for Blog Posts in India: Free Calculator"><meta name="twitter:description" content="Estimate a freelance blog-post rate from your income target, work hours, costs and article length. Free India calculator; no data leaves your browser."><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#1a1a2e"><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><meta name="author" content="Geeta Yadav"><link rel="alternate" type="application/rss+xml" title="FutureProof Blog" href="/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Blog Post Rate Calculator India", "url": "https://futureproofblog.in/freelance-rate-calculator", "description": "A free browser-based tool that estimates hourly, per-word and blog-post price floors from user-entered income goals, costs, availability and output speed.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any modern web browser", "browserRequirements": "Requires JavaScript", "inLanguage": "en-IN", "image": "https://futureproofblog.in/images/og/freelance-rate-calculator.jpg", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "author": {"@type": "Person", "@id": "https://futureproofblog.in/#person", "name": "Geeta Yadav", "jobTitle": "Founder & Lead Writer", "url": "https://futureproofblog.in/about", "worksFor": {"@id": "https://futureproofblog.in/#organization"}}, "publisher": {"@type": "Organization", "@id": "https://futureproofblog.in/#organization", "name": "FutureProof Blog", "url": "https://futureproofblog.in", "logo": {"@type": "ImageObject", "url": "https://futureproofblog.in/images/icon-512.png", "width": 512, "height": 512}, "email": "contact@futureproofblog.in", "areaServed": "IN"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://futureproofblog.in/"}, {"@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://futureproofblog.in/tools"}, {"@type": "ListItem", "position": 3, "name": "How Much to Charge for Blog Posts in India: Free Calculator", "item": "https://futureproofblog.in/freelance-rate-calculator"}]}</script></head><body>
 <header><div class="nav-inner"><a href="/" class="logo">FutureProof Blog</a><nav><a href="/">Home</a><a href="/ai-work">AI &amp; Work</a><a href="/ai-tools">AI Tools</a><a href="/money-property">Money &amp; Property</a><a href="/tools" class="active">Free Tools</a><a href="/hire-me">Hire Me</a><a href="/resume">Resume Fix</a><a href="/about">About</a><a href="/subscribe">Subscribe</a><a href="/#latest">📰 Latest</a></nav></div></header>
@@ -98,39 +98,40 @@ footer a{color:#e94560;text-decoration:none}
 
   <form class="card" id="f" autocomplete="off" onsubmit="return false" style="margin-bottom:0">
     <h2>Your situation</h2>
+    <p id="tool-input-error" role="alert" hidden style="color:#8d1e38;border-left:4px solid #8d1e38;padding:12px;background:#fff4f6"></p>
     <p class="hint">Everything runs in your browser. Nothing is stored or sent.</p>
 
     <label for="income">Take-home income you need each year (₹)
       <span class="sub">What you want left after tax and business costs</span></label>
-    <input type="number" id="income" value="900000" min="0" step="50000">
+    <input type="number" id="income" value="900000" min="0" step="50000" max="1000000000" aria-describedby="tool-input-error">
 
     <label for="expenses">Business costs per year (₹)
       <span class="sub">Software, internet, laptop amortised, co-working, accountant, courses</span></label>
-    <input type="number" id="expenses" value="60000" min="0" step="5000">
+    <input type="number" id="expenses" value="60000" min="0" step="5000" max="1000000000" aria-describedby="tool-input-error">
 
     <label for="tax">Optional revenue buffer for taxes and other costs (%)
       <span class="sub">Your own planning assumption (default 0%). This tool does not calculate income tax, GST or eligibility under any tax scheme.</span></label>
-    <input type="number" id="tax" value="0" min="0" max="60" step="1">
+    <input type="number" id="tax" value="0" min="0" max="60" step="1" aria-describedby="tool-input-error">
 
     <label for="weeks">Weeks you will actually work
       <span class="sub">52 minus leave, illness and festivals. Be honest — this is where most rates go wrong</span></label>
-    <input type="number" id="weeks" value="46" min="1" max="52" step="1">
+    <input type="number" id="weeks" value="46" min="1" max="52" step="1" aria-describedby="tool-input-error">
 
     <label for="hours">Hours per week you can bill
       <span class="sub">Not hours worked. Pitching, invoicing, admin and email are unpaid</span></label>
-    <input type="number" id="hours" value="25" min="1" max="80" step="1">
+    <input type="number" id="hours" value="25" min="1" max="80" step="1" aria-describedby="tool-input-error">
 
     <label for="util">Estimated share of available hours you can bill (%)
       <span class="sub">Planning input, not an industry benchmark. Use your own records if you have them; leave room for pitching, admin, revisions and gaps between projects.</span></label>
-    <input type="number" id="util" value="70" min="10" max="100" step="5">
+    <input type="number" id="util" value="70" min="10" max="100" step="5" aria-describedby="tool-input-error">
 
     <label for="speed">Your researched output (words per billable hour)
       <span class="sub">Estimate from a recent project, including research, fact-checking and editing — not typing speed.</span></label>
-    <input type="number" id="speed" value="350" min="50" max="2000" step="25">
+    <input type="number" id="speed" value="350" min="50" max="2000" step="25" aria-describedby="tool-input-error">
 
     <label for="projectWords">Typical blog post length (words)
       <span class="sub">Used to estimate a project floor from your per-word calculation.</span></label>
-    <input type="number" id="projectWords" value="1000" min="100" max="20000" step="100">
+    <input type="number" data-whole-number id="projectWords" value="1000" min="100" max="20000" step="100" aria-describedby="tool-input-error">
   </form>
 
   <div>
@@ -193,6 +194,7 @@ footer a{color:#e94560;text-decoration:none}
 
 <footer><p>© 2026 FutureProof Blog · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/terms-of-service">Terms of Service</a></p></footer>
 
+<script src="/tool-input-validation.js?v=20261029"></script>
 <script>
 (function(){
   var BANDS=[
@@ -212,6 +214,13 @@ footer a{color:#e94560;text-decoration:none}
   var E=function(i){return document.getElementById(i);};
 
   function compute(){
+    if (!window.FPValidateToolNumbers(E('f'))) {
+      ['hr','dr','pw','postQuote','ppw','mr'].forEach(function(id){E(id).textContent='—';});
+      E('hrsub').textContent='Complete the highlighted fields to calculate a rate.';
+      E('bd').getElementsByTagName('tbody')[0].innerHTML='';
+      E('lowWarn').style.display='none';
+      return false;
+    }
     var income=Math.max(0,+E('income').value||0);
     var exp=Math.max(0,+E('expenses').value||0);
     var taxPc=Math.min(60,Math.max(0,+E('tax').value||0))/100;
@@ -269,8 +278,8 @@ footer a{color:#e94560;text-decoration:none}
   var f=E('f');
   var calculatorUseTracked=false;
   f.addEventListener('input',function(){
-    compute();
-    if(!calculatorUseTracked && window.gtag){
+    var valid=compute();
+    if(valid!==false && !calculatorUseTracked && window.gtag){
       calculatorUseTracked=true;
       gtag('event','calculator_use',{calculator:'freelance_rate'});
     }

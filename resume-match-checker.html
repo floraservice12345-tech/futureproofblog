@@ -115,15 +115,21 @@ footer a{color:#ff8093}
 var skills=["project management","stakeholder management","business analysis","data analysis","data visualization","data visualisation","financial modelling","financial modeling","financial analysis","financial reporting","content writing","content strategy","copywriting","digital marketing","search engine optimization","search engine optimisation","social media","market research","customer support","customer service","customer relationship management","account management","salesforce","microsoft excel","power query","power bi","google analytics","pivot tables","spreadsheet automation","supply chain","process improvement","quality assurance","risk management","team leadership","people management","curriculum development","classroom management","lesson planning","video editing","wordpress","web development","html css","html","css","javascript","react","python","sql","machine learning","artificial intelligence","generative ai","excel","canva","communication","problem solving","project delivery","product management","financial modelling","presentation design","search engine marketing","email marketing","paid advertising","content editing","technical writing","data cleaning"];
 var stopWords=new Set(("about above after again against all also an and any are as at be because been before being between both but by can candidate candidates capable company looking role roles responsibilities responsibility required requirements preferred qualifications qualification job work working experience years year including include strong excellent effective good ability skills skill knowledge understanding familiar familiarity proficient desirable plus nice using use used must will within across into through from for the with that this these those their they them your you our we who whom what which when where how have has had not may should would could its it is of on or other over per such than then there to up very while who").split(" "));
 var resume=document.getElementById("resumeText"), job=document.getElementById("jobText"), message=document.getElementById("message"), results=document.getElementById("results");
-function normalize(value){return String(value||"").toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9+#.]+/g," ").replace(/\s+/g," ").trim()}
+function normalize(value){return String(value||"").toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9+#.]+/g," ").replace(/\.+(?=\s|$)/g," ").replace(/\s+/g," ").trim()}
 function includesTerm(haystack,term){return (" "+haystack+" ").indexOf(" "+normalize(term)+" ")!==-1}
 function countWords(value){var words=String(value||"").trim().match(/[a-z0-9+#.]+/gi);return words?words.length:0}
 function renderList(element,items,emptyText){element.textContent="";if(!items.length){var li=document.createElement("li");li.textContent=emptyText;element.appendChild(li);return}items.forEach(function(item){var li=document.createElement("li");li.textContent=item;element.appendChild(li)})}
 function updateCount(field,target){document.getElementById(target).textContent=field.value.length.toLocaleString("en-IN")+" / 20,000 characters"}
-resume.addEventListener("input",function(){updateCount(resume,"resumeCount")});
-job.addEventListener("input",function(){updateCount(job,"jobCount")});
+function invalidateResult(){
+results.style.display="none";
+document.getElementById("copyButton").disabled=true;
+document.getElementById("downloadButton").disabled=true;
+message.textContent="Text changed. Run the comparison again for an up-to-date result.";
+}
+resume.addEventListener("input",function(){updateCount(resume,"resumeCount");invalidateResult()});
+job.addEventListener("input",function(){updateCount(job,"jobCount");invalidateResult()});
 document.getElementById("analyzeButton").addEventListener("click",function(){
-message.textContent="";
+invalidateResult();message.textContent="";
 if(resume.value.trim().length<30||job.value.trim().length<30){message.textContent="Paste at least a few lines of both texts so the comparison has enough context.";return}
 var r=normalize(resume.value),j=normalize(job.value),foundPhrases=skills.filter(function(term){return term.indexOf(" ")!==-1&&includesTerm(j,term)}),phraseWords=new Set();
 foundPhrases.forEach(function(phrase){phrase.split(" ").forEach(function(word){phraseWords.add(word)})});
@@ -140,14 +146,17 @@ document.getElementById("scoreBar").style.width=score+"%";
 document.getElementById("wordSummary").textContent="Text length: "+countWords(resume.value).toLocaleString("en-IN")+" resume words and "+countWords(job.value).toLocaleString("en-IN")+" job-description words. This is not an ATS pass probability.";
 renderList(document.getElementById("matchedList"),matched,"No selected terms matched exactly.");
 renderList(document.getElementById("missingList"),missing,"All selected terms matched; review the evidence and context yourself.");
+document.getElementById("copyButton").disabled=false;document.getElementById("downloadButton").disabled=false;
 results.style.display="block";results.scrollIntoView({behavior:"smooth",block:"start"});
 });
 document.getElementById("demoButton").addEventListener("click",function(){
+invalidateResult();
 resume.value="Digital marketing executive with 3 years of experience managing SEO content, Google Analytics reports and social media calendars. Used Excel to track campaign performance and shared monthly reports with stakeholders. Coordinated content production with a five-person team.";
 job.value="Digital Marketing Executive. Requirements: 3+ years of experience in SEO, content strategy, Google Analytics, Excel reporting and social media. Strong communication and stakeholder management skills. Coordinate a content calendar and present campaign performance to the team.";
 updateCount(resume,"resumeCount");updateCount(job,"jobCount");message.textContent="Fictional sample text loaded. Click Check keyword overlap to see how it works.";resume.focus()
 });
 document.getElementById("clearButton").addEventListener("click",function(){
+invalidateResult();
 resume.value="";job.value="";updateCount(resume,"resumeCount");updateCount(job,"jobCount");results.style.display="none";message.textContent="Both fields cleared.";resume.focus()
 });
 function summaryText(){
@@ -157,6 +166,7 @@ var missing=Array.prototype.map.call(document.getElementById("missingList").chil
 return "Resume–job keyword overlap: "+score+"\nMatched terms: "+matched+"\nTerms to review (add only if accurate): "+missing+"\nThis is exact wording overlap, not an ATS score or hiring prediction."
 }
 document.getElementById("copyButton").addEventListener("click",function(){
+if(document.getElementById("copyButton").disabled)return;
 if (!navigator.clipboard || !navigator.clipboard.writeText) {
   message.textContent="Copy is unavailable in this browser. Use Download summary instead.";
   return;
@@ -164,8 +174,10 @@ if (!navigator.clipboard || !navigator.clipboard.writeText) {
 navigator.clipboard.writeText(summaryText()).then(function(){message.textContent="Summary copied."}).catch(function(){message.textContent="Copy was blocked by this browser. You can download the summary instead."})
 });
 document.getElementById("downloadButton").addEventListener("click",function(){
-var blob=new Blob([summaryText()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="resume-job-keyword-review.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)
+if(document.getElementById("downloadButton").disabled)return;
+var blob=new Blob([summaryText()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="resume-job-keyword-review.txt";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},1000)
 });
+document.getElementById("copyButton").disabled=true;document.getElementById("downloadButton").disabled=true;
 document.getElementById("year").textContent=new Date().getFullYear();
 })();
 </script>

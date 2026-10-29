@@ -28,6 +28,8 @@
     }
     var label = option.textContent.toLowerCase();
     if (/resume|linkedin|cover letter|interview|career/.test(label)) return 'career';
+    // Spreadsheet automation needs file/row-count questions, not website inputs.
+    if (/\b(excel|spreadsheet|workbook|power query)\b/.test(label)) return 'data';
     if (/web tool|calculator|dashboard|landing page|one-page site|website, seo|automation/.test(label)) return 'web';
     if (/power sector|inspection|school|hr admin|proposal|quotation|presentation|deck|sop|tender/.test(label)) return 'documents';
     if (/spreadsheet|excel|budget|financial|data|chart|report|model|reconciliation/.test(label)) return 'data';

@@ -1,8 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /thank-you
-Disallow: /thank-you-contact
-Disallow: /thank-you-brief
-Disallow: /search
+# Search and confirmation pages carry noindex in their HTML.
+# Allow crawling so search engines can read that directive.
 
 Sitemap: https://futureproofblog.in/sitemap.xml

@@ -317,7 +317,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
       </div>
       <div class="svc-card">
         <h3>Technical &amp; AI Explainers</h3>
-        <p>Complex tools, models and workflows explained in plain English, with the technical detail actually verified by an MCA background.</p>
+        <p>Complex tools, models and workflows explained in plain English, with technical claims checked against identified sources.</p>
         <span class="svc-price">From &#8377;2,500 · 3–5 day delivery</span>
       </div>
       <div class="svc-card">
@@ -427,7 +427,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
 <div class="newsletter">
   <h2>Stay FutureProof</h2>
   <p>Occasional updates on new guides, free tools and practical services. Get our <strong>free guide</strong> on the 10 best AI tools when you subscribe.</p>
-  <form action="/thank-you" class="nl-form" method="POST" name="newsletter-home" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter-home"><input type="hidden" name="bot-field" style="display:none"><input type="email" name="email" placeholder="your@email.com" required="" autocomplete="email" inputmode="email" spellcheck="false"><button type="submit">Subscribe Free →</button></form>
+  <form action="/thank-you" class="nl-form" method="POST" name="newsletter-home" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter-home"><input type="hidden" name="bot-field" style="display:none"><input type="email" name="email" aria-label="Email address for newsletter updates" placeholder="your@email.com" required="" autocomplete="email" inputmode="email" spellcheck="false"><button type="submit">Subscribe Free →</button></form>
   <p class="nl-note">Confirm your email to subscribe. Updates are occasional; unsubscribe using the link in each email.</p>
 </div>
 <footer><p>FutureProof Blog · Office: <a href="https://www.google.com/maps/search/?api=1&amp;query=35%2C%20B%20Block%2C%20Pramod%20Mahajan%20Marg%2C%20Saket%2C%20New%20Delhi%20110017">35, B Block, Pramod Mahajan Marg, Saket, New Delhi 110017, India</a> · <a href="tel:+919540528064">+91 95405 28064</a> · <a href="mailto:contact@futureproofblog.in">contact@futureproofblog.in</a> · Online services · <a href="/contact">Contact and visit details</a></p><p>© 2026 FutureProof Blog · <a href="/privacy-policy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/affiliate-disclosure">Affiliate Disclosure</a> &middot; <a href="/terms-of-service">Terms of Service</a> · <a href="/refund-policy">Refund &amp; Cancellation</a></p></footer>
@@ -458,7 +458,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
     btn.setAttribute('aria-label', 'Back to top');
     btn.style.cssText = 'position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:#e94560;color:#fff;border:none;border-radius:50%;font-size:22px;cursor:pointer;z-index:999;display:none;box-shadow:0 3px 12px rgba(233,69,96,.4);transition:all .2s;';
     document.body.appendChild(btn);
-    btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+    btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); });
     window.addEventListener('scroll', function() {
       btn.style.display = window.scrollY > 300 ? 'block' : 'none';
     }, { passive: true });
@@ -490,7 +490,7 @@ ins.adsbygoogle{display:block;max-width:100%;overflow:hidden}.page-wrap>*,.artic
   
   // Cookie Consent Banner
   function initCookieBanner() {
-    if (localStorage.getItem('fpb_cookies_accepted')) return;
+    try { if (localStorage.getItem('fpb_cookies_accepted')) return; } catch (_) {}
     var banner = document.createElement('div');
     banner.id = 'fpb-cookie-banner';
     banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9998;flex-wrap:wrap;font-size:14px;';

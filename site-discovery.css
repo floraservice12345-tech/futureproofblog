@@ -10,3 +10,6 @@
 @media(max-width:700px){.home-hero-inner,.discovery-grid{grid-template-columns:1fr}.home-feature{max-width:500px}.home-refreshed .hero-home{padding:35px 20px}.home-refreshed .hero-home h1{font-size:2.3rem}.home-refreshed .trust-bar-inner{justify-content:flex-start}.download-grid{grid-template-columns:1fr 1fr}.discovery-hero{padding:35px 20px!important}.discovery-card{padding:21px}.library-controls>label{width:100%}.library-controls select{width:100%}}
 @media(max-width:420px){.download-grid{grid-template-columns:1fr}.discovery-actions>a{width:100%;text-align:center}}
 @media(prefers-reduced-motion:reduce){.home-refreshed *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Search results and retry controls remain usable with keyboard and narrow screens. */
+.result-card{overflow-wrap:break-word}.result-card a:focus-visible,.library-more:focus-visible,.library-retry:focus-visible{outline:3px solid #b96f0b;outline-offset:4px}.library-retry{padding:11px 16px;border:1px solid #aabdb4;border-radius:7px;background:#fff;color:#215d53;cursor:pointer;font:inherit;font-weight:600;font-size:.9rem;line-height:1.4;margin-top:14px;min-height:44px}@media(prefers-reduced-motion:reduce){.result-card{transition:none}.result-card:hover{transform:none}}

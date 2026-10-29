@@ -74,6 +74,7 @@
     if (document.querySelector('#fp-progress,#fpb-progress,#progress-bar,#reading-progress,.fp-reading-progress')) return;
     var bar = document.createElement("div");
     bar.id = "fp-progress";
+    bar.setAttribute("aria-hidden", "true");
     document.body.appendChild(bar);
     var ticking = false;
     function update() {
@@ -87,6 +88,7 @@
     window.addEventListener("scroll", function () {
       if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
+    window.addEventListener("resize", update);
     update();
   }
 
@@ -105,7 +107,11 @@
 
     var ol = document.createElement("ol");
     heads.forEach(function (h) {
-      if (!h.id) h.id = slug(h.textContent);
+      if (!h.id) {
+        var base = slug(h.textContent) || "article-section", id = base, suffix = 1;
+        while (document.getElementById(id)) id = base + "-" + (++suffix);
+        h.id = id;
+      }
       var li = document.createElement("li");
       var a = document.createElement("a");
       a.href = "#" + h.id;
@@ -190,10 +196,16 @@
     });
   }
   function relatedArticles() {
+    // Curated in-article or sidebar lists already provide this navigation.
+    if (main.querySelector('.reader-next-step,.fp-related,[aria-label="Related reading"]')) return;
+    var hasRelated = Array.prototype.some.call(document.querySelectorAll('.sidebar h2,.sidebar h3'), function (heading) {
+      return /related articles|popular articles|read next/i.test(heading.textContent || '') && heading.parentNode.querySelector('a[href*="/article-"]');
+    });
+    if (hasRelated) return;
     fetch("/articles-index.json", { cache: "no-cache" })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
-        if (!data || !data.articles) return;
+        if (!data || !Array.isArray(data.articles)) return;
         var here = norm(location.pathname);
         var meCat = (document.querySelector(".article-hero .tag, .article-hero .art-category") || {}).textContent || "";
         meCat = meCat.trim().toLowerCase();
@@ -202,7 +214,7 @@
         var mine = tokens(title + " " + (kwEl ? kwEl.content : ""));
 
         var scored = data.articles
-          .filter(function (a) { return norm(a.url) !== here; })
+          .filter(function (a) { return a && typeof a.title === 'string' && typeof a.url === 'string' && /^\/article-[a-z0-9-]+$/.test(a.url) && norm(a.url) !== here; })
           .map(function (a) {
             var s = 0;
             var cat = (a.tags && a.tags[0] ? a.tags[0] : "").toLowerCase();
