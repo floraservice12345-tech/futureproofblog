@@ -12,12 +12,12 @@
     {
       value: 'career-reset-bundle',
       intake: 'career',
-      label: 'Career Reset Bundle — resume + LinkedIn, cover letter, interview kit (₹3,499, normally ₹4,700)'
+      label: 'Career Reset Bundle — resume + LinkedIn, cover letter, interview kit (₹3,499; separately from ₹4,700)'
     },
     {
       value: 'launch-kit-bundle',
       intake: 'web',
-      label: 'Launch Kit — one-page site, 3-email sequence, repurposing pack (₹9,999, normally from ₹13,500)'
+      label: 'Launch Kit — one-page site, 3-email sequence, repurposing pack (₹9,999; separately from ₹13,500)'
     }
   ];
 
