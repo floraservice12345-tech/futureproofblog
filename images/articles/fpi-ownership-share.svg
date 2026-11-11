@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="t d">
+<title id="t">Foreign money is returning to India from a very low base</title>
+<desc id="d">Two bar comparisons from Jefferies data reported on 10 November 2026: foreign ownership of BSE500 companies fell from 19.6 percent in September 2024 to 17.3 percent, and the average emerging-market fund overweight in India is 0.1 percentage points against a ten-year average of 2.2.</desc>
+<rect width="1200" height="630" fill="#171b36"/>
+<text x="60" y="78" font-family="Arial,Helvetica,sans-serif" font-size="40" font-weight="800" fill="#ffffff">Foreign money is back — from a very low base</text>
+<text x="60" y="118" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#c9cfe6">What the positioning data says about the November FPI inflow</text>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="60" y="190" font-size="24" font-weight="700" fill="#ffffff">Foreign ownership of BSE500 companies</text>
+<rect x="60" y="214" width="460" height="58" rx="6" fill="#8a93b8"/>
+<text x="534" y="253" font-size="28" font-weight="800" fill="#ffffff">19.6%</text>
+<text x="60" y="305" font-size="20" fill="#c9cfe6">September 2024</text>
+<rect x="60" y="326" width="406" height="58" rx="6" fill="#ff6b81"/>
+<text x="480" y="365" font-size="28" font-weight="800" fill="#ffffff">17.3%</text>
+<text x="60" y="417" font-size="20" fill="#c9cfe6">Latest — the lowest in 10 years</text>
+<text x="660" y="190" font-size="24" font-weight="700" fill="#ffffff">Average EM-fund overweight in India</text>
+<rect x="660" y="214" width="16" height="58" rx="6" fill="#ff6b81"/>
+<text x="690" y="253" font-size="28" font-weight="800" fill="#ffffff">+0.1 pp</text>
+<text x="660" y="305" font-size="20" fill="#c9cfe6">Now (September 2026 positioning)</text>
+<rect x="660" y="326" width="352" height="58" rx="6" fill="#8a93b8"/>
+<text x="1026" y="365" font-size="28" font-weight="800" fill="#ffffff">+2.2 pp</text>
+<text x="660" y="417" font-size="20" fill="#c9cfe6">10-year average</text>
+<text x="60" y="490" font-size="26" font-weight="700" fill="#ffd166">61% of 70 large active EM funds were still underweight India.</text>
+<text x="60" y="560" font-size="19" fill="#aab2d3">Source: Jefferies India Equity Strategy, as reported by ANI, 10 November 2026. Chart: FutureProof Blog.</text>
+</g></svg>
